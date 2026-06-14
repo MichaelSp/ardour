@@ -37,7 +37,7 @@ public:
 	void collect_garbage_step (int debt = 0);
 	void tweak_rt_gc ();
 
-	sigc::signal<void,std::string> Print;
+	sigc::signal<void(std::string)> Print;
 
 	lua_State* getState () { return L; }
 

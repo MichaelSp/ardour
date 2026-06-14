@@ -63,7 +63,7 @@ namespace
 static void UIManager_signal_add_widget_callback(GtkUIManager* self, GtkWidget* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget* > SlotType;
+  typedef sigc::slot<void(Widget*)> SlotType;
 
   UIManager* obj = dynamic_cast<UIManager*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -101,7 +101,7 @@ static const Glib::SignalProxyInfo UIManager_signal_actions_changed_info =
 static void UIManager_signal_connect_proxy_callback(GtkUIManager* self, GtkAction* p0,GtkWidget* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Action>&,Widget* > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Action>&, Widget*)> SlotType;
 
   UIManager* obj = dynamic_cast<UIManager*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -132,7 +132,7 @@ static const Glib::SignalProxyInfo UIManager_signal_connect_proxy_info =
 static void UIManager_signal_disconnect_proxy_callback(GtkUIManager* self, GtkAction* p0,GtkWidget* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Action>&,Widget* > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Action>&, Widget*)> SlotType;
 
   UIManager* obj = dynamic_cast<UIManager*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -163,7 +163,7 @@ static const Glib::SignalProxyInfo UIManager_signal_disconnect_proxy_info =
 static void UIManager_signal_pre_activate_callback(GtkUIManager* self, GtkAction* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Action>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Action>&)> SlotType;
 
   UIManager* obj = dynamic_cast<UIManager*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -193,7 +193,7 @@ static const Glib::SignalProxyInfo UIManager_signal_pre_activate_info =
 static void UIManager_signal_post_activate_callback(GtkUIManager* self, GtkAction* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Action>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Action>&)> SlotType;
 
   UIManager* obj = dynamic_cast<UIManager*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

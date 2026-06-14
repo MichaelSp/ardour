@@ -465,8 +465,8 @@ public:
 
 	void update_gui_object_state (ProcessorEntry *, bool emit = false);
 
-	sigc::signal<void,std::shared_ptr<ARDOUR::Processor> > ProcessorSelected;
-	sigc::signal<void,std::shared_ptr<ARDOUR::Processor> > ProcessorUnselected;
+	sigc::signal<void(std::shared_ptr<ARDOUR::Processor>)> ProcessorSelected;
+	sigc::signal<void(std::shared_ptr<ARDOUR::Processor>)> ProcessorUnselected;
 
 	static Glib::RefPtr<Gtk::ActionGroup> processor_box_actions;
 	static Gtkmm2ext::Bindings* bindings;

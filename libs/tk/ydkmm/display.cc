@@ -149,7 +149,7 @@ namespace
 static void Display_signal_closed_callback(GdkDisplay* self, gboolean p0,void* data)
 {
   using namespace Gdk;
-  typedef sigc::slot< void,bool > SlotType;
+  typedef sigc::slot<void(bool)> SlotType;
 
   Display* obj = dynamic_cast<Display*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

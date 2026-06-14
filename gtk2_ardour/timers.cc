@@ -174,25 +174,25 @@ get_timers ()
 namespace Timers {
 
 sigc::connection
-blink_connect(const sigc::slot<void,bool>& slot)
+blink_connect(const sigc::slot<void(bool)>& slot)
 {
 	return get_timers().blink.connect (slot);
 }
 
 sigc::connection
-second_connect(const sigc::slot<void>& slot)
+second_connect(const sigc::slot<void()>& slot)
 {
 	return get_timers().second.connect (slot);
 }
 
 sigc::connection
-rapid_connect(const sigc::slot<void>& slot)
+rapid_connect(const sigc::slot<void()>& slot)
 {
 	return get_timers().rapid.connect (slot);
 }
 
 sigc::connection
-super_rapid_connect(const sigc::slot<void>& slot)
+super_rapid_connect(const sigc::slot<void()>& slot)
 {
 #ifdef PLATFORM_WINDOWS
 	return get_timers().fps.connect (slot);
@@ -211,7 +211,7 @@ unsigned int fps_interval()  { return get_timers().fps.get_interval(); }
 unsigned int rapid_interval()  { return get_timers().rapid.get_interval(); }
 
 sigc::connection
-fps_connect(const sigc::slot<void>& slot)
+fps_connect(const sigc::slot<void()>& slot)
 {
 	return get_timers().fps.connect (slot);
 }

@@ -88,7 +88,7 @@ public:
 	StandardTimer (unsigned int interval,
 	               const Glib::RefPtr<Glib::MainContext>& main_context = Glib::MainContext::get_default());
 
-	sigc::connection connect (const sigc::slot<void>& slot);
+	sigc::connection connect (const sigc::slot<void()>& slot);
 
 	virtual unsigned int connection_count () const
 	{ return m_signal.size (); }
@@ -97,7 +97,7 @@ protected:
 
 	virtual bool on_elapsed ();
 
-	sigc::signal<void>                  m_signal;
+	sigc::signal<void()>                  m_signal;
 
 };
 
@@ -109,7 +109,7 @@ public:
 	            const Glib::RefPtr<Glib::MainContext>& main_context = Glib::MainContext::get_default());
 
 
-	sigc::connection connect (const sigc::slot<void, bool>& slot);
+	sigc::connection connect (const sigc::slot<void(bool)>& slot);
 
 	virtual unsigned int connection_count () const
 	{ return m_blink_signal.size (); }
@@ -118,9 +118,8 @@ protected:
 
 	virtual bool on_elapsed ();
 
-	sigc::signal<void, bool> m_blink_signal;
+	sigc::signal<void(bool)> m_blink_signal;
 
 };
 
 } // namespace PBD
-

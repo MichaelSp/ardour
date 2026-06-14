@@ -139,7 +139,7 @@ BaseUI::request_handler (Glib::IOCondition ioc)
 {
 	/* check the request pipe */
 
-	if (ioc & IO_IN) {
+	if ((ioc & IO_IN) == IO_IN) {
 		request_channel.drain ();
 
 		/* there may been an error. we'd rather handle requests first,
@@ -152,7 +152,7 @@ BaseUI::request_handler (Glib::IOCondition ioc)
 		handle_ui_requests ();
 	}
 
-	if (ioc & ~(IO_IN|IO_PRI)) {
+	if ((ioc & ~(IO_IN | IO_PRI)) != static_cast<Glib::IOCondition>(0)) {
 		_main_loop->quit ();
 	}
 
@@ -178,4 +178,3 @@ BaseUI::attach_request_source ()
 	request_channel.attach (m_context);
 	maybe_install_precall_handler (m_context);
 }
-

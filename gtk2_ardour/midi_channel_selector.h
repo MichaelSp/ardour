@@ -47,7 +47,7 @@ public:
 	MidiChannelSelector(int n_rows = 4, int n_columns = 4, int start_row = 0, int start_column = 0);
 	virtual ~MidiChannelSelector() = 0;
 
-	sigc::signal<void> clicked;
+	sigc::signal<void()> clicked;
 
 	void set_channel_colors(const uint32_t new_channel_colors[16]);
 	void set_default_channel_color();
@@ -68,7 +68,7 @@ public:
 
 	uint8_t get_active_channel() const { return _active_channel; }
 
-	sigc::signal<void, uint8_t> channel_selected;
+	sigc::signal<void(uint8_t)> channel_selected;
 
 protected:
 	virtual void button_toggled(Gtk::ToggleButton* button, uint8_t button_nr);
@@ -89,7 +89,7 @@ public:
 	 *  First parameter is the new channel mode, second parameter is a bitmask
 	 *  of the currently selected channels.
 	 */
-	sigc::signal<void, ARDOUR::ChannelMode, uint16_t> mode_changed;
+	sigc::signal<void(ARDOUR::ChannelMode, uint16_t)> mode_changed;
 
 	void set_channel_mode(ARDOUR::ChannelMode mode, uint16_t mask);
 	ARDOUR::ChannelMode get_channel_mode () const { return _channel_mode; }

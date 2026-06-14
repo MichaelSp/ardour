@@ -44,8 +44,8 @@ public:
 
 	std::shared_ptr<PBD::Controllable> get_controllable() const { return position_control; }
 
-	sigc::signal<void> StartGesture;
-	sigc::signal<void> StopGesture;
+	sigc::signal<void()> StartGesture;
+	sigc::signal<void()> StopGesture;
 
 protected:
 	bool on_expose_event (GdkEventExpose*);

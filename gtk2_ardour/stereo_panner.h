@@ -46,10 +46,10 @@ public:
 	std::shared_ptr<PBD::Controllable> get_position_controllable() const { return position_control; }
 	std::shared_ptr<PBD::Controllable> get_width_controllable() const { return width_control; }
 
-	sigc::signal<void> StartPositionGesture;
-	sigc::signal<void> StopPositionGesture;
-	sigc::signal<void> StartWidthGesture;
-	sigc::signal<void> StopWidthGesture;
+	sigc::signal<void()> StartPositionGesture;
+	sigc::signal<void()> StopPositionGesture;
+	sigc::signal<void()> StartWidthGesture;
+	sigc::signal<void()> StopWidthGesture;
 
 protected:
 	bool on_expose_event (GdkEventExpose*);

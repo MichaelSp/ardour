@@ -104,7 +104,7 @@ using namespace Editing;
 using namespace std;
 using std::list;
 
-sigc::signal<void, bool> RouteTimeAxisView::signal_ctrl_touched;
+sigc::signal<void(bool)> RouteTimeAxisView::signal_ctrl_touched;
 
 RouteTimeAxisView::RouteTimeAxisView (PublicEditor& ed, Session* sess, ArdourCanvas::Canvas& canvas)
 	: RouteUI(sess)

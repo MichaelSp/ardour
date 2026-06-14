@@ -80,7 +80,7 @@ public:
 	virtual void sync_with_manager () = 0;
 	virtual bool channel_limit_reached () const = 0;
 
-	sigc::signal<void> CriticalSelectionChanged;
+	sigc::signal<void()> CriticalSelectionChanged;
 };
 
 class PortExportChannelSelector : public ExportChannelSelector
@@ -188,7 +188,7 @@ private:
 		uint32_t channel_count () const { return n_channels; }
 		uint32_t max_route_channel_count () const;
 
-		sigc::signal<void> CriticalSelectionChanged;
+		sigc::signal<void()> CriticalSelectionChanged;
 
 	private:
 

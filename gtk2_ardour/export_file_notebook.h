@@ -51,7 +51,7 @@ public:
 
 	std::shared_ptr<SoundcloudExportSelector> soundcloud_export_selector;
 
-	sigc::signal<void> CriticalSelectionChanged;
+	sigc::signal<void()> CriticalSelectionChanged;
 
 private:
 
@@ -101,7 +101,7 @@ private:
 		ARDOUR::ExportProfileManager::FormatStatePtr   get_format_state () const { return format_state; }
 		ARDOUR::ExportProfileManager::FilenameStatePtr get_filename_state () const { return filename_state; }
 
-		sigc::signal<void> CriticalSelectionChanged;
+		sigc::signal<void()> CriticalSelectionChanged;
 
 	private:
 		void save_format_to_manager (FormatPtr format);

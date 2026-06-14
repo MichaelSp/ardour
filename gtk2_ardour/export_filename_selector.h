@@ -50,7 +50,7 @@ public:
 
 	/* Compatibility with other elements */
 
-	sigc::signal<void> CriticalSelectionChanged;
+	sigc::signal<void()> CriticalSelectionChanged;
 
 private:
 	void load_state ();

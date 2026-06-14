@@ -74,7 +74,7 @@ class PianorollMidiView : public MidiView
 	void point_selection_changed ();
 	void clear_selection ();
 
-	sigc::signal<void> AutomationStateChange;
+	sigc::signal<void()> AutomationStateChange;
 
 	void set_overlay_text (std::string const &);
 	void hide_overlay_text ();

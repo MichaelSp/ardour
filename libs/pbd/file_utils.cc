@@ -26,9 +26,7 @@
 #include <vector>
 #include <regex>
 
-#ifdef HAVE_UNISTD_H
 #include <unistd.h>
-#endif
 
 #include <glib.h>
 #include "pbd/gstdio_compat.h"
@@ -150,12 +148,12 @@ run_functor_for_paths (vector<string>& result,
 		}
 		catch (Glib::FileError const& err) {
 			char errstr[PATH_MAX*2];
-			snprintf (errstr, sizeof (errstr), "Cannot access file: %s", err.what().c_str());
+			snprintf (errstr, sizeof (errstr), "Cannot access file: %s", err.what());
 			warning << errstr << endmsg;
 		}
 		catch (Glib::ConvertError const& err) {
 			char errstr[PATH_MAX*2];
-			snprintf (errstr, sizeof (errstr), "Cannot convert filename: %s", err.what().c_str());
+			snprintf (errstr, sizeof (errstr), "Cannot convert filename: %s", err.what());
 			warning << errstr << endmsg;
 		}
 	}

@@ -5,6 +5,7 @@
 
 
 #include <glibmm/ustring.h>
+#include <glibmm/arrayhandle.h>
 #include <sigc++/sigc++.h>
 
 /* $Id: relation.hg,v 1.3 2005/01/05 18:21:30 murrayc Exp $ */
@@ -203,4 +204,3 @@ namespace Glib
 
 
 #endif /* _ATKMM_RELATION_H */
-

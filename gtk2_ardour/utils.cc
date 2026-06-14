@@ -85,7 +85,7 @@ using Gtkmm2ext::Keyboard;
 
 namespace ARDOUR_UI_UTILS
 {
-	sigc::signal<void> DPIReset;
+	sigc::signal<void()> DPIReset;
 }
 
 #ifdef PLATFORM_WINDOWS

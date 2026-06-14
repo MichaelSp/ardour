@@ -53,7 +53,7 @@ namespace //anonymous
 static void Widget_signal_drag_data_get_callback(GtkWidget* self, GdkDragContext* p0,GtkSelectionData* p1,guint p2,guint p3,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gdk::DragContext>&,SelectionData&,guint,guint > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gdk::DragContext>&, SelectionData&, guint, guint)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -76,7 +76,7 @@ static void Widget_signal_drag_data_get_callback(GtkWidget* self, GdkDragContext
 static void Widget_signal_selection_get_callback(GtkWidget* self, GtkSelectionData* p0,guint p1,guint p2,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void, SelectionData&, guint, guint > SlotType;
+  typedef sigc::slot<void(SelectionData&, guint, guint)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -667,7 +667,7 @@ static const Glib::SignalProxyInfo Widget_signal_unrealize_info =
 static void Widget_signal_size_request_callback(GtkWidget* self, GtkRequisition* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Requisition* > SlotType;
+  typedef sigc::slot<void(Requisition*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -697,7 +697,7 @@ static const Glib::SignalProxyInfo Widget_signal_size_request_info =
 static void Widget_signal_size_allocate_callback(GtkWidget* self, GtkAllocation* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Allocation& > SlotType;
+  typedef sigc::slot<void(Allocation&)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -727,7 +727,7 @@ static const Glib::SignalProxyInfo Widget_signal_size_allocate_info =
 static void Widget_signal_state_changed_callback(GtkWidget* self, GtkStateType p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Gtk::StateType > SlotType;
+  typedef sigc::slot<void(Gtk::StateType)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -757,7 +757,7 @@ static const Glib::SignalProxyInfo Widget_signal_state_changed_info =
 static void Widget_signal_parent_changed_callback(GtkWidget* self, GtkWidget* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget* > SlotType;
+  typedef sigc::slot<void(Widget*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -787,7 +787,7 @@ static const Glib::SignalProxyInfo Widget_signal_parent_changed_info =
 static void Widget_signal_hierarchy_changed_callback(GtkWidget* self, GtkWidget* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget* > SlotType;
+  typedef sigc::slot<void(Widget*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -817,7 +817,7 @@ static const Glib::SignalProxyInfo Widget_signal_hierarchy_changed_info =
 static void Widget_signal_style_changed_callback(GtkWidget* self, GtkStyle* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gtk::Style>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gtk::Style>&)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -847,7 +847,7 @@ static const Glib::SignalProxyInfo Widget_signal_style_changed_info =
 static void Widget_signal_direction_changed_callback(GtkWidget* self, GtkTextDirection p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,TextDirection > SlotType;
+  typedef sigc::slot<void(TextDirection)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -877,7 +877,7 @@ static const Glib::SignalProxyInfo Widget_signal_direction_changed_info =
 static void Widget_signal_grab_notify_callback(GtkWidget* self, gboolean p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,bool > SlotType;
+  typedef sigc::slot<void(bool)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -907,7 +907,7 @@ static const Glib::SignalProxyInfo Widget_signal_grab_notify_info =
 static void Widget_signal_child_notify_callback(GtkWidget* self, GParamSpec* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GParamSpec* > SlotType;
+  typedef sigc::slot<void(GParamSpec*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -936,7 +936,7 @@ static const Glib::SignalProxyInfo Widget_signal_child_notify_info =
 static gboolean Widget_signal_mnemonic_activate_callback(GtkWidget* self, gboolean p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,bool > SlotType;
+  typedef sigc::slot<bool(bool)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -961,7 +961,7 @@ static gboolean Widget_signal_mnemonic_activate_callback(GtkWidget* self, gboole
 static gboolean Widget_signal_mnemonic_activate_notify_callback(GtkWidget* self, gboolean p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,bool > SlotType;
+  typedef sigc::slot<void(bool)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1002,7 +1002,7 @@ static const Glib::SignalProxyInfo Widget_signal_grab_focus_info =
 static gboolean Widget_signal_focus_callback(GtkWidget* self, GtkDirectionType p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,DirectionType > SlotType;
+  typedef sigc::slot<bool(DirectionType)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1027,7 +1027,7 @@ static gboolean Widget_signal_focus_callback(GtkWidget* self, GtkDirectionType p
 static gboolean Widget_signal_focus_notify_callback(GtkWidget* self, GtkDirectionType p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,DirectionType > SlotType;
+  typedef sigc::slot<void(DirectionType)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1060,7 +1060,7 @@ static const Glib::SignalProxyInfo Widget_signal_focus_info =
 static gboolean Widget_signal_event_callback(GtkWidget* self, GdkEvent* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEvent* > SlotType;
+  typedef sigc::slot<bool(GdkEvent*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1084,7 +1084,7 @@ static gboolean Widget_signal_event_callback(GtkWidget* self, GdkEvent* p0,void*
 static gboolean Widget_signal_event_notify_callback(GtkWidget* self, GdkEvent* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEvent* > SlotType;
+  typedef sigc::slot<void(GdkEvent*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1116,7 +1116,7 @@ static const Glib::SignalProxyInfo Widget_signal_event_info =
 static void Widget_signal_event_after_callback(GtkWidget* self, GdkEvent* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEvent* > SlotType;
+  typedef sigc::slot<void(GdkEvent*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1145,7 +1145,7 @@ static const Glib::SignalProxyInfo Widget_signal_event_after_info =
 static gboolean Widget_signal_button_press_event_callback(GtkWidget* self, GdkEventButton* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventButton* > SlotType;
+  typedef sigc::slot<bool(GdkEventButton*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1169,7 +1169,7 @@ static gboolean Widget_signal_button_press_event_callback(GtkWidget* self, GdkEv
 static gboolean Widget_signal_button_press_event_notify_callback(GtkWidget* self, GdkEventButton* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventButton* > SlotType;
+  typedef sigc::slot<void(GdkEventButton*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1201,7 +1201,7 @@ static const Glib::SignalProxyInfo Widget_signal_button_press_event_info =
 static gboolean Widget_signal_button_release_event_callback(GtkWidget* self, GdkEventButton* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventButton* > SlotType;
+  typedef sigc::slot<bool(GdkEventButton*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1225,7 +1225,7 @@ static gboolean Widget_signal_button_release_event_callback(GtkWidget* self, Gdk
 static gboolean Widget_signal_button_release_event_notify_callback(GtkWidget* self, GdkEventButton* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventButton* > SlotType;
+  typedef sigc::slot<void(GdkEventButton*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1257,7 +1257,7 @@ static const Glib::SignalProxyInfo Widget_signal_button_release_event_info =
 static gboolean Widget_signal_scroll_event_callback(GtkWidget* self, GdkEventScroll* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventScroll* > SlotType;
+  typedef sigc::slot<bool(GdkEventScroll*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1281,7 +1281,7 @@ static gboolean Widget_signal_scroll_event_callback(GtkWidget* self, GdkEventScr
 static gboolean Widget_signal_scroll_event_notify_callback(GtkWidget* self, GdkEventScroll* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventScroll* > SlotType;
+  typedef sigc::slot<void(GdkEventScroll*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1313,7 +1313,7 @@ static const Glib::SignalProxyInfo Widget_signal_scroll_event_info =
 static gboolean Widget_signal_motion_notify_event_callback(GtkWidget* self, GdkEventMotion* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventMotion* > SlotType;
+  typedef sigc::slot<bool(GdkEventMotion*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1337,7 +1337,7 @@ static gboolean Widget_signal_motion_notify_event_callback(GtkWidget* self, GdkE
 static gboolean Widget_signal_motion_notify_event_notify_callback(GtkWidget* self, GdkEventMotion* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventMotion* > SlotType;
+  typedef sigc::slot<void(GdkEventMotion*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1369,7 +1369,7 @@ static const Glib::SignalProxyInfo Widget_signal_motion_notify_event_info =
 static gboolean Widget_signal_delete_event_callback(GtkWidget* self, GdkEventAny* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventAny* > SlotType;
+  typedef sigc::slot<bool(GdkEventAny*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1393,7 +1393,7 @@ static gboolean Widget_signal_delete_event_callback(GtkWidget* self, GdkEventAny
 static gboolean Widget_signal_delete_event_notify_callback(GtkWidget* self, GdkEventAny* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventAny* > SlotType;
+  typedef sigc::slot<void(GdkEventAny*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1425,7 +1425,7 @@ static const Glib::SignalProxyInfo Widget_signal_delete_event_info =
 static gboolean Widget_signal_expose_event_callback(GtkWidget* self, GdkEventExpose* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventExpose* > SlotType;
+  typedef sigc::slot<bool(GdkEventExpose*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1449,7 +1449,7 @@ static gboolean Widget_signal_expose_event_callback(GtkWidget* self, GdkEventExp
 static gboolean Widget_signal_expose_event_notify_callback(GtkWidget* self, GdkEventExpose* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventExpose* > SlotType;
+  typedef sigc::slot<void(GdkEventExpose*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1481,7 +1481,7 @@ static const Glib::SignalProxyInfo Widget_signal_expose_event_info =
 static gboolean Widget_signal_key_press_event_callback(GtkWidget* self, GdkEventKey* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventKey* > SlotType;
+  typedef sigc::slot<bool(GdkEventKey*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1505,7 +1505,7 @@ static gboolean Widget_signal_key_press_event_callback(GtkWidget* self, GdkEvent
 static gboolean Widget_signal_key_press_event_notify_callback(GtkWidget* self, GdkEventKey* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventKey* > SlotType;
+  typedef sigc::slot<void(GdkEventKey*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1537,7 +1537,7 @@ static const Glib::SignalProxyInfo Widget_signal_key_press_event_info =
 static gboolean Widget_signal_key_release_event_callback(GtkWidget* self, GdkEventKey* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventKey* > SlotType;
+  typedef sigc::slot<bool(GdkEventKey*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1561,7 +1561,7 @@ static gboolean Widget_signal_key_release_event_callback(GtkWidget* self, GdkEve
 static gboolean Widget_signal_key_release_event_notify_callback(GtkWidget* self, GdkEventKey* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventKey* > SlotType;
+  typedef sigc::slot<void(GdkEventKey*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1593,7 +1593,7 @@ static const Glib::SignalProxyInfo Widget_signal_key_release_event_info =
 static gboolean Widget_signal_enter_notify_event_callback(GtkWidget* self, GdkEventCrossing* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventCrossing* > SlotType;
+  typedef sigc::slot<bool(GdkEventCrossing*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1617,7 +1617,7 @@ static gboolean Widget_signal_enter_notify_event_callback(GtkWidget* self, GdkEv
 static gboolean Widget_signal_enter_notify_event_notify_callback(GtkWidget* self, GdkEventCrossing* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventCrossing* > SlotType;
+  typedef sigc::slot<void(GdkEventCrossing*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1649,7 +1649,7 @@ static const Glib::SignalProxyInfo Widget_signal_enter_notify_event_info =
 static gboolean Widget_signal_leave_notify_event_callback(GtkWidget* self, GdkEventCrossing* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventCrossing* > SlotType;
+  typedef sigc::slot<bool(GdkEventCrossing*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1673,7 +1673,7 @@ static gboolean Widget_signal_leave_notify_event_callback(GtkWidget* self, GdkEv
 static gboolean Widget_signal_leave_notify_event_notify_callback(GtkWidget* self, GdkEventCrossing* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventCrossing* > SlotType;
+  typedef sigc::slot<void(GdkEventCrossing*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1705,7 +1705,7 @@ static const Glib::SignalProxyInfo Widget_signal_leave_notify_event_info =
 static gboolean Widget_signal_configure_event_callback(GtkWidget* self, GdkEventConfigure* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventConfigure* > SlotType;
+  typedef sigc::slot<bool(GdkEventConfigure*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1729,7 +1729,7 @@ static gboolean Widget_signal_configure_event_callback(GtkWidget* self, GdkEvent
 static gboolean Widget_signal_configure_event_notify_callback(GtkWidget* self, GdkEventConfigure* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventConfigure* > SlotType;
+  typedef sigc::slot<void(GdkEventConfigure*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1761,7 +1761,7 @@ static const Glib::SignalProxyInfo Widget_signal_configure_event_info =
 static gboolean Widget_signal_focus_in_event_callback(GtkWidget* self, GdkEventFocus* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventFocus* > SlotType;
+  typedef sigc::slot<bool(GdkEventFocus*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1785,7 +1785,7 @@ static gboolean Widget_signal_focus_in_event_callback(GtkWidget* self, GdkEventF
 static gboolean Widget_signal_focus_in_event_notify_callback(GtkWidget* self, GdkEventFocus* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventFocus* > SlotType;
+  typedef sigc::slot<void(GdkEventFocus*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1817,7 +1817,7 @@ static const Glib::SignalProxyInfo Widget_signal_focus_in_event_info =
 static gboolean Widget_signal_focus_out_event_callback(GtkWidget* self, GdkEventFocus* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventFocus* > SlotType;
+  typedef sigc::slot<bool(GdkEventFocus*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1841,7 +1841,7 @@ static gboolean Widget_signal_focus_out_event_callback(GtkWidget* self, GdkEvent
 static gboolean Widget_signal_focus_out_event_notify_callback(GtkWidget* self, GdkEventFocus* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventFocus* > SlotType;
+  typedef sigc::slot<void(GdkEventFocus*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1873,7 +1873,7 @@ static const Glib::SignalProxyInfo Widget_signal_focus_out_event_info =
 static gboolean Widget_signal_map_event_callback(GtkWidget* self, GdkEventAny* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventAny* > SlotType;
+  typedef sigc::slot<bool(GdkEventAny*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1897,7 +1897,7 @@ static gboolean Widget_signal_map_event_callback(GtkWidget* self, GdkEventAny* p
 static gboolean Widget_signal_map_event_notify_callback(GtkWidget* self, GdkEventAny* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventAny* > SlotType;
+  typedef sigc::slot<void(GdkEventAny*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1929,7 +1929,7 @@ static const Glib::SignalProxyInfo Widget_signal_map_event_info =
 static gboolean Widget_signal_unmap_event_callback(GtkWidget* self, GdkEventAny* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventAny* > SlotType;
+  typedef sigc::slot<bool(GdkEventAny*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1953,7 +1953,7 @@ static gboolean Widget_signal_unmap_event_callback(GtkWidget* self, GdkEventAny*
 static gboolean Widget_signal_unmap_event_notify_callback(GtkWidget* self, GdkEventAny* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventAny* > SlotType;
+  typedef sigc::slot<void(GdkEventAny*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -1985,7 +1985,7 @@ static const Glib::SignalProxyInfo Widget_signal_unmap_event_info =
 static gboolean Widget_signal_property_notify_event_callback(GtkWidget* self, GdkEventProperty* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventProperty* > SlotType;
+  typedef sigc::slot<bool(GdkEventProperty*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2009,7 +2009,7 @@ static gboolean Widget_signal_property_notify_event_callback(GtkWidget* self, Gd
 static gboolean Widget_signal_property_notify_event_notify_callback(GtkWidget* self, GdkEventProperty* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventProperty* > SlotType;
+  typedef sigc::slot<void(GdkEventProperty*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2041,7 +2041,7 @@ static const Glib::SignalProxyInfo Widget_signal_property_notify_event_info =
 static gboolean Widget_signal_selection_clear_event_callback(GtkWidget* self, GdkEventSelection* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventSelection* > SlotType;
+  typedef sigc::slot<bool(GdkEventSelection*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2065,7 +2065,7 @@ static gboolean Widget_signal_selection_clear_event_callback(GtkWidget* self, Gd
 static gboolean Widget_signal_selection_clear_event_notify_callback(GtkWidget* self, GdkEventSelection* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventSelection* > SlotType;
+  typedef sigc::slot<void(GdkEventSelection*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2097,7 +2097,7 @@ static const Glib::SignalProxyInfo Widget_signal_selection_clear_event_info =
 static gboolean Widget_signal_selection_request_event_callback(GtkWidget* self, GdkEventSelection* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventSelection* > SlotType;
+  typedef sigc::slot<bool(GdkEventSelection*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2121,7 +2121,7 @@ static gboolean Widget_signal_selection_request_event_callback(GtkWidget* self, 
 static gboolean Widget_signal_selection_request_event_notify_callback(GtkWidget* self, GdkEventSelection* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventSelection* > SlotType;
+  typedef sigc::slot<void(GdkEventSelection*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2153,7 +2153,7 @@ static const Glib::SignalProxyInfo Widget_signal_selection_request_event_info =
 static gboolean Widget_signal_selection_notify_event_callback(GtkWidget* self, GdkEventSelection* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventSelection* > SlotType;
+  typedef sigc::slot<bool(GdkEventSelection*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2177,7 +2177,7 @@ static gboolean Widget_signal_selection_notify_event_callback(GtkWidget* self, G
 static gboolean Widget_signal_selection_notify_event_notify_callback(GtkWidget* self, GdkEventSelection* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventSelection* > SlotType;
+  typedef sigc::slot<void(GdkEventSelection*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2209,7 +2209,7 @@ static const Glib::SignalProxyInfo Widget_signal_selection_notify_event_info =
 static gboolean Widget_signal_proximity_in_event_callback(GtkWidget* self, GdkEventProximity* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventProximity* > SlotType;
+  typedef sigc::slot<bool(GdkEventProximity*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2233,7 +2233,7 @@ static gboolean Widget_signal_proximity_in_event_callback(GtkWidget* self, GdkEv
 static gboolean Widget_signal_proximity_in_event_notify_callback(GtkWidget* self, GdkEventProximity* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventProximity* > SlotType;
+  typedef sigc::slot<void(GdkEventProximity*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2265,7 +2265,7 @@ static const Glib::SignalProxyInfo Widget_signal_proximity_in_event_info =
 static gboolean Widget_signal_proximity_out_event_callback(GtkWidget* self, GdkEventProximity* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventProximity* > SlotType;
+  typedef sigc::slot<bool(GdkEventProximity*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2289,7 +2289,7 @@ static gboolean Widget_signal_proximity_out_event_callback(GtkWidget* self, GdkE
 static gboolean Widget_signal_proximity_out_event_notify_callback(GtkWidget* self, GdkEventProximity* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventProximity* > SlotType;
+  typedef sigc::slot<void(GdkEventProximity*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2321,7 +2321,7 @@ static const Glib::SignalProxyInfo Widget_signal_proximity_out_event_info =
 static gboolean Widget_signal_visibility_notify_event_callback(GtkWidget* self, GdkEventVisibility* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventVisibility* > SlotType;
+  typedef sigc::slot<bool(GdkEventVisibility*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2345,7 +2345,7 @@ static gboolean Widget_signal_visibility_notify_event_callback(GtkWidget* self, 
 static gboolean Widget_signal_visibility_notify_event_notify_callback(GtkWidget* self, GdkEventVisibility* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventVisibility* > SlotType;
+  typedef sigc::slot<void(GdkEventVisibility*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2377,7 +2377,7 @@ static const Glib::SignalProxyInfo Widget_signal_visibility_notify_event_info =
 static gboolean Widget_signal_client_event_callback(GtkWidget* self, GdkEventClient* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventClient* > SlotType;
+  typedef sigc::slot<bool(GdkEventClient*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2401,7 +2401,7 @@ static gboolean Widget_signal_client_event_callback(GtkWidget* self, GdkEventCli
 static gboolean Widget_signal_client_event_notify_callback(GtkWidget* self, GdkEventClient* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventClient* > SlotType;
+  typedef sigc::slot<void(GdkEventClient*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2433,7 +2433,7 @@ static const Glib::SignalProxyInfo Widget_signal_client_event_info =
 static gboolean Widget_signal_no_expose_event_callback(GtkWidget* self, GdkEventAny* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventAny* > SlotType;
+  typedef sigc::slot<bool(GdkEventAny*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2457,7 +2457,7 @@ static gboolean Widget_signal_no_expose_event_callback(GtkWidget* self, GdkEvent
 static gboolean Widget_signal_no_expose_event_notify_callback(GtkWidget* self, GdkEventAny* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventAny* > SlotType;
+  typedef sigc::slot<void(GdkEventAny*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2489,7 +2489,7 @@ static const Glib::SignalProxyInfo Widget_signal_no_expose_event_info =
 static gboolean Widget_signal_window_state_event_callback(GtkWidget* self, GdkEventWindowState* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventWindowState* > SlotType;
+  typedef sigc::slot<bool(GdkEventWindowState*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2513,7 +2513,7 @@ static gboolean Widget_signal_window_state_event_callback(GtkWidget* self, GdkEv
 static gboolean Widget_signal_window_state_event_notify_callback(GtkWidget* self, GdkEventWindowState* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventWindowState* > SlotType;
+  typedef sigc::slot<void(GdkEventWindowState*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2553,7 +2553,7 @@ static const Glib::SignalProxyInfo Widget_signal_selection_get_info =
 static void Widget_signal_selection_received_callback(GtkWidget* self, GtkSelectionData* p0,guint p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const SelectionData&,guint > SlotType;
+  typedef sigc::slot<void(const SelectionData&, guint)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2583,7 +2583,7 @@ static const Glib::SignalProxyInfo Widget_signal_selection_received_info =
 static void Widget_signal_drag_begin_callback(GtkWidget* self, GdkDragContext* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gdk::DragContext>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gdk::DragContext>&)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2613,7 +2613,7 @@ static const Glib::SignalProxyInfo Widget_signal_drag_begin_info =
 static void Widget_signal_drag_end_callback(GtkWidget* self, GdkDragContext* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gdk::DragContext>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gdk::DragContext>&)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2651,7 +2651,7 @@ static const Glib::SignalProxyInfo Widget_signal_drag_data_get_info =
 static void Widget_signal_drag_data_delete_callback(GtkWidget* self, GdkDragContext* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gdk::DragContext>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gdk::DragContext>&)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2681,7 +2681,7 @@ static const Glib::SignalProxyInfo Widget_signal_drag_data_delete_info =
 static gboolean Widget_signal_drag_failed_callback(GtkWidget* self, GdkDragContext* p0,GtkDragResult p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,const Glib::RefPtr<Gdk::DragContext>&,DragResult > SlotType;
+  typedef sigc::slot<bool(const Glib::RefPtr<Gdk::DragContext>&, DragResult)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2707,7 +2707,7 @@ static gboolean Widget_signal_drag_failed_callback(GtkWidget* self, GdkDragConte
 static gboolean Widget_signal_drag_failed_notify_callback(GtkWidget* self, GdkDragContext* p0,GtkDragResult p1, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gdk::DragContext>&,DragResult > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gdk::DragContext>&, DragResult)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2741,7 +2741,7 @@ static const Glib::SignalProxyInfo Widget_signal_drag_failed_info =
 static void Widget_signal_drag_leave_callback(GtkWidget* self, GdkDragContext* p0,guint p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gdk::DragContext>&,guint > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gdk::DragContext>&, guint)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2771,7 +2771,7 @@ static const Glib::SignalProxyInfo Widget_signal_drag_leave_info =
 static gboolean Widget_signal_drag_motion_callback(GtkWidget* self, GdkDragContext* p0,gint p1,gint p2,guint p3,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,const Glib::RefPtr<Gdk::DragContext>&,int,int,guint > SlotType;
+  typedef sigc::slot<bool(const Glib::RefPtr<Gdk::DragContext>&, int, int, guint)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2798,7 +2798,7 @@ static gboolean Widget_signal_drag_motion_callback(GtkWidget* self, GdkDragConte
 static gboolean Widget_signal_drag_motion_notify_callback(GtkWidget* self, GdkDragContext* p0,gint p1,gint p2,guint p3, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gdk::DragContext>&,int,int,guint > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gdk::DragContext>&, int, int, guint)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2833,7 +2833,7 @@ static const Glib::SignalProxyInfo Widget_signal_drag_motion_info =
 static gboolean Widget_signal_drag_drop_callback(GtkWidget* self, GdkDragContext* p0,gint p1,gint p2,guint p3,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,const Glib::RefPtr<Gdk::DragContext>&,int,int,guint > SlotType;
+  typedef sigc::slot<bool(const Glib::RefPtr<Gdk::DragContext>&, int, int, guint)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2860,7 +2860,7 @@ static gboolean Widget_signal_drag_drop_callback(GtkWidget* self, GdkDragContext
 static gboolean Widget_signal_drag_drop_notify_callback(GtkWidget* self, GdkDragContext* p0,gint p1,gint p2,guint p3, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gdk::DragContext>&,int,int,guint > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gdk::DragContext>&, int, int, guint)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2895,7 +2895,7 @@ static const Glib::SignalProxyInfo Widget_signal_drag_drop_info =
 static void Widget_signal_drag_data_received_callback(GtkWidget* self, GdkDragContext* p0,gint p1,gint p2,GtkSelectionData* p3,guint p4,guint p5,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gdk::DragContext>&,int,int,const SelectionData&,guint,guint > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gdk::DragContext>&, int, int, const SelectionData&, guint, guint)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2932,7 +2932,7 @@ static const Glib::SignalProxyInfo Widget_signal_drag_data_received_info =
 static AtkObject* Widget_signal_get_accessible_callback(GtkWidget* self, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< Glib::RefPtr<Atk::Object> > SlotType;
+  typedef sigc::slot<Glib::RefPtr<Atk::Object>()> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2956,7 +2956,7 @@ static AtkObject* Widget_signal_get_accessible_callback(GtkWidget* self, void* d
 static AtkObject* Widget_signal_get_accessible_notify_callback(GtkWidget* self,  void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void > SlotType;
+  typedef sigc::slot<void()> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2992,7 +2992,7 @@ static const Glib::SignalProxyInfo Widget_signal_get_accessible_info =
 static void Widget_signal_screen_changed_callback(GtkWidget* self, GdkScreen* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gdk::Screen>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gdk::Screen>&)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -3030,7 +3030,7 @@ static const Glib::SignalProxyInfo Widget_signal_composited_changed_info =
 static gboolean Widget_signal_popup_menu_callback(GtkWidget* self, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool > SlotType;
+  typedef sigc::slot<bool()> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -3054,7 +3054,7 @@ static gboolean Widget_signal_popup_menu_callback(GtkWidget* self, void* data)
 static gboolean Widget_signal_popup_menu_notify_callback(GtkWidget* self,  void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void > SlotType;
+  typedef sigc::slot<void()> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -3086,7 +3086,7 @@ static const Glib::SignalProxyInfo Widget_signal_popup_menu_info =
 static gboolean Widget_signal_query_tooltip_callback(GtkWidget* self, gint p0,gint p1,gboolean p2,GtkTooltip* p3,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,int,int,bool,const Glib::RefPtr<Tooltip>& > SlotType;
+  typedef sigc::slot<bool(int, int, bool, const Glib::RefPtr<Tooltip>&)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -3114,7 +3114,7 @@ static gboolean Widget_signal_query_tooltip_callback(GtkWidget* self, gint p0,gi
 static gboolean Widget_signal_query_tooltip_notify_callback(GtkWidget* self, gint p0,gint p1,gboolean p2,GtkTooltip* p3, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,int,int,bool,const Glib::RefPtr<Tooltip>& > SlotType;
+  typedef sigc::slot<void(int, int, bool, const Glib::RefPtr<Tooltip>&)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -3150,7 +3150,7 @@ static const Glib::SignalProxyInfo Widget_signal_query_tooltip_info =
 static gboolean Widget_signal_grab_broken_event_callback(GtkWidget* self, GdkEventGrabBroken* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventGrabBroken* > SlotType;
+  typedef sigc::slot<bool(GdkEventGrabBroken*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -3174,7 +3174,7 @@ static gboolean Widget_signal_grab_broken_event_callback(GtkWidget* self, GdkEve
 static gboolean Widget_signal_grab_broken_event_notify_callback(GtkWidget* self, GdkEventGrabBroken* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventGrabBroken* > SlotType;
+  typedef sigc::slot<void(GdkEventGrabBroken*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -3206,7 +3206,7 @@ static const Glib::SignalProxyInfo Widget_signal_grab_broken_event_info =
 static gboolean Widget_signal_damage_event_callback(GtkWidget* self, GdkEventExpose* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEventExpose* > SlotType;
+  typedef sigc::slot<bool(GdkEventExpose*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -3230,7 +3230,7 @@ static gboolean Widget_signal_damage_event_callback(GtkWidget* self, GdkEventExp
 static gboolean Widget_signal_damage_event_notify_callback(GtkWidget* self, GdkEventExpose* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventExpose* > SlotType;
+  typedef sigc::slot<void(GdkEventExpose*)> SlotType;
 
   Widget* obj = dynamic_cast<Widget*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

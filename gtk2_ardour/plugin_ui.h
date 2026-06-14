@@ -117,7 +117,7 @@ public:
 	virtual void grab_focus () {}
 	virtual bool non_gtk_gui() const { return false; }
 
-	sigc::signal<void,bool> KeyboardFocused;
+	sigc::signal<void(bool)> KeyboardFocused;
 
 protected:
 	std::shared_ptr<ARDOUR::PlugInsertBase> _pib;

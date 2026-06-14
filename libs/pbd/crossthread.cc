@@ -21,8 +21,7 @@
 #include <cerrno>
 #include <cstring>
 #include <fcntl.h>
-
-#ifdef HAVE_UNISTD_H
+#ifndef PLATFORM_WINDOWS
 #include <unistd.h>
 #endif
 
@@ -56,7 +55,7 @@ cross_thread_channel_call_receive_slot (GIOChannel*, GIOCondition condition, voi
 }
 
 void
-CrossThreadChannel::set_receive_handler (sigc::slot<bool,Glib::IOCondition> s)
+CrossThreadChannel::set_receive_handler (sigc::slot<bool(Glib::IOCondition)> s)
 {
         receive_slot = s;
 }

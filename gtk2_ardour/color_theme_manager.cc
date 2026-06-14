@@ -271,7 +271,7 @@ ColorThemeManager::initialize_palette_canvas (ArdourCanvas::Canvas& canvas)
 }
 
 void
-ColorThemeManager::palette_canvas_allocated (Gtk::Allocation& alloc, ArdourCanvas::Container* group, ArdourCanvas::Canvas* canvas, sigc::slot<bool,GdkEvent*,std::string> event_handler)
+ColorThemeManager::palette_canvas_allocated (Gtk::Allocation& alloc, ArdourCanvas::Container* group, ArdourCanvas::Canvas* canvas, sigc::slot<bool(GdkEvent*, std::string)> event_handler)
 {
 	build_palette_canvas (*canvas, *group, event_handler);
 }
@@ -290,7 +290,7 @@ struct SortNamedColor {
 
 
 void
-ColorThemeManager::build_palette_canvas (ArdourCanvas::Canvas& canvas, ArdourCanvas::Container& group, sigc::slot<bool,GdkEvent*,std::string> event_handler)
+ColorThemeManager::build_palette_canvas (ArdourCanvas::Canvas& canvas, ArdourCanvas::Container& group, sigc::slot<bool(GdkEvent*, std::string)> event_handler)
 {
 	using namespace ArdourCanvas;
 

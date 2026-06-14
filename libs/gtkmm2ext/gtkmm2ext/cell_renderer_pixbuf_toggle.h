@@ -49,7 +49,7 @@ class LIBGTKMM2EXT_API CellRendererPixbufToggle : public Gtk::CellRenderer
 	void set_active_pixbuf(Glib::RefPtr<Gdk::Pixbuf> pixbuf);
 	void set_inactive_pixbuf(Glib::RefPtr<Gdk::Pixbuf> pixbuf);
 
-	typedef sigc::signal<void, const Glib::ustring&> SignalToggled;
+	typedef sigc::signal<void(const Glib::ustring&)> SignalToggled;
 
 	SignalToggled& signal_toggled();
 

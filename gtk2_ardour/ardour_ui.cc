@@ -206,8 +206,8 @@ using namespace Editing;
 
 ARDOUR_UI *ARDOUR_UI::theArdourUI = 0;
 
-sigc::signal<void, timepos_t> ARDOUR_UI::Clock;
-sigc::signal<void> ARDOUR_UI::CloseAllDialogs;
+sigc::signal<void(timepos_t)> ARDOUR_UI::Clock;
+sigc::signal<void()> ARDOUR_UI::CloseAllDialogs;
 
 static bool
 ask_about_configuration_copy (string const & old_dir, string const & new_dir, int version)

@@ -80,9 +80,9 @@ public:
 
 	void set_draw_background (bool yn);
 
-	sigc::signal<void> StateChanged;
-	sigc::signal<bool> QueueDraw;
-	sigc::signal<bool> QueueResize;
+	sigc::signal<void()> StateChanged;
+	sigc::signal<bool()> QueueDraw;
+	sigc::signal<bool()> QueueResize;
 
 	static void provide_background_for_cairo_widget (Gtk::Widget& w, const Gdk::Color& bg);
 
@@ -107,7 +107,7 @@ public:
 	   they wish to invoke any existing focus handler from their own
 	   button press handler, they can just use: focus_handler();
 	*/
-	static void set_focus_handler (sigc::slot<void,Gtk::Widget*>);
+	static void set_focus_handler (sigc::slot<void(Gtk::Widget*)>);
 
 protected:
 	/** Render the widget to the given Cairo context */
@@ -132,7 +132,7 @@ protected:
 	bool                   _need_bg;
 	bool                   _grabbed;
 
-	static sigc::slot<void,Gtk::Widget*> focus_handler;
+	static sigc::slot<void(Gtk::Widget*)> focus_handler;
 
 private:
 	void on_widget_name_changed ();

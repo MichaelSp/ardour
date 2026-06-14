@@ -56,7 +56,7 @@ namespace
 static gint SpinButton_signal_input_callback(GtkSpinButton* self, double* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< int,double* > SlotType;
+  typedef sigc::slot<int(double*)> SlotType;
 
   SpinButton* obj = dynamic_cast<SpinButton*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -80,7 +80,7 @@ static gint SpinButton_signal_input_callback(GtkSpinButton* self, double* p0,voi
 static gint SpinButton_signal_input_notify_callback(GtkSpinButton* self, double* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,double* > SlotType;
+  typedef sigc::slot<void(double*)> SlotType;
 
   SpinButton* obj = dynamic_cast<SpinButton*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -112,7 +112,7 @@ static const Glib::SignalProxyInfo SpinButton_signal_input_info =
 static gboolean SpinButton_signal_output_callback(GtkSpinButton* self, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool > SlotType;
+  typedef sigc::slot<bool()> SlotType;
 
   SpinButton* obj = dynamic_cast<SpinButton*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -136,7 +136,7 @@ static gboolean SpinButton_signal_output_callback(GtkSpinButton* self, void* dat
 static gboolean SpinButton_signal_output_notify_callback(GtkSpinButton* self,  void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void > SlotType;
+  typedef sigc::slot<void()> SlotType;
 
   SpinButton* obj = dynamic_cast<SpinButton*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -168,7 +168,7 @@ static const Glib::SignalProxyInfo SpinButton_signal_output_info =
 static void SpinButton_signal_wrapped_callback(GtkSpinButton* self, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool > SlotType;
+  typedef sigc::slot<bool()> SlotType;
 
   SpinButton* obj = dynamic_cast<SpinButton*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

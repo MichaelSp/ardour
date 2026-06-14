@@ -129,7 +129,7 @@ class /*LIBGTKMM2EXT_API*/ DnDTreeView : public DnDTreeViewBase
 	DnDTreeView() {}
 	~DnDTreeView() {}
 
-	sigc::signal<void, const Glib::RefPtr<Gdk::DragContext>&, const Gtk::SelectionData&> signal_drop;
+	sigc::signal<void(const Glib::RefPtr<Gdk::DragContext>&, const Gtk::SelectionData&)> signal_drop;
 
 	void on_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time) {
 		if (selection_data.get_target() == "GTK_TREE_MODEL_ROW") {

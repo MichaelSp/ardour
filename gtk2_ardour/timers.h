@@ -25,20 +25,20 @@
 namespace Timers
 {
 
-sigc::connection blink_connect(const sigc::slot<void,bool>& slot);
+sigc::connection blink_connect(const sigc::slot<void(bool)>& slot);
 
-sigc::connection second_connect(const sigc::slot<void>& slot);
+sigc::connection second_connect(const sigc::slot<void()>& slot);
 
-sigc::connection rapid_connect(const sigc::slot<void>& slot);
+sigc::connection rapid_connect(const sigc::slot<void()>& slot);
 
-sigc::connection super_rapid_connect(const sigc::slot<void>& slot);
+sigc::connection super_rapid_connect(const sigc::slot<void()>& slot);
 
 void set_fps_interval(unsigned int interval);
 
 unsigned int rapid_interval ();
 unsigned int fps_interval ();
 
-sigc::connection fps_connect(const sigc::slot<void>& slot);
+sigc::connection fps_connect(const sigc::slot<void()>& slot);
 
 class TimerSuspender {
 	public:

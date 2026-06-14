@@ -163,7 +163,7 @@ public:
 		Accepted
 	};
 
-	sigc::signal<void, Result> Finished;
+	sigc::signal<void(Result)> Finished;
 
 	static bool bundle_with_channels (std::shared_ptr<ARDOUR::Bundle>);
 

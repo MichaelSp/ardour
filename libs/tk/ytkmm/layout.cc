@@ -94,7 +94,7 @@ namespace
 static void Layout_signal_set_scroll_adjustments_callback(GtkLayout* self, GtkAdjustment* p0,GtkAdjustment* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Adjustment*,Adjustment* > SlotType;
+  typedef sigc::slot<void(Adjustment*, Adjustment*)> SlotType;
 
   Layout* obj = dynamic_cast<Layout*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

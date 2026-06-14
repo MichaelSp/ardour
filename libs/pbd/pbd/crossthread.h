@@ -86,7 +86,7 @@ public:
 	 */
 	void drain ();
 
-	void set_receive_handler (sigc::slot<bool,Glib::IOCondition> s);
+	void set_receive_handler (sigc::slot<bool(Glib::IOCondition)> s);
 	void attach (Glib::RefPtr<Glib::MainContext>);
 
 private:
@@ -94,7 +94,7 @@ private:
 
 	GIOChannel* receive_channel;
 	GSource*    receive_source;
-	sigc::slot<bool,Glib::IOCondition> receive_slot;
+	sigc::slot<bool(Glib::IOCondition)> receive_slot;
 
 	bool poll_for_request();
 
@@ -108,4 +108,3 @@ private:
 #endif
 
 };
-

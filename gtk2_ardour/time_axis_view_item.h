@@ -128,7 +128,7 @@ public:
 	 * event
 	 */
 
-	sigc::signal<void,std::string,void*> ItemRemoved;
+	sigc::signal<void(std::string, void*)> ItemRemoved;
 
 	enum Visibility {
 		ShowFrame = 0x1,

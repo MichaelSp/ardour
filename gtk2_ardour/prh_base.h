@@ -53,10 +53,10 @@ class PianoRollHeaderBase : virtual public sigc::trackable {
 	void note_range_changed();
 	void set_note_highlight (uint8_t note);
 
-	sigc::signal<void,uint8_t> SetNoteSelection;
-	sigc::signal<void,uint8_t> AddNoteSelection;
-	sigc::signal<void,uint8_t> ToggleNoteSelection;
-	sigc::signal<void,uint8_t> ExtendNoteSelection;
+	sigc::signal<void(uint8_t)> SetNoteSelection;
+	sigc::signal<void(uint8_t)> AddNoteSelection;
+	sigc::signal<void(uint8_t)> ToggleNoteSelection;
+	sigc::signal<void(uint8_t)> ExtendNoteSelection;
 
 	virtual void redraw () = 0;
 	virtual void redraw (double x, double y, double w, double h) = 0;

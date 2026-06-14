@@ -241,23 +241,23 @@ public:
 	}
 
 	/** Children have been reordered by a drag */
-	sigc::signal<void> Reordered;
+	sigc::signal<void()> Reordered;
 
 	/** A button has been pressed over the widget */
-	sigc::signal<bool, GdkEventButton*, T*> ButtonPress;
+	sigc::signal<bool(GdkEventButton*, T*)> ButtonPress;
 
 	/** A button has been release over the widget */
-	sigc::signal<bool, GdkEventButton*, T*> ButtonRelease;
+	sigc::signal<bool(GdkEventButton*, T*)> ButtonRelease;
 
 	/** A child has been dropped onto this DnDVBox from another one;
 	 *  Parameters are the source DnDVBox, our child which the other one was dropped on (or 0) and the DragContext.
 	 */
-	sigc::signal<void, DnDVBox*, T*, Glib::RefPtr<Gdk::DragContext> const & > DropFromAnotherBox;
-	sigc::signal<void, Gtk::SelectionData const &, T*, Glib::RefPtr<Gdk::DragContext> const & > DropFromExternal;
-	sigc::signal<void> SelectionChanged;
-	sigc::signal<void,T&> SelectionAdded;
+	sigc::signal<void(DnDVBox*, T*, Glib::RefPtr<Gdk::DragContext> const &)> DropFromAnotherBox;
+	sigc::signal<void(Gtk::SelectionData const &, T*, Glib::RefPtr<Gdk::DragContext> const &)> DropFromExternal;
+	sigc::signal<void()> SelectionChanged;
+	sigc::signal<void(T&)> SelectionAdded;
 
-	sigc::signal<bool, DnDVBox*, T*> DragRefuse;
+	sigc::signal<bool(DnDVBox*, T*)> DragRefuse;
 
 private:
 

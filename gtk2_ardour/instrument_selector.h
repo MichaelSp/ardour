@@ -49,7 +49,7 @@ public:
 	ARDOUR::PluginInfoPtr selected_instrument () const;
 	std::string selected_instrument_name () const;
 
-	static sigc::signal<void> DropPluginInfoPtr;
+	static sigc::signal<void()> DropPluginInfoPtr;
 
 private:
 	struct InstrumentListColumns : public Gtk::TreeModel::ColumnRecord {

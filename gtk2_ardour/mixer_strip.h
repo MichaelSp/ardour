@@ -132,7 +132,7 @@ public:
 
 	void hide_things ();
 
-	sigc::signal<void> WidthChanged;
+	sigc::signal<void()> WidthChanged;
 
 	/** The delivery that we are handling the level for with our fader has changed */
 	PBD::Signal<void(std::weak_ptr<ARDOUR::Delivery> )> DeliveryChanged;

@@ -40,7 +40,7 @@ namespace
 static void Viewport_signal_set_scroll_adjustments_callback(GtkViewport* self, GtkAdjustment* p0,GtkAdjustment* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Gtk::Adjustment*,Gtk::Adjustment* > SlotType;
+  typedef sigc::slot<void(Gtk::Adjustment*, Gtk::Adjustment*)> SlotType;
 
   Viewport* obj = dynamic_cast<Viewport*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

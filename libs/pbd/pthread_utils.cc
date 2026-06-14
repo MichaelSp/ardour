@@ -19,6 +19,7 @@
  */
 
 #include <cstring>
+#include <cassert>
 #include <set>
 #include <stdint.h>
 #include <string>

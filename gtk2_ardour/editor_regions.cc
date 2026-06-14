@@ -198,7 +198,7 @@ EditorRegions::button_press (GdkEventButton* ev)
 }
 
 void
-EditorRegions::selection_mapover (sigc::slot<void, std::shared_ptr<Region>> sl)
+EditorRegions::selection_mapover (sigc::slot<void(std::shared_ptr<Region>)> sl)
 {
 	Glib::RefPtr<TreeSelection>                    selection = _display.get_selection ();
 	TreeView::Selection::ListHandle_Path           rows      = selection->get_selected_rows ();

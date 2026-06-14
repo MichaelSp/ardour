@@ -63,7 +63,7 @@ static const Glib::SignalProxyInfo CellRenderer_signal_editing_canceled_info =
 static void CellRenderer_signal_editing_started_callback(GtkCellRenderer* self, GtkCellEditable* p0,const gchar* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,CellEditable*,const Glib::ustring& > SlotType;
+  typedef sigc::slot<void(CellEditable*, const Glib::ustring&)> SlotType;
 
   CellRenderer* obj = dynamic_cast<CellRenderer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

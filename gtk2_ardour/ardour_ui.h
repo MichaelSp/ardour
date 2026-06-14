@@ -291,11 +291,11 @@ public:
 	 *
 	 *  (either RapidScreenUpdate || SuperRapidScreenUpdate - user-config)
 	 */
-	static sigc::signal<void, Temporal::timepos_t> Clock;
+	static sigc::signal<void(Temporal::timepos_t)> Clock;
 	static unsigned int clock_signal_interval ();
 
 	static void close_all_dialogs () { CloseAllDialogs(); }
-	static sigc::signal<void> CloseAllDialogs;
+	static sigc::signal<void()> CloseAllDialogs;
 
 	XMLNode* main_window_settings() const;
 	XMLNode* editor_settings() const;

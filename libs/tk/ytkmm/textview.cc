@@ -93,7 +93,7 @@ namespace
 static void TextView_signal_set_scroll_adjustments_callback(GtkTextView* self, GtkAdjustment* p0,GtkAdjustment* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Adjustment*,Adjustment* > SlotType;
+  typedef sigc::slot<void(Adjustment*, Adjustment*)> SlotType;
 
   TextView* obj = dynamic_cast<TextView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -124,7 +124,7 @@ static const Glib::SignalProxyInfo TextView_signal_set_scroll_adjustments_info =
 static void TextView_signal_populate_popup_callback(GtkTextView* self, GtkMenu* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Menu* > SlotType;
+  typedef sigc::slot<void(Menu*)> SlotType;
 
   TextView* obj = dynamic_cast<TextView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -162,7 +162,7 @@ static const Glib::SignalProxyInfo TextView_signal_set_anchor_info =
 static void TextView_signal_insert_at_cursor_callback(GtkTextView* self, const gchar* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::ustring& > SlotType;
+  typedef sigc::slot<void(const Glib::ustring&)> SlotType;
 
   TextView* obj = dynamic_cast<TextView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

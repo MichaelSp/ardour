@@ -75,7 +75,7 @@ using namespace Editing;
 using Gtkmm2ext::Bindings;
 
 RefPtr<Action>
-Editor::register_region_action (RefPtr<ActionGroup> group, RegionActionTarget tgt, char const * name, char const * label, sigc::slot<void> slot)
+Editor::register_region_action (RefPtr<ActionGroup> group, RegionActionTarget tgt, char const * name, char const * label, sigc::slot<void()> slot)
 {
 	RefPtr<Action> act = ActionManager::register_action (group, name, label, slot);
 	ActionManager::session_sensitive_actions.push_back (act);
@@ -84,7 +84,7 @@ Editor::register_region_action (RefPtr<ActionGroup> group, RegionActionTarget tg
 }
 
 void
-Editor::register_toggle_region_action (RefPtr<ActionGroup> group, RegionActionTarget tgt, char const * name, char const * label, sigc::slot<void> slot)
+Editor::register_toggle_region_action (RefPtr<ActionGroup> group, RegionActionTarget tgt, char const * name, char const * label, sigc::slot<void()> slot)
 {
 	RefPtr<Action> act = ActionManager::register_toggle_action (group, name, label, slot);
 	ActionManager::session_sensitive_actions.push_back (act);

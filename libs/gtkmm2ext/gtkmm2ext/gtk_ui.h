@@ -155,7 +155,7 @@ public:
 	 */
 	virtual int starting() = 0;
 
-	sigc::signal<void> theme_changed;
+	sigc::signal<void()> theme_changed;
 
 	static bool just_hide_it (GdkEventAny *, Gtk::Window *);
 

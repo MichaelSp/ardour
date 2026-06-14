@@ -148,7 +148,7 @@ static const Glib::SignalProxyInfo MenuItem_signal_activate_item_info =
 static void MenuItem_signal_toggle_size_request_callback(GtkMenuItem* self, int* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,int* > SlotType;
+  typedef sigc::slot<void(int*)> SlotType;
 
   MenuItem* obj = dynamic_cast<MenuItem*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -177,7 +177,7 @@ static const Glib::SignalProxyInfo MenuItem_signal_toggle_size_request_info =
 static void MenuItem_signal_toggle_size_allocate_callback(GtkMenuItem* self, gint p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,int > SlotType;
+  typedef sigc::slot<void(int)> SlotType;
 
   MenuItem* obj = dynamic_cast<MenuItem*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

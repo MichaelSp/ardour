@@ -42,8 +42,8 @@ public:
 	ArdourFader::Tweaks tweaks() const { return _slider.tweaks (); }
 	void set_tweaks (ArdourFader::Tweaks t) { _slider.set_tweaks (t);}
 
-	sigc::signal<void,int> StartGesture;
-	sigc::signal<void,int> StopGesture;
+	sigc::signal<void(int)> StartGesture;
+	sigc::signal<void(int)> StopGesture;
 
 	/* export this to allow direct connection to button events */
 	Gtk::Widget& event_widget() { return _slider; }
@@ -51,7 +51,7 @@ public:
 	/** Emitted when the adjustment spinner is activated or deactivated;
 	 *  the parameter is true on activation, false on deactivation.
 	 */
-	sigc::signal<void, bool> SpinnerActive;
+	sigc::signal<void(bool)> SpinnerActive;
 
 protected:
 	bool on_button_press_event (GdkEventButton*);

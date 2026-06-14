@@ -136,7 +136,7 @@ namespace
 static gchar* Scale_signal_format_value_callback(GtkScale* self, gdouble p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< Glib::ustring,double > SlotType;
+  typedef sigc::slot<Glib::ustring(double)> SlotType;
 
   Scale* obj = dynamic_cast<Scale*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -162,7 +162,7 @@ static gchar* Scale_signal_format_value_callback(GtkScale* self, gdouble p0,void
 static gchar* Scale_signal_format_value_notify_callback(GtkScale* self, gdouble p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,double > SlotType;
+  typedef sigc::slot<void(double)> SlotType;
 
   Scale* obj = dynamic_cast<Scale*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

@@ -112,7 +112,7 @@ namespace //anonymous
 static gboolean Widget_signal_match_selected_callback(GtkEntryCompletion* self, GtkTreeModel* c_model, GtkTreeIter* c_iter, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool, const TreeModel::iterator& > SlotType;
+  typedef sigc::slot<bool(const TreeModel::iterator&)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -140,7 +140,7 @@ static gboolean Widget_signal_match_selected_callback(GtkEntryCompletion* self, 
 static gboolean Widget_signal_match_selected_notify_callback(GtkEntryCompletion* self, GtkTreeModel* c_model, GtkTreeIter* c_iter, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void, const TreeModel::iterator& > SlotType;
+  typedef sigc::slot<void(const TreeModel::iterator&)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -176,7 +176,7 @@ const Glib::SignalProxyInfo EntryCompletion_signal_match_selected_info =
 static gboolean Widget_signal_cursor_on_match_callback(GtkEntryCompletion* self, GtkTreeModel* c_model, GtkTreeIter* c_iter, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool, const TreeModel::iterator& > SlotType;
+  typedef sigc::slot<bool(const TreeModel::iterator&)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -204,7 +204,7 @@ static gboolean Widget_signal_cursor_on_match_callback(GtkEntryCompletion* self,
 static gboolean Widget_signal_cursor_on_match_notify_callback(GtkEntryCompletion* self, GtkTreeModel* c_model, GtkTreeIter* c_iter, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void, const TreeModel::iterator& > SlotType;
+  typedef sigc::slot<void(const TreeModel::iterator&)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -321,7 +321,7 @@ namespace
 static void EntryCompletion_signal_action_activated_callback(GtkEntryCompletion* self, gint p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,int > SlotType;
+  typedef sigc::slot<void(int)> SlotType;
 
   EntryCompletion* obj = dynamic_cast<EntryCompletion*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -351,7 +351,7 @@ static const Glib::SignalProxyInfo EntryCompletion_signal_action_activated_info 
 static gboolean EntryCompletion_signal_insert_prefix_callback(GtkEntryCompletion* self, const gchar* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,const Glib::ustring& > SlotType;
+  typedef sigc::slot<bool(const Glib::ustring&)> SlotType;
 
   EntryCompletion* obj = dynamic_cast<EntryCompletion*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -376,7 +376,7 @@ static gboolean EntryCompletion_signal_insert_prefix_callback(GtkEntryCompletion
 static gboolean EntryCompletion_signal_insert_prefix_notify_callback(GtkEntryCompletion* self, const gchar* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::ustring& > SlotType;
+  typedef sigc::slot<void(const Glib::ustring&)> SlotType;
 
   EntryCompletion* obj = dynamic_cast<EntryCompletion*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

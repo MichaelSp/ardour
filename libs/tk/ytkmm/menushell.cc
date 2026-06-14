@@ -233,7 +233,7 @@ static const Glib::SignalProxyInfo MenuShell_signal_selection_done_info =
 static gboolean MenuShell_signal_move_selected_callback(GtkMenuShell* self, gint p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< gboolean,int > SlotType;
+  typedef sigc::slot<gboolean(int)> SlotType;
 
   MenuShell* obj = dynamic_cast<MenuShell*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -258,7 +258,7 @@ static gboolean MenuShell_signal_move_selected_callback(GtkMenuShell* self, gint
 static gboolean MenuShell_signal_move_selected_notify_callback(GtkMenuShell* self, gint p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,int > SlotType;
+  typedef sigc::slot<void(int)> SlotType;
 
   MenuShell* obj = dynamic_cast<MenuShell*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

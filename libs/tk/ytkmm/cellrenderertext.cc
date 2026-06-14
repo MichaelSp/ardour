@@ -53,7 +53,7 @@ namespace
 static void CellRendererText_signal_edited_callback(GtkCellRendererText* self, const gchar* p0,const gchar* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::ustring&,const Glib::ustring& > SlotType;
+  typedef sigc::slot<void(const Glib::ustring&, const Glib::ustring&)> SlotType;
 
   CellRendererText* obj = dynamic_cast<CellRendererText*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

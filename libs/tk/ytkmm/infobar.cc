@@ -44,7 +44,7 @@ namespace
 static void InfoBar_signal_response_callback(GtkInfoBar* self, gint p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,int > SlotType;
+  typedef sigc::slot<void(int)> SlotType;
 
   InfoBar* obj = dynamic_cast<InfoBar*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

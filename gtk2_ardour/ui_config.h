@@ -98,7 +98,7 @@ public:
 	void  reset_dpi ();
 	float get_ui_scale ();
 
-	sigc::signal<void, std::string> ParameterChanged;
+	sigc::signal<void(std::string)> ParameterChanged;
 
 	void parameter_changed (std::string);
 

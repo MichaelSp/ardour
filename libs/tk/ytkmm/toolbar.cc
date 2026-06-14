@@ -43,13 +43,13 @@
 namespace Gtk
 {
 
-void Toolbar::insert(ToolButton& item, int pos, const sigc::slot<void>& clicked_slot)
+void Toolbar::insert(ToolButton& item, int pos, const sigc::slot<void()>& clicked_slot)
 {
   item.signal_clicked().connect(clicked_slot);
   gtk_toolbar_insert(gobj(), (GtkToolItem*)((item).gobj()), pos);
 }
 
-void Toolbar::insert(ToggleToolButton& item, int pos, const sigc::slot<void>& toggled_slot)
+void Toolbar::insert(ToggleToolButton& item, int pos, const sigc::slot<void()>& toggled_slot)
 {
   item.signal_toggled().connect(toggled_slot);
   gtk_toolbar_insert(gobj(), (GtkToolItem*)((item).gobj()), pos);
@@ -60,13 +60,13 @@ void Toolbar::append(ToolItem& item)
   gtk_toolbar_insert(gobj(), (item).gobj(), -1 /* See GTK+ docs */);
 }
 
-void Toolbar::append(ToolButton& item, const sigc::slot<void>& clicked_slot)
+void Toolbar::append(ToolButton& item, const sigc::slot<void()>& clicked_slot)
 {
   item.signal_clicked().connect(clicked_slot);
   gtk_toolbar_insert(gobj(), (GtkToolItem*)((item).gobj()), -1 /* See GTK+ docs */);
 }
 
-void Toolbar::append(ToggleToolButton& item, const sigc::slot<void>& toggled_slot)
+void Toolbar::append(ToggleToolButton& item, const sigc::slot<void()>& toggled_slot)
 {
   item.signal_toggled().connect(toggled_slot);
   gtk_toolbar_insert(gobj(), (GtkToolItem*)((item).gobj()), -1 /* See GTK+ docs */);
@@ -77,13 +77,13 @@ void Toolbar::prepend(ToolItem& item)
   gtk_toolbar_insert(gobj(), (item).gobj(), 0 /* See GTK+ docs */);
 }
 
-void Toolbar::prepend(ToolButton& item, const sigc::slot<void>& clicked_slot)
+void Toolbar::prepend(ToolButton& item, const sigc::slot<void()>& clicked_slot)
 {
   item.signal_clicked().connect(clicked_slot);
   gtk_toolbar_insert(gobj(), (GtkToolItem*)((item).gobj()), 0 /* See GTK+ docs */);
 }
 
-void Toolbar::prepend(ToggleToolButton& item, const sigc::slot<void>& toggled_slot)
+void Toolbar::prepend(ToggleToolButton& item, const sigc::slot<void()>& toggled_slot)
 {
   item.signal_toggled().connect(toggled_slot);
   gtk_toolbar_insert(gobj(), (GtkToolItem*)((item).gobj()), 0 /* See GTK+ docs */);
@@ -113,7 +113,7 @@ namespace
 static void Toolbar_signal_orientation_changed_callback(GtkToolbar* self, GtkOrientation p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Orientation > SlotType;
+  typedef sigc::slot<void(Orientation)> SlotType;
 
   Toolbar* obj = dynamic_cast<Toolbar*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -143,7 +143,7 @@ static const Glib::SignalProxyInfo Toolbar_signal_orientation_changed_info =
 static void Toolbar_signal_toolbar_style_changed_callback(GtkToolbar* self, GtkToolbarStyle p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,ToolbarStyle > SlotType;
+  typedef sigc::slot<void(ToolbarStyle)> SlotType;
 
   Toolbar* obj = dynamic_cast<Toolbar*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -173,7 +173,7 @@ static const Glib::SignalProxyInfo Toolbar_signal_toolbar_style_changed_info =
 static gboolean Toolbar_signal_popup_context_menu_callback(GtkToolbar* self, gint p0,gint p1,gint p2,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,int,int,int > SlotType;
+  typedef sigc::slot<bool(int, int, int)> SlotType;
 
   Toolbar* obj = dynamic_cast<Toolbar*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -200,7 +200,7 @@ static gboolean Toolbar_signal_popup_context_menu_callback(GtkToolbar* self, gin
 static gboolean Toolbar_signal_popup_context_menu_notify_callback(GtkToolbar* self, gint p0,gint p1,gint p2, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,int,int,int > SlotType;
+  typedef sigc::slot<void(int, int, int)> SlotType;
 
   Toolbar* obj = dynamic_cast<Toolbar*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

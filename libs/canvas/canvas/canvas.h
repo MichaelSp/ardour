@@ -151,9 +151,9 @@ public:
 	/** Signal to be used by items that need to track the mouse position
 	 * within the window.
 	 */
-	sigc::signal<void,Duple const&> MouseMotion;
+	sigc::signal<void(Duple const&)> MouseMotion;
 
-	sigc::signal<void> PreRender;
+	sigc::signal<void()> PreRender;
 
 	/** Ensures that the position given by \p winpos (in window
 	 * coordinates) is within the current window area, possibly reduced by

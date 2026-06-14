@@ -59,7 +59,7 @@ public:
 
 	struct BaseRequestObject;
 
-	struct InvalidationRecord {
+	struct InvalidationRecord : public sigc::notifiable {
 		std::list<BaseRequestObject*> requests;
 		PBD::EventLoop* event_loop;
 		std::atomic<int> _valid;
@@ -77,7 +77,7 @@ public:
 		int  use_count () { return _ref.load (); }
 	};
 
-	static void* invalidate_request (void* data);
+	static void invalidate_request (sigc::notifiable* data);
 
 	struct BaseRequestObject {
 		RequestType             type;
@@ -142,4 +142,3 @@ private:
 }
 
 #define MISSING_INVALIDATOR nullptr // used to mark places where we fail to provide an invalidator
-

@@ -157,7 +157,7 @@ protected:
 
 	void set_gain_astate (ARDOUR::AutoState);
 	bool gain_astate_propagate;
-	static sigc::signal<void, ARDOUR::AutoState> ChangeGainAutomationState;
+	static sigc::signal<void(ARDOUR::AutoState)> ChangeGainAutomationState;
 
 	gint gain_automation_state_button_event (GdkEventButton *);
 	gint pan_automation_state_button_event (GdkEventButton *);

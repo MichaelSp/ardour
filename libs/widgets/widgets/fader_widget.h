@@ -31,9 +31,9 @@ public:
 	FaderWidget (Gtk::Adjustment&, int orient);
 	virtual ~FaderWidget () {};
 
-	sigc::signal<void,int> StartGesture;
-	sigc::signal<void,int> StopGesture;
-	sigc::signal<void> OnExpose;
+	sigc::signal<void(int)> StartGesture;
+	sigc::signal<void(int)> StopGesture;
+	sigc::signal<void()> OnExpose;
 
 	virtual void set_default_value (float) = 0;
 

@@ -54,7 +54,7 @@ namespace
 static void Statusbar_signal_text_pushed_callback(GtkStatusbar* self, guint p0,const gchar* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,guint,const Glib::ustring& > SlotType;
+  typedef sigc::slot<void(guint, const Glib::ustring&)> SlotType;
 
   Statusbar* obj = dynamic_cast<Statusbar*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -84,7 +84,7 @@ static const Glib::SignalProxyInfo Statusbar_signal_text_pushed_info =
 static void Statusbar_signal_text_popped_callback(GtkStatusbar* self, guint p0,const gchar* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,guint,const Glib::ustring& > SlotType;
+  typedef sigc::slot<void(guint, const Glib::ustring&)> SlotType;
 
   Statusbar* obj = dynamic_cast<Statusbar*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

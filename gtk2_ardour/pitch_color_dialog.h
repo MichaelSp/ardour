@@ -32,7 +32,7 @@ class PitchColorDialog : public ArdourDialog
 {
 public:
 	PitchColorDialog();
-	sigc::signal<void> ColorsChanged;
+	sigc::signal<void()> ColorsChanged;
 
 private:
 	Gtk::ColorSelection color_dialog;

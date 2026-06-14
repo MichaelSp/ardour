@@ -106,7 +106,7 @@ StandardTimer::StandardTimer(unsigned int interval,
 { }
 
 sigc::connection
-StandardTimer::connect(const sigc::slot<void>& slot)
+StandardTimer::connect(const sigc::slot<void()>& slot)
 {
 	if(m_signal.size() == 0) { start(); }
 
@@ -134,7 +134,7 @@ BlinkTimer::BlinkTimer(unsigned int interval,
 { }
 
 sigc::connection
-BlinkTimer::connect(const sigc::slot<void, bool>& slot)
+BlinkTimer::connect(const sigc::slot<void(bool)>& slot)
 {
 	if(m_blink_signal.size() == 0) { start(); }
 

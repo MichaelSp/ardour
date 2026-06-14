@@ -41,8 +41,8 @@ protected:
 public:
 	static UIConfigurationBase& instance() { return *_instance; }
 
-	sigc::signal<void>  DPIReset;
-	sigc::signal<void>  ColorsChanged;
+	sigc::signal<void()>  DPIReset;
+	sigc::signal<void()>  ColorsChanged;
 
 	virtual float get_ui_scale () = 0;
 	virtual bool get_all_floating_windows_are_dialogs () const = 0;

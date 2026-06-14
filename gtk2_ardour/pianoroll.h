@@ -70,8 +70,8 @@ struct ControllerControls : public Gtk::HBox {
 	bool showing() const;
 	bool editing() const;
 
-	sigc::signal<void> show_clicked;
-	sigc::signal<void> edit_clicked;
+	sigc::signal<void()> show_clicked;
+	sigc::signal<void()> edit_clicked;
 
 	void set_showing (bool);
 	void set_editing (bool);
@@ -307,7 +307,7 @@ class Pianoroll : public CueEditor
 
 	int _visible_channel;
 
-	sigc::signal<void> NoteModeChanged;
+	sigc::signal<void()> NoteModeChanged;
 
 	void point_selection_changed ();
 

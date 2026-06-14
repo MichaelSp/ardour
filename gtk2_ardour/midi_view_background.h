@@ -84,7 +84,7 @@ class MidiViewBackground : public virtual ViewBackground
 
 	ARDOUR::NoteMode  note_mode() const { return _note_mode; }
 	void set_note_mode (ARDOUR::NoteMode nm);
-	sigc::signal<void> NoteModeChanged;
+	sigc::signal<void()> NoteModeChanged;
 
 	ARDOUR::ColorMode color_mode() const { return _color_mode; }
 	void set_color_mode (ARDOUR::ColorMode);
@@ -106,7 +106,7 @@ class MidiViewBackground : public virtual ViewBackground
 		return highest_note() - lowest_note() + 1;
 	}
 
-	sigc::signal<void> NoteRangeChanged;
+	sigc::signal<void()> NoteRangeChanged;
 
 	bool apply_note_range (uint8_t lowest, uint8_t highest, bool to_children);
 	bool maybe_apply_note_range (uint8_t lowest, uint8_t highest, bool to_children);
@@ -129,7 +129,7 @@ class MidiViewBackground : public virtual ViewBackground
 
 	EditingContext& editing_context() const { return _editing_context; }
 
-	sigc::signal<void,bool> NoteVisibilityShouldChange;
+	sigc::signal<void(bool)> NoteVisibilityShouldChange;
 
 	bool update_data_note_range (uint8_t min, uint8_t max);
 	uint8_t highest_data_note() const { return _data_note_max; }

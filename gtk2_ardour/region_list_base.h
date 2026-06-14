@@ -162,7 +162,7 @@ protected:
 	}
 
 	void setup_col (Gtk::TreeViewColumn*, int, Gtk::AlignmentEnum, const char*, const char*, bool require_mod_to_edit = false);
-	void setup_toggle (Gtk::TreeViewColumn*, sigc::slot<void, std::string>);
+	void setup_toggle (Gtk::TreeViewColumn*, sigc::slot<void(std::string)>);
 
 	void freeze_tree_model ();
 	void thaw_tree_model ();

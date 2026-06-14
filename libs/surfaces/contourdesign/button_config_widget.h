@@ -43,7 +43,7 @@ public:
 	void set_current_config (std::shared_ptr<ButtonBase> btn_cnf);
 	std::shared_ptr<ButtonBase> get_current_config (ContourDesignControlProtocol& ccp) const;
 
-	sigc::signal<void> Changed;
+	sigc::signal<void()> Changed;
 
 private:
 	void set_current_action (std::string action_string);

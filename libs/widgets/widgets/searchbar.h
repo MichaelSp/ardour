@@ -36,7 +36,7 @@ public:
 	void reset ();
 
 	/* emitted when the filter has been updated */
-	sigc::signal<void, const std::string&> signal_search_string_updated () { return sig_search_string_updated; }
+	sigc::signal<void(const std::string&)> signal_search_string_updated () { return sig_search_string_updated; }
 
 protected:
 	bool focus_in_event (GdkEventFocus*);
@@ -46,7 +46,7 @@ protected:
 	void icon_clicked_event (Gtk::EntryIconPosition, const GdkEventButton*);
 
 	const std::string placeholder_text;
-	sigc::signal<void, const std::string&> sig_search_string_updated;
+	sigc::signal<void(const std::string&)> sig_search_string_updated;
 
 private:
 	void search_string_changed () const;

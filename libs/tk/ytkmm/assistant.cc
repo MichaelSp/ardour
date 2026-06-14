@@ -79,7 +79,7 @@ namespace
 static void Assistant_signal_prepare_callback(GtkAssistant* self, GtkWidget* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Gtk::Widget* > SlotType;
+  typedef sigc::slot<void(Gtk::Widget*)> SlotType;
 
   Assistant* obj = dynamic_cast<Assistant*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

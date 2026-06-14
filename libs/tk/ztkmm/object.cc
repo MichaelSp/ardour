@@ -45,7 +45,7 @@ namespace Atk
  * in the following example is doomed to fail:
  *
  * Gtk::Image image ("icon.png");
- * Glib::RefPtr<Atk::Image> accessible = Glib::RefPtr<Atk::Image>::cast_dynamic(image.get_accessible());
+ * Glib::RefPtr<Atk::Image> accessible = std::dynamic_pointer_cast<Atk::Image>(image.get_accessible());
  * accessible->set_image_description("my icon");
  *
  * This would segfault, even though the accessible object _does_ implement
@@ -77,7 +77,7 @@ namespace
 static void Object_signal_children_changed_callback(AtkObject* self, guint p0,gpointer p1,void* data)
 {
   using namespace Atk;
-  typedef sigc::slot< void,guint,gpointer > SlotType;
+  typedef sigc::slot<void(guint, gpointer)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -109,7 +109,7 @@ static const Glib::SignalProxyInfo Object_signal_children_changed_info =
 static void Object_signal_focus_event_callback(AtkObject* self, gboolean p0,void* data)
 {
   using namespace Atk;
-  typedef sigc::slot< void,bool > SlotType;
+  typedef sigc::slot<void(bool)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -142,7 +142,7 @@ static const Glib::SignalProxyInfo Object_signal_focus_event_info =
 static void Object_signal_property_change_callback(AtkObject* self, AtkPropertyValues* p0,void* data)
 {
   using namespace Atk;
-  typedef sigc::slot< void,AtkPropertyValues* > SlotType;
+  typedef sigc::slot<void(AtkPropertyValues*)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -174,7 +174,7 @@ static const Glib::SignalProxyInfo Object_signal_property_change_info =
 static void Object_signal_state_change_callback(AtkObject* self, const gchar* p0,gboolean p1,void* data)
 {
   using namespace Atk;
-  typedef sigc::slot< void,const Glib::ustring&,bool > SlotType;
+  typedef sigc::slot<void(const Glib::ustring&, bool)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -216,7 +216,7 @@ static const Glib::SignalProxyInfo Object_signal_visible_data_changed_info =
 static void Object_signal_active_descendant_changed_callback(AtkObject* self, gpointer* p0,void* data)
 {
   using namespace Atk;
-  typedef sigc::slot< void,void** > SlotType;
+  typedef sigc::slot<void(void**)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -944,5 +944,4 @@ void Atk::Object::on_active_descendant_changed(void** child)
 
 
 } // namespace Atk
-
 

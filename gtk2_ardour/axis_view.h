@@ -60,7 +60,7 @@ public:
 	virtual std::string name() const = 0;
 	virtual Gdk::Color color() const = 0;
 
-	sigc::signal<void> Hiding;
+	sigc::signal<void()> Hiding;
 
 	virtual std::shared_ptr<ARDOUR::Stripable> stripable() const = 0;
 	virtual std::shared_ptr<ARDOUR::AutomationControl> control() const { return std::shared_ptr<ARDOUR::AutomationControl>(); }

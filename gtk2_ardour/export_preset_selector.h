@@ -38,7 +38,7 @@ public:
 
 	void set_manager (std::shared_ptr<ARDOUR::ExportProfileManager> manager);
 
-	sigc::signal<void> CriticalSelectionChanged;
+	sigc::signal<void()> CriticalSelectionChanged;
 
 	Gtk::ComboBox& the_combo () { return combo; }
 

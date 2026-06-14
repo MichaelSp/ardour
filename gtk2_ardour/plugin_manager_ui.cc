@@ -733,7 +733,7 @@ PluginManagerUI::show_plugin_prefs ()
 }
 
 void
-PluginManagerUI::edit_vst_path (std::string const& title, std::string const& dflt, sigc::slot<std::string> get, sigc::slot<bool, std::string> set)
+PluginManagerUI::edit_vst_path (std::string const& title, std::string const& dflt, sigc::slot<std::string()> get, sigc::slot<bool(std::string)> set)
 {
 	/* see also RCOptionEditor::edit_vst_path */
 	ArdourWidgets::PathsDialog pd (*this, title, get (), dflt);

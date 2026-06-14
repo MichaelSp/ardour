@@ -118,7 +118,7 @@ Glib::RefPtr<Pixmap> Pixmap::create_from_xpm(const Glib::RefPtr<const Drawable>&
       const_cast<GdkColor*>(transparent_color.gobj()),
       const_cast<char*>(filename.c_str()));
 
-  mask = Glib::RefPtr<Bitmap>::cast_dynamic(Glib::wrap((GdkPixmapObject*) bitmap));
+  mask = std::dynamic_pointer_cast<Bitmap>(Glib::wrap((GdkPixmapObject*) bitmap));
   return Glib::wrap((GdkPixmapObject*) pixmap);
 }
 
@@ -136,7 +136,7 @@ Glib::RefPtr<Pixmap> Pixmap::create_from_xpm(const Glib::RefPtr<const Drawable>&
       const_cast<GdkColor*>(transparent_color.gobj()),
       const_cast<char*>(filename.c_str()));
 
-  mask = Glib::RefPtr<Bitmap>::cast_dynamic(Glib::wrap((GdkPixmapObject*) bitmap));
+  mask = std::dynamic_pointer_cast<Bitmap>(Glib::wrap((GdkPixmapObject*) bitmap));
   return Glib::wrap((GdkPixmapObject*) pixmap);
 }
 
@@ -154,7 +154,7 @@ Glib::RefPtr<Pixmap> Pixmap::create_from_xpm(const Glib::RefPtr<const Drawable>&
       const_cast<GdkColor*>(transparent_color.gobj()),
       const_cast<char**>(data));
 
-  mask = Glib::RefPtr<Bitmap>::cast_dynamic(Glib::wrap((GdkPixmapObject*) bitmap));
+  mask = std::dynamic_pointer_cast<Bitmap>(Glib::wrap((GdkPixmapObject*) bitmap));
   return Glib::wrap((GdkPixmapObject*) pixmap);
 }
 
@@ -172,7 +172,7 @@ Glib::RefPtr<Pixmap> Pixmap::create_from_xpm(const Glib::RefPtr<const Drawable>&
       const_cast<GdkColor*>(transparent_color.gobj()),
       const_cast<char**>(data));
 
-  mask = Glib::RefPtr<Bitmap>::cast_dynamic(Glib::wrap((GdkPixmapObject*) bitmap));
+  mask = std::dynamic_pointer_cast<Bitmap>(Glib::wrap((GdkPixmapObject*) bitmap));
   return Glib::wrap((GdkPixmapObject*) pixmap);
 }
 
@@ -189,7 +189,7 @@ Glib::RefPtr<Pixmap> Pixmap::create_from_xpm(const Glib::RefPtr<Colormap>& color
       const_cast<GdkColor*>(transparent_color.gobj()),
       const_cast<char**>(data));
 
-  mask = Glib::RefPtr<Bitmap>::cast_dynamic(Glib::wrap((GdkPixmapObject*) bitmap));
+  mask = std::dynamic_pointer_cast<Bitmap>(Glib::wrap((GdkPixmapObject*) bitmap));
   return Glib::wrap((GdkPixmapObject*) pixmap);
 }
 
@@ -205,7 +205,7 @@ Glib::RefPtr<Pixmap> Pixmap::create_from_xpm(const Glib::RefPtr<Colormap>& color
       0, // transparent_color
       const_cast<char**>(data));
 
-  mask = Glib::RefPtr<Bitmap>::cast_dynamic(Glib::wrap((GdkPixmapObject*) bitmap));
+  mask = std::dynamic_pointer_cast<Bitmap>(Glib::wrap((GdkPixmapObject*) bitmap));
   return Glib::wrap((GdkPixmapObject*) pixmap);
 }
 
@@ -332,5 +332,4 @@ Glib::RefPtr<Pixmap> Pixmap::create(const Glib::RefPtr<Display>& display, Native
 
 
 } // namespace Gdk
-
 

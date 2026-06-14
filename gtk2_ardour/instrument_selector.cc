@@ -31,7 +31,7 @@
 using namespace Gtk;
 using namespace ARDOUR;
 
-sigc::signal<void> InstrumentSelector::DropPluginInfoPtr;
+sigc::signal<void()> InstrumentSelector::DropPluginInfoPtr;
 
 InstrumentSelector::InstrumentSelector (InstrumentListDisposition disp)
 	: _reasonable_synth_id (0)

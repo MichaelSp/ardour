@@ -39,7 +39,7 @@ public:
 	JumpDistance get_distance () const { return _distance; }
 	void set_distance (JumpDistance dist);
 
-	sigc::signal<void> Changed;
+	sigc::signal<void()> Changed;
 
 private:
 	JumpDistance _distance;

@@ -68,7 +68,7 @@ public:
 	uint32_t column_labels_border_x () const;
 	uint32_t column_labels_height () const;
 
-	sigc::signal<void> DimensionsChanged;
+	sigc::signal<void()> DimensionsChanged;
 
 protected:
 	bool on_expose_event (GdkEventExpose *);

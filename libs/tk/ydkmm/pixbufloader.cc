@@ -83,7 +83,7 @@ static const Glib::SignalProxyInfo PixbufLoader_signal_area_prepared_info =
 static void PixbufLoader_signal_area_updated_callback(GdkPixbufLoader* self, gint p0,gint p1,gint p2,gint p3,void* data)
 {
   using namespace Gdk;
-  typedef sigc::slot< void,int,int,int,int > SlotType;
+  typedef sigc::slot<void(int, int, int, int)> SlotType;
 
   PixbufLoader* obj = dynamic_cast<PixbufLoader*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -124,7 +124,7 @@ static const Glib::SignalProxyInfo PixbufLoader_signal_closed_info =
 static void PixbufLoader_signal_size_prepared_callback(GdkPixbufLoader* self, gint p0,gint p1,void* data)
 {
   using namespace Gdk;
-  typedef sigc::slot< void,int,int > SlotType;
+  typedef sigc::slot<void(int, int)> SlotType;
 
   PixbufLoader* obj = dynamic_cast<PixbufLoader*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

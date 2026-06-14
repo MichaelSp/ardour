@@ -59,7 +59,7 @@ namespace
 static void CellRendererCombo_signal_changed_callback(GtkCellRendererCombo* self, const gchar* p0,GtkTreeIter* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::ustring&,const TreeModel::iterator& > SlotType;
+  typedef sigc::slot<void(const Glib::ustring&, const TreeModel::iterator&)> SlotType;
 
   CellRendererCombo* obj = dynamic_cast<CellRendererCombo*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

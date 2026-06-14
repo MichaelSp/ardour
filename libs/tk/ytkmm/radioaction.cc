@@ -87,7 +87,7 @@ namespace
 static void RadioAction_signal_changed_callback(GtkRadioAction* self, GtkRadioAction* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<RadioAction>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<RadioAction>&)> SlotType;
 
   RadioAction* obj = dynamic_cast<RadioAction*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

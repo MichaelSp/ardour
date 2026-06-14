@@ -209,7 +209,7 @@ void Pixbuf::render_pixmap_and_mask_for_colormap(const Glib::RefPtr<Colormap>& c
       gobj(), colormap->gobj(), &pPixmap, &pBitmap, alpha_threshold);
 
   pixmap_return = Glib::wrap((GdkPixmapObject*) pPixmap);
-  mask_return   = Glib::RefPtr<Gdk::Bitmap>::cast_dynamic(Glib::wrap((GdkPixmapObject*) pBitmap));
+  mask_return = std::dynamic_pointer_cast<Gdk::Bitmap>(Glib::wrap((GdkPixmapObject*) pBitmap));
 }
 
 void Pixbuf::render_pixmap_and_mask(Glib::RefPtr<Pixmap>& pixmap_return,
@@ -222,7 +222,7 @@ void Pixbuf::render_pixmap_and_mask(Glib::RefPtr<Pixmap>& pixmap_return,
   gdk_pixbuf_render_pixmap_and_mask(gobj(), &pPixmap, &pBitmap, alpha_threshold);
 
   pixmap_return = Glib::wrap((GdkPixmapObject*) pPixmap);
-  mask_return   = Glib::RefPtr<Gdk::Bitmap>::cast_dynamic(Glib::wrap((GdkPixmapObject*) pBitmap));
+  mask_return = std::dynamic_pointer_cast<Gdk::Bitmap>(Glib::wrap((GdkPixmapObject*) pBitmap));
 }
 
 
@@ -651,5 +651,4 @@ Glib::ustring Pixbuf::get_option(const Glib::ustring& key) const
 
 
 } // namespace Gdk
-
 

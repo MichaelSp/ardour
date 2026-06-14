@@ -45,7 +45,7 @@ static const Glib::SignalProxyInfo Socket_signal_plug_added_info =
 static gboolean Socket_signal_plug_removed_callback(GtkSocket* self, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool > SlotType;
+  typedef sigc::slot<bool()> SlotType;
 
   Socket* obj = dynamic_cast<Socket*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -69,7 +69,7 @@ static gboolean Socket_signal_plug_removed_callback(GtkSocket* self, void* data)
 static gboolean Socket_signal_plug_removed_notify_callback(GtkSocket* self,  void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void > SlotType;
+  typedef sigc::slot<void()> SlotType;
 
   Socket* obj = dynamic_cast<Socket*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

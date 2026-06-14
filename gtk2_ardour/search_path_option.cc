@@ -35,7 +35,7 @@ using namespace Gtk;
 
 SearchPathOption::SearchPathOption (const string& pathname, const string& label,
 				    const string& default_path,
-                                    sigc::slot<std::string> get, sigc::slot<bool, std::string> set)
+                                    sigc::slot<std::string()> get, sigc::slot<bool(std::string)> set)
 	: Option (pathname, label)
 	, _get (get)
 	, _set (set)

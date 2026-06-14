@@ -44,7 +44,7 @@ namespace
 static void DisplayManager_signal_display_opened_callback(GdkDisplayManager* self, GdkDisplay* p0,void* data)
 {
   using namespace Gdk;
-  typedef sigc::slot< void,const Glib::RefPtr<Display>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Display>&)> SlotType;
 
   DisplayManager* obj = dynamic_cast<DisplayManager*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

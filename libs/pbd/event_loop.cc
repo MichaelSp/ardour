@@ -70,10 +70,10 @@ EventLoop::set_event_loop_for_thread (EventLoop* loop)
 	thread_event_loop.set (loop);
 }
 
-void*
-EventLoop::invalidate_request (void* data)
+void
+EventLoop::invalidate_request (sigc::notifiable* data)
 {
-	InvalidationRecord* ir = (InvalidationRecord*) data;
+	InvalidationRecord* ir = static_cast<InvalidationRecord*> (data);
 
 	/* Some of the requests queued with an EventLoop may involve functors
 	 * that make method calls to objects whose lifetime is shorter
@@ -106,7 +106,6 @@ EventLoop::invalidate_request (void* data)
 		ir->event_loop->trash.push_back(ir);
 	}
 
-	return 0;
 }
 
 /** Create a PBD::EventLoop::InvalidationRecord and attach a callback
@@ -215,4 +214,3 @@ EventLoop::remove_request_buffer_from_map (pthread_t pth)
 		}
 	}
 }
-

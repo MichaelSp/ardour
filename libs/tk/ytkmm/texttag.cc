@@ -40,7 +40,7 @@ namespace
 static gboolean TextTag_signal_event_callback(GtkTextTag* self, GObject* p0,GdkEvent* p1,const GtkTextIter* p2,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,const Glib::RefPtr<Glib::Object>&,GdkEvent*,const TextIter& > SlotType;
+  typedef sigc::slot<bool(const Glib::RefPtr<Glib::Object>&, GdkEvent*, const TextIter&)> SlotType;
 
   TextTag* obj = dynamic_cast<TextTag*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -66,7 +66,7 @@ static gboolean TextTag_signal_event_callback(GtkTextTag* self, GObject* p0,GdkE
 static gboolean TextTag_signal_event_notify_callback(GtkTextTag* self, GObject* p0,GdkEvent* p1,const GtkTextIter* p2, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Glib::Object>&,GdkEvent*,const TextIter& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Glib::Object>&, GdkEvent*, const TextIter&)> SlotType;
 
   TextTag* obj = dynamic_cast<TextTag*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

@@ -32,8 +32,8 @@ public:
 	MetaButton ();
 	virtual ~MetaButton ();
 
-	void add_item (std::string const& label, std::string const& menutext, sigc::slot<void> const&);
-	void add_item (std::string const& label, std::string const& menutext, Gtk::Menu&, sigc::slot<void> const&);
+	void add_item (std::string const& label, std::string const& menutext, sigc::slot<void()> const&);
+	void add_item (std::string const& label, std::string const& menutext, Gtk::Menu&, sigc::slot<void()> const&);
 	void clear_items ();
 
 	void set_active (std::string const&);
@@ -65,14 +65,14 @@ private:
 	class MetaMenuItem : public Gtk::MenuItem
 	{
 	public:
-		MetaMenuItem (std::string const& label, std::string const& menutext, sigc::slot<void> const& cb)
+		MetaMenuItem (std::string const& label, std::string const& menutext, sigc::slot<void()> const& cb)
 			: Gtk::MenuItem (menutext, false)
 			, _label (label)
 			, _cb (cb)
 		{
 		}
 
-		MetaMenuItem (std::string const& label, std::string const& menutext, sigc::slot<void> const & cb, Gtk::Menu& submenu)
+		MetaMenuItem (std::string const& label, std::string const& menutext, sigc::slot<void()> const & cb, Gtk::Menu& submenu)
 			: Gtk::MenuItem (menutext, false)
 			, _label (label)
 			, _cb (cb)
@@ -97,15 +97,15 @@ private:
 
 	private:
 		std::string      _label;
-		sigc::slot<void> _cb;
+		sigc::slot<void()> _cb;
 	};
 
 	class MetaElement : public Gtk::Menu_Helpers::MenuElem
 	{
 	public:
-		typedef sigc::slot<void, MetaMenuItem const*> SlotActivate;
+		typedef sigc::slot<void(MetaMenuItem const*)> SlotActivate;
 
-		MetaElement (std::string const& label, std::string const& menutext, sigc::slot<void> const& cb, SlotActivate const& wrap)
+		MetaElement (std::string const& label, std::string const& menutext, sigc::slot<void()> const& cb, SlotActivate const& wrap)
 		    : Gtk::Menu_Helpers::MenuElem ("")
 		{
 			MetaMenuItem* mmi = manage (new MetaMenuItem (label, menutext, cb));
@@ -114,7 +114,7 @@ private:
 			child_->signal_activate ().connect (sigc::bind (wrap, mmi));
 			child_->show ();
 		}
-		MetaElement (std::string const& label, std::string const & menutext, sigc::slot<void> const & cb, SlotActivate const & wrap, Gtk::Menu& submenu)
+		MetaElement (std::string const& label, std::string const & menutext, sigc::slot<void()> const & cb, SlotActivate const & wrap, Gtk::Menu& submenu)
 			: Gtk::Menu_Helpers::MenuElem ("")
 		{
 			MetaMenuItem* mmi = manage (new MetaMenuItem (label, menutext, cb, submenu));

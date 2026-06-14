@@ -1408,9 +1408,9 @@ gtk_application_add_app_menu_item (GtkApplicationMenuGroup *group,
 
 namespace Gtk {
 	namespace Application {
-		sigc::signal<void,bool> ActivationChanged;
-		sigc::signal<void,const Glib::ustring&> ShouldLoad;
-		sigc::signal<void> ShouldQuit;
+		sigc::signal<void(bool)> ActivationChanged;
+		sigc::signal<void(const Glib::ustring&)> ShouldLoad;
+		sigc::signal<void()> ShouldQuit;
 	}
 }
 

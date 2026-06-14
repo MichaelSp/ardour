@@ -67,7 +67,7 @@ namespace
 static void HandleBox_signal_child_attached_callback(GtkHandleBox* self, GtkWidget* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget* > SlotType;
+  typedef sigc::slot<void(Widget*)> SlotType;
 
   HandleBox* obj = dynamic_cast<HandleBox*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -97,7 +97,7 @@ static const Glib::SignalProxyInfo HandleBox_signal_child_attached_info =
 static void HandleBox_signal_child_detached_callback(GtkHandleBox* self, GtkWidget* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget* > SlotType;
+  typedef sigc::slot<void(Widget*)> SlotType;
 
   HandleBox* obj = dynamic_cast<HandleBox*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

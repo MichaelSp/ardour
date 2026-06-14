@@ -64,7 +64,7 @@ class ProcessorSelection : public PBD::ScopedConnectionList, public sigc::tracka
 	ProcessorSelection () {}
 
 	XMLProcessorSelection processors;
-	sigc::signal<void> ProcessorsChanged;
+	sigc::signal<void()> ProcessorsChanged;
 
 
 	void clear ();

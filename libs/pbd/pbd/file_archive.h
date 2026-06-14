@@ -24,9 +24,10 @@
 #include <winsock2.h> /*Not needed for file_archive itself, but prevents archive_entry.h from including winsock.h. */
 #endif
 
-#include <archive.h>
-#include <archive_entry.h>
 #include <pthread.h>
+
+struct archive;
+struct archive_entry;
 
 #include "pbd/signals.h"
 
@@ -136,7 +137,7 @@ class LIBPBD_API FileArchive
 
 				bool is_remote () const
 				{
-					if (!strncmp (url, "https://", 8) || !strncmp (url, "http://", 7) || !strncmp (url, "ftp://", 6)) {
+					if (url && (!strncmp (url, "https://", 8) || !strncmp (url, "http://", 7) || !strncmp (url, "ftp://", 6))) {
 						return true;
 					}
 					return false;

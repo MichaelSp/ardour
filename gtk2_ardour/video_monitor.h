@@ -70,7 +70,7 @@ class VideoMonitor : public sigc::trackable , public ARDOUR::SessionHandlePtr, p
 	void querystate ();
 	bool synced_by_manual_seeks() { return sync_by_manual_seek; }
 
-	sigc::signal<void> Terminated;
+	sigc::signal<void()> Terminated;
 	PBD::Signal<void(std::string)> UiState;
 	void send_cmd (int what, int param);
 

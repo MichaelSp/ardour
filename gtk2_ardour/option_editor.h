@@ -140,13 +140,13 @@ private:
 class RcConfigDisplay : public OptionEditorComponent
 {
 public:
-	RcConfigDisplay (std::string const &, std::string const &, sigc::slot<std::string>, char s = '\0');
+	RcConfigDisplay (std::string const &, std::string const &, sigc::slot<std::string()>, char s = '\0');
 	void add_to_page (OptionEditorPage *);
 	void parameter_changed (std::string const & p);
 	void set_state_from_config ();
 	Gtk::Widget& tip_widget() { return *_info; }
 protected:
-	sigc::slot<std::string> _get;
+	sigc::slot<std::string()> _get;
 	Gtk::Label* _label;
 	Gtk::Label* _info;
 	std::string _id;
@@ -233,7 +233,7 @@ protected:
 class BoolOption : public Option
 {
 public:
-	BoolOption (std::string const &, std::string const &, sigc::slot<bool>, sigc::slot<bool, bool>);
+	BoolOption (std::string const &, std::string const &, sigc::slot<bool()>, sigc::slot<bool(bool)>);
 	void set_state_from_config ();
 	void add_to_page (OptionEditorPage*);
 
@@ -246,8 +246,8 @@ public:
 protected:
 	virtual void toggled ();
 
-	sigc::slot<bool>       _get; ///< slot to get the configuration variable's value
-	sigc::slot<bool, bool> _set;  ///< slot to set the configuration variable's value
+	sigc::slot<bool()>       _get; ///< slot to get the configuration variable's value
+	sigc::slot<bool(bool)> _set;  ///< slot to set the configuration variable's value
 	Gtk::CheckButton*      _button; ///< UI button
 	Gtk::Label*            _label; ///< label for button, so we can use markup
 };
@@ -255,7 +255,7 @@ protected:
 class RouteDisplayBoolOption : public BoolOption
 {
 public:
-	RouteDisplayBoolOption (std::string const &, std::string const &, sigc::slot<bool>, sigc::slot<bool, bool>);
+	RouteDisplayBoolOption (std::string const &, std::string const &, sigc::slot<bool()>, sigc::slot<bool(bool)>);
 
 protected:
 	virtual void toggled ();
@@ -282,7 +282,7 @@ private:
 class EntryOption : public Option
 {
 public:
-	EntryOption (std::string const &, std::string const &, sigc::slot<std::string>, sigc::slot<bool, std::string>);
+	EntryOption (std::string const &, std::string const &, sigc::slot<std::string()>, sigc::slot<bool(std::string)>);
 	void set_state_from_config ();
 	void add_to_page (OptionEditorPage*);
 	void set_sensitive (bool);
@@ -296,8 +296,8 @@ private:
 	bool focus_out (GdkEventFocus*);
 	void filter_text (const Glib::ustring&, int*);
 
-	sigc::slot<std::string> _get; ///< slot to get the configuration variable's value
-	sigc::slot<bool, std::string> _set;  ///< slot to set the configuration variable's value
+	sigc::slot<std::string()> _get; ///< slot to get the configuration variable's value
+	sigc::slot<bool(std::string)> _set;  ///< slot to set the configuration variable's value
 	Gtk::Label* _label; ///< UI label
 	Gtk::Entry* _entry; ///< UI entry
 	std::string _invalid;
@@ -321,8 +321,8 @@ public:
 	ComboOption (
 		std::string const & i,
 		std::string const & n,
-		sigc::slot<T> g,
-		sigc::slot<bool, T> s
+		sigc::slot<T()> g,
+		sigc::slot<bool(T)> s
 		)
 		: Option (i, n)
 		, _get (g)
@@ -396,8 +396,8 @@ public:
 	Gtk::Widget& tip_widget() { return *_combo; }
 
 private:
-	sigc::slot<T> _get;
-	sigc::slot<bool, T> _set;
+	sigc::slot<T()> _get;
+	sigc::slot<bool(T)> _set;
 	Gtk::Label* _label;
 	Gtk::ComboBoxText* _combo;
 	std::vector<T> _options;
@@ -412,8 +412,8 @@ public:
 	HSliderOption (
 			std::string const& i,
 			std::string const& n,
-			sigc::slot<float> g,
-			sigc::slot<bool, float> s,
+			sigc::slot<float()> g,
+			sigc::slot<bool(float)> s,
 			double lower, double upper,
 			double step_increment = 1,
 			double page_increment = 10,
@@ -430,8 +430,8 @@ public:
 	Gtk::HScale& scale() { return _hscale; }
 
 protected:
-	sigc::slot<float> _get;
-	sigc::slot<bool, float> _set;
+	sigc::slot<float()> _get;
+	sigc::slot<bool(float)> _set;
 	Gtk::Adjustment _adj;
 	Gtk::HScale _hscale;
 	Gtk::Label* _label;
@@ -455,8 +455,8 @@ public:
 	ComboStringOption (
 		std::string const & i,
 		std::string const & n,
-		sigc::slot<std::string> g,
-		sigc::slot<bool, std::string> s
+		sigc::slot<std::string()> g,
+		sigc::slot<bool(std::string)> s
 		);
 
 	void set_state_from_config ();
@@ -474,8 +474,8 @@ public:
 	Gtk::Widget& tip_widget() { return *_combo; }
 
 private:
-	sigc::slot<std::string> _get;
-	sigc::slot<bool, std::string> _set;
+	sigc::slot<std::string()> _get;
+	sigc::slot<bool(std::string)> _set;
 	Gtk::Label* _label;
 	Gtk::ComboBoxText* _combo;
 };
@@ -492,8 +492,8 @@ public:
 		std::string const &,
 		std::string const &,
 		std::string const &,
-		sigc::slot<bool>,
-		sigc::slot<bool, bool>
+		sigc::slot<bool()>,
+		sigc::slot<bool(bool)>
 		);
 
 	void set_state_from_config ();
@@ -504,8 +504,8 @@ public:
 	Gtk::Widget& tip_widget() { return *_combo; }
 
 private:
-	sigc::slot<bool> _get;
-	sigc::slot<bool, bool> _set;
+	sigc::slot<bool()> _get;
+	sigc::slot<bool(bool)> _set;
 	Gtk::Label* _label;
 	Gtk::ComboBoxText* _combo;
 };
@@ -532,8 +532,8 @@ public:
 	SpinOption (
 		std::string const & i,
 		std::string const & n,
-		sigc::slot<T> g,
-		sigc::slot<bool, T> s,
+		sigc::slot<T()> g,
+		sigc::slot<bool(T)> s,
 		T min,
 		T max,
 		T step,
@@ -583,8 +583,8 @@ public:
 	Gtk::Widget& tip_widget() { return *_spin; }
 
 private:
-	sigc::slot<T> _get;
-	sigc::slot<bool, T> _set;
+	sigc::slot<T()> _get;
+	sigc::slot<bool(T)> _set;
 	float _scale;
 	Gtk::Label* _label;
 	Gtk::HBox* _box;
@@ -595,7 +595,7 @@ class FaderOption : public Option
 {
 public:
 
-	FaderOption (std::string const &, std::string const &, sigc::slot<ARDOUR::gain_t> g, sigc::slot<bool, ARDOUR::gain_t> s);
+	FaderOption (std::string const &, std::string const &, sigc::slot<ARDOUR::gain_t()> g, sigc::slot<bool(ARDOUR::gain_t)> s);
 	void set_state_from_config ();
 	void add_to_page (OptionEditorPage *);
 
@@ -612,8 +612,8 @@ private:
 	Gtk::Label* _label;
 	Gtk::HBox _box;
 	Gtk::VBox _fader_centering_box;
-	sigc::slot<ARDOUR::gain_t> _get;
-	sigc::slot<bool, ARDOUR::gain_t> _set;
+	sigc::slot<ARDOUR::gain_t()> _get;
+	sigc::slot<bool(ARDOUR::gain_t)> _set;
 };
 
 class WidgetOption : public Option
@@ -634,7 +634,7 @@ class WidgetOption : public Option
 class ClockOption : public Option
 {
 public:
-	ClockOption (std::string const &, std::string const &, sigc::slot<std::string>, sigc::slot<bool, std::string>);
+	ClockOption (std::string const &, std::string const &, sigc::slot<std::string()>, sigc::slot<bool(std::string)>);
 	void set_state_from_config ();
 	void add_to_page (OptionEditorPage *);
 	void set_session (ARDOUR::Session *);
@@ -646,15 +646,15 @@ private:
 	void save_clock_time ();
 	Gtk::Label* _label;
 	AudioClock _clock;
-	sigc::slot<std::string> _get;
-	sigc::slot<bool, std::string> _set;
+	sigc::slot<std::string()> _get;
+	sigc::slot<bool(std::string)> _set;
 	ARDOUR::Session *_session;
 };
 
 class DirectoryOption : public Option
 {
 public:
-	DirectoryOption (std::string const &, std::string const &, sigc::slot<std::string>, sigc::slot<bool, std::string>);
+	DirectoryOption (std::string const &, std::string const &, sigc::slot<std::string()>, sigc::slot<bool(std::string)>);
 
 	void set_state_from_config ();
 	void add_to_page (OptionEditorPage *);
@@ -664,8 +664,8 @@ public:
 private:
 	void selection_changed ();
 
-	sigc::slot<std::string> _get; ///< slot to get the configuration variable's value
-	sigc::slot<bool, std::string> _set;  ///< slot to set the configuration variable's value
+	sigc::slot<std::string()> _get; ///< slot to get the configuration variable's value
+	sigc::slot<bool(std::string)> _set;  ///< slot to set the configuration variable's value
 	Gtk::FileChooserButton _file_chooser;
 	sigc::connection _changed_connection;
 };

@@ -98,15 +98,15 @@ public:
 
 	// Selection& operator= (const Selection& other);
 
-	sigc::signal<void> TracksChanged;
-	sigc::signal<void> RegionsChanged;
-	sigc::signal<void> TimeChanged;
-	sigc::signal<void> LinesChanged;
-	sigc::signal<void> PlaylistsChanged;
-	sigc::signal<void> PointsChanged;
-	sigc::signal<void> MarkersChanged;
-	sigc::signal<void> MidiNotesChanged;
-	sigc::signal<void> TriggersChanged;
+	sigc::signal<void()> TracksChanged;
+	sigc::signal<void()> RegionsChanged;
+	sigc::signal<void()> TimeChanged;
+	sigc::signal<void()> LinesChanged;
+	sigc::signal<void()> PlaylistsChanged;
+	sigc::signal<void()> PointsChanged;
+	sigc::signal<void()> MarkersChanged;
+	sigc::signal<void()> MidiNotesChanged;
+	sigc::signal<void()> TriggersChanged;
 
 	void clear ();
 

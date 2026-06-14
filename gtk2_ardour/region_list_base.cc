@@ -143,7 +143,7 @@ RegionListBase::setup_col (TreeViewColumn* col, int sort_idx, Gtk::AlignmentEnum
 }
 
 void
-RegionListBase::setup_toggle (Gtk::TreeViewColumn* tvc, sigc::slot<void, std::string> cb)
+RegionListBase::setup_toggle (Gtk::TreeViewColumn* tvc, sigc::slot<void(std::string)> cb)
 {
 	CellRendererToggle* tc      = dynamic_cast<CellRendererToggle*> (tvc->get_first_cell ());
 	tc->property_activatable () = true;

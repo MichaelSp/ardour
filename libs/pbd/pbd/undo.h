@@ -36,7 +36,7 @@
 
 namespace PBD {
 
-typedef sigc::slot<void> UndoAction;
+typedef sigc::slot<void()> UndoAction;
 
 class LIBPBD_API UndoTransaction : public PBD::Command
 {

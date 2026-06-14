@@ -125,7 +125,7 @@ protected:
 private:
 	void _midnam_channel_changed();
 
-	sigc::signal<void, std::string, std::string>  _midi_patch_settings_changed;
+	sigc::signal<void(std::string, std::string)>  _midi_patch_settings_changed;
 
 	void setup_midnam_patches ();
 

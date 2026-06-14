@@ -85,8 +85,8 @@ private:
 
 	Gtk::Label _device_state_lbl;
 
-	sigc::signal<void, bool> ProButtonsSensitive;
-	sigc::signal<void, bool> XpressButtonsSensitive;
+	sigc::signal<void(bool)> ProButtonsSensitive;
+	sigc::signal<void(bool)> XpressButtonsSensitive;
 };
 
 

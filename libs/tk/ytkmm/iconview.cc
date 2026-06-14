@@ -251,7 +251,7 @@ namespace
 static void IconView_signal_set_scroll_adjustments_callback(GtkIconView* self, GtkAdjustment* p0,GtkAdjustment* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Adjustment*,Adjustment* > SlotType;
+  typedef sigc::slot<void(Adjustment*, Adjustment*)> SlotType;
 
   IconView* obj = dynamic_cast<IconView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -282,7 +282,7 @@ static const Glib::SignalProxyInfo IconView_signal_set_scroll_adjustments_info =
 static void IconView_signal_item_activated_callback(GtkIconView* self, GtkTreePath* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const TreeModel::Path& > SlotType;
+  typedef sigc::slot<void(const TreeModel::Path&)> SlotType;
 
   IconView* obj = dynamic_cast<IconView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

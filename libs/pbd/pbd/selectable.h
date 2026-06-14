@@ -44,9 +44,9 @@ class LIBPBD_API Selectable : public sigc::trackable
 	Selectable (FILE *);
 	~Selectable ();
 
-	sigc::signal<void,Selectable *,Select::Condition> readable;
-	sigc::signal<void,Selectable *,Select::Condition> writable;
-	sigc::signal<void,Selectable *,Select::Condition> exceptioned;
+	sigc::signal<void(Selectable *, Select::Condition)> readable;
+	sigc::signal<void(Selectable *, Select::Condition)> writable;
+	sigc::signal<void(Selectable *, Select::Condition)> exceptioned;
 
 	int  fd() { return _fd; }
 	bool ok() { return _ok; }

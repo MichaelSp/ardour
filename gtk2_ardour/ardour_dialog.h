@@ -63,7 +63,7 @@ private:
 	void init ();
 	bool allow_idle;
 
-	static sigc::signal<void> CloseAllDialogs;
+	static sigc::signal<void()> CloseAllDialogs;
 };
 
 

@@ -31,7 +31,7 @@
 
 static const char* has_cairo_widget_background_info = "has_cairo_widget_background_info";
 
-sigc::slot<void,Gtk::Widget*> CairoWidget::focus_handler;
+sigc::slot<void(Gtk::Widget*)> CairoWidget::focus_handler;
 
 void CairoWidget::set_source_rgb_a( cairo_t* cr, Gdk::Color col, float a)  //ToDo:  this one and the Canvas version should be in a shared file (?)
 {
@@ -459,7 +459,7 @@ CairoWidget::provide_background_for_cairo_widget (Gtk::Widget& w, const Gdk::Col
 }
 
 void
-CairoWidget::set_focus_handler (sigc::slot<void,Gtk::Widget*> s)
+CairoWidget::set_focus_handler (sigc::slot<void(Gtk::Widget*)> s)
 {
 	focus_handler = s;
 }

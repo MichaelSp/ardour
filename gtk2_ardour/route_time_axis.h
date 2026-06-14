@@ -137,7 +137,7 @@ public:
 	void meter_changed ();
 	void effective_gain_display () { gm.effective_gain_display(); }
 
-	static sigc::signal<void, bool> signal_ctrl_touched;
+	static sigc::signal<void(bool)> signal_ctrl_touched;
 
 	std::string state_id() const;
 

@@ -70,7 +70,7 @@ static const Glib::SignalProxyInfo FileChooser_signal_file_activated_info =
 static GtkFileChooserConfirmation FileChooser_signal_confirm_overwrite_callback(GtkFileChooser* self, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< FileChooserConfirmation > SlotType;
+  typedef sigc::slot<FileChooserConfirmation()> SlotType;
 
   FileChooser* obj = dynamic_cast<FileChooser*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -94,7 +94,7 @@ static GtkFileChooserConfirmation FileChooser_signal_confirm_overwrite_callback(
 static GtkFileChooserConfirmation FileChooser_signal_confirm_overwrite_notify_callback(GtkFileChooser* self,  void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void > SlotType;
+  typedef sigc::slot<void()> SlotType;
 
   FileChooser* obj = dynamic_cast<FileChooser*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

@@ -63,7 +63,7 @@ namespace
 static void TextTagTable_signal_tag_changed_callback(GtkTextTagTable* self, GtkTextTag* p0,gboolean p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<TextTag>&,bool > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<TextTag>&, bool)> SlotType;
 
   TextTagTable* obj = dynamic_cast<TextTagTable*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -94,7 +94,7 @@ static const Glib::SignalProxyInfo TextTagTable_signal_tag_changed_info =
 static void TextTagTable_signal_tag_added_callback(GtkTextTagTable* self, GtkTextTag* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<TextTag>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<TextTag>&)> SlotType;
 
   TextTagTable* obj = dynamic_cast<TextTagTable*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -124,7 +124,7 @@ static const Glib::SignalProxyInfo TextTagTable_signal_tag_added_info =
 static void TextTagTable_signal_tag_removed_callback(GtkTextTagTable* self, GtkTextTag* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<TextTag>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<TextTag>&)> SlotType;
 
   TextTagTable* obj = dynamic_cast<TextTagTable*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

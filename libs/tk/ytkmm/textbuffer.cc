@@ -611,7 +611,7 @@ namespace
 static void TextBuffer_signal_insert_callback(GtkTextBuffer* self, GtkTextIter* p0,const gchar* p1,gint p2,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const TextBuffer::iterator&,const Glib::ustring&,int > SlotType;
+  typedef sigc::slot<void(const TextBuffer::iterator&, const Glib::ustring&, int)> SlotType;
 
   TextBuffer* obj = dynamic_cast<TextBuffer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -643,7 +643,7 @@ static const Glib::SignalProxyInfo TextBuffer_signal_insert_info =
 static void TextBuffer_signal_insert_pixbuf_callback(GtkTextBuffer* self, GtkTextIter* p0,GdkPixbuf* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const TextBuffer::iterator&,const Glib::RefPtr<Gdk::Pixbuf>& > SlotType;
+  typedef sigc::slot<void(const TextBuffer::iterator&, const Glib::RefPtr<Gdk::Pixbuf>&)> SlotType;
 
   TextBuffer* obj = dynamic_cast<TextBuffer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -674,7 +674,7 @@ static const Glib::SignalProxyInfo TextBuffer_signal_insert_pixbuf_info =
 static void TextBuffer_signal_insert_child_anchor_callback(GtkTextBuffer* self, GtkTextIter* p0,GtkTextChildAnchor* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const TextBuffer::iterator&,const Glib::RefPtr<ChildAnchor>& > SlotType;
+  typedef sigc::slot<void(const TextBuffer::iterator&, const Glib::RefPtr<ChildAnchor>&)> SlotType;
 
   TextBuffer* obj = dynamic_cast<TextBuffer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -705,7 +705,7 @@ static const Glib::SignalProxyInfo TextBuffer_signal_insert_child_anchor_info =
 static void TextBuffer_signal_erase_callback(GtkTextBuffer* self, GtkTextIter* p0,GtkTextIter* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const TextBuffer::iterator&,const TextBuffer::iterator& > SlotType;
+  typedef sigc::slot<void(const TextBuffer::iterator&, const TextBuffer::iterator&)> SlotType;
 
   TextBuffer* obj = dynamic_cast<TextBuffer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -752,7 +752,7 @@ static const Glib::SignalProxyInfo TextBuffer_signal_modified_changed_info =
 static void TextBuffer_signal_mark_set_callback(GtkTextBuffer* self, const GtkTextIter* p0,GtkTextMark* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const TextBuffer::iterator&,const Glib::RefPtr<TextBuffer::Mark>& > SlotType;
+  typedef sigc::slot<void(const TextBuffer::iterator&, const Glib::RefPtr<TextBuffer::Mark>&)> SlotType;
 
   TextBuffer* obj = dynamic_cast<TextBuffer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -783,7 +783,7 @@ static const Glib::SignalProxyInfo TextBuffer_signal_mark_set_info =
 static void TextBuffer_signal_mark_deleted_callback(GtkTextBuffer* self, GtkTextMark* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<TextBuffer::Mark>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<TextBuffer::Mark>&)> SlotType;
 
   TextBuffer* obj = dynamic_cast<TextBuffer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -813,7 +813,7 @@ static const Glib::SignalProxyInfo TextBuffer_signal_mark_deleted_info =
 static void TextBuffer_signal_apply_tag_callback(GtkTextBuffer* self, GtkTextTag* p0,const GtkTextIter* p1,const GtkTextIter* p2,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<TextBuffer::Tag>&,const TextBuffer::iterator&,const TextBuffer::iterator& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<TextBuffer::Tag>&, const TextBuffer::iterator&, const TextBuffer::iterator&)> SlotType;
 
   TextBuffer* obj = dynamic_cast<TextBuffer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -845,7 +845,7 @@ static const Glib::SignalProxyInfo TextBuffer_signal_apply_tag_info =
 static void TextBuffer_signal_remove_tag_callback(GtkTextBuffer* self, GtkTextTag* p0,const GtkTextIter* p1,const GtkTextIter* p2,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<TextBuffer::Tag>&,const TextBuffer::iterator&,const TextBuffer::iterator& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<TextBuffer::Tag>&, const TextBuffer::iterator&, const TextBuffer::iterator&)> SlotType;
 
   TextBuffer* obj = dynamic_cast<TextBuffer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -893,7 +893,7 @@ static const Glib::SignalProxyInfo TextBuffer_signal_end_user_action_info =
 static void TextBuffer_signal_paste_done_callback(GtkTextBuffer* self, GtkClipboard* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Gtk::Clipboard>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Gtk::Clipboard>&)> SlotType;
 
   TextBuffer* obj = dynamic_cast<TextBuffer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

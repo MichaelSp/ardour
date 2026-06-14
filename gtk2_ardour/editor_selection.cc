@@ -387,7 +387,7 @@ Editor::get_onscreen_tracks (TrackViewList& tvl)
  */
 
 void
-Editor::mapover_grouped_routes (sigc::slot<void, RouteUI&> sl, RouteUI* basis, PBD::PropertyID prop) const
+Editor::mapover_grouped_routes (sigc::slot<void(RouteUI&)> sl, RouteUI* basis, PBD::PropertyID prop) const
 {
 	set<RouteUI*> routes;
 
@@ -415,7 +415,7 @@ Editor::mapover_grouped_routes (sigc::slot<void, RouteUI&> sl, RouteUI* basis, P
 }
 
 void
-Editor::mapover_armed_routes (sigc::slot<void, RouteUI&> sl) const
+Editor::mapover_armed_routes (sigc::slot<void(RouteUI&)> sl) const
 {
 	set<RouteUI*> routes;
 	for (TrackViewList::const_iterator i = track_views.begin(); i != track_views.end(); ++i) {
@@ -432,7 +432,7 @@ Editor::mapover_armed_routes (sigc::slot<void, RouteUI&> sl) const
 }
 
 void
-Editor::mapover_selected_routes (sigc::slot<void, RouteUI&> sl) const
+Editor::mapover_selected_routes (sigc::slot<void(RouteUI&)> sl) const
 {
 	set<RouteUI*> routes;
 	for (TrackSelection::iterator i = selection->tracks.begin(); i != selection->tracks.end(); ++i) {
@@ -447,7 +447,7 @@ Editor::mapover_selected_routes (sigc::slot<void, RouteUI&> sl) const
 }
 
 void
-Editor::mapover_all_routes (sigc::slot<void, RouteUI&> sl) const
+Editor::mapover_all_routes (sigc::slot<void(RouteUI&)> sl) const
 {
 	set<RouteUI*> routes;
 	for (TrackViewList::const_iterator i = track_views.begin(); i != track_views.end(); ++i) {
@@ -470,7 +470,7 @@ Editor::mapover_all_routes (sigc::slot<void, RouteUI&> sl) const
  */
 
 void
-Editor::mapover_tracks_with_unique_playlists (sigc::slot<void, RouteTimeAxisView&, uint32_t> sl, TimeAxisView* basis, PBD::PropertyID prop) const
+Editor::mapover_tracks_with_unique_playlists (sigc::slot<void(RouteTimeAxisView&, uint32_t)> sl, TimeAxisView* basis, PBD::PropertyID prop) const
 {
 	RouteTimeAxisView* route_basis = dynamic_cast<RouteTimeAxisView*> (basis);
 	PlaylistSet playlists;
@@ -519,7 +519,7 @@ Editor::mapover_tracks_with_unique_playlists (sigc::slot<void, RouteTimeAxisView
 }
 
 void
-Editor::mapover_all_tracks_with_unique_playlists (sigc::slot<void, RouteTimeAxisView&, uint32_t> sl) const
+Editor::mapover_all_tracks_with_unique_playlists (sigc::slot<void(RouteTimeAxisView&, uint32_t)> sl) const
 {
 	PlaylistSet playlists;
 

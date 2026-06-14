@@ -73,7 +73,7 @@ namespace
 static gboolean AccelGroup_signal_accel_activate_callback(GtkAccelGroup* self, GObject* p0,guint p1,GdkModifierType p2,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,const Glib::RefPtr<Glib::Object>&,guint,Gdk::ModifierType > SlotType;
+  typedef sigc::slot<bool(const Glib::RefPtr<Glib::Object>&, guint, Gdk::ModifierType)> SlotType;
 
   AccelGroup* obj = dynamic_cast<AccelGroup*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -99,7 +99,7 @@ static gboolean AccelGroup_signal_accel_activate_callback(GtkAccelGroup* self, G
 static gboolean AccelGroup_signal_accel_activate_notify_callback(GtkAccelGroup* self, GObject* p0,guint p1,GdkModifierType p2, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Glib::Object>&,guint,Gdk::ModifierType > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Glib::Object>&, guint, Gdk::ModifierType)> SlotType;
 
   AccelGroup* obj = dynamic_cast<AccelGroup*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -133,7 +133,7 @@ static const Glib::SignalProxyInfo AccelGroup_signal_accel_activate_info =
 static void AccelGroup_signal_accel_changed_callback(GtkAccelGroup* self, guint p0,GdkModifierType p1,GClosure* p2,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,guint,Gdk::ModifierType,GClosure* > SlotType;
+  typedef sigc::slot<void(guint, Gdk::ModifierType, GClosure*)> SlotType;
 
   AccelGroup* obj = dynamic_cast<AccelGroup*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

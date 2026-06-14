@@ -87,8 +87,8 @@ private:
 	 * and looking up the map information.
 	 */
 	ArdourCanvas::Container* initialize_palette_canvas (ArdourCanvas::Canvas& canvas);
-	void build_palette_canvas (ArdourCanvas::Canvas&, ArdourCanvas::Container&, sigc::slot<bool,GdkEvent*,std::string> event_handler);
-	void palette_canvas_allocated (Gtk::Allocation& alloc, ArdourCanvas::Container* group, ArdourCanvas::Canvas* canvas, sigc::slot<bool,GdkEvent*,std::string> event_handler);
+	void build_palette_canvas (ArdourCanvas::Canvas&, ArdourCanvas::Container&, sigc::slot<bool(GdkEvent*, std::string)> event_handler);
+	void palette_canvas_allocated (Gtk::Allocation& alloc, ArdourCanvas::Container* group, ArdourCanvas::Canvas* canvas, sigc::slot<bool(GdkEvent*, std::string)> event_handler);
 	void palette_size_request (Gtk::Requisition*);
 
 	/* handles events from a palette canvas inside the palette (derived

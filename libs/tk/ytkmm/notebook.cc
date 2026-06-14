@@ -489,7 +489,7 @@ int Notebook::insert_page(Widget& child, int position)
 
 #ifndef GTKMM_DISABLE_DEPRECATED
 
-typedef sigc::slot<Widget*, int, int> SlotWindowCreation;
+typedef sigc::slot<Widget*(int, int)> SlotWindowCreation;
 
 void Notebook::set_window_creation_hook(const SlotWindowCreation& slot)
 {
@@ -509,7 +509,7 @@ namespace
 static void Notebook_signal_switch_page_callback(GtkNotebook* self, GtkNotebookPage* p0,guint p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GtkNotebookPage*,guint > SlotType;
+  typedef sigc::slot<void(GtkNotebookPage*, guint)> SlotType;
 
   Notebook* obj = dynamic_cast<Notebook*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -538,7 +538,7 @@ static const Glib::SignalProxyInfo Notebook_signal_switch_page_info =
 static void Notebook_signal_page_reordered_callback(GtkNotebook* self, GtkWidget* p0,guint p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget*,guint > SlotType;
+  typedef sigc::slot<void(Widget*, guint)> SlotType;
 
   Notebook* obj = dynamic_cast<Notebook*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -568,7 +568,7 @@ static const Glib::SignalProxyInfo Notebook_signal_page_reordered_info =
 static void Notebook_signal_page_removed_callback(GtkNotebook* self, GtkWidget* p0,guint p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget*,guint > SlotType;
+  typedef sigc::slot<void(Widget*, guint)> SlotType;
 
   Notebook* obj = dynamic_cast<Notebook*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -598,7 +598,7 @@ static const Glib::SignalProxyInfo Notebook_signal_page_removed_info =
 static void Notebook_signal_page_added_callback(GtkNotebook* self, GtkWidget* p0,guint p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget*,guint > SlotType;
+  typedef sigc::slot<void(Widget*, guint)> SlotType;
 
   Notebook* obj = dynamic_cast<Notebook*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

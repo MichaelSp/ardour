@@ -143,8 +143,8 @@ class LIBWIDGETS_API ArdourButton : public CairoWidget , public Gtkmm2ext::Activ
 	void set_sizing_texts (std::vector<std::string> const&);
 
 	bool is_led_click (GdkEventButton*);
-	sigc::signal<void, GdkEventButton*> signal_led_clicked;
-	sigc::signal<void> signal_clicked;
+	sigc::signal<void(GdkEventButton*)> signal_led_clicked;
+	sigc::signal<void()> signal_clicked;
 
 	std::shared_ptr<PBD::Controllable> get_controllable() { return binding_proxy.get_controllable(); }
 	void set_controllable (std::shared_ptr<PBD::Controllable> c);

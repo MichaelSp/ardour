@@ -85,7 +85,7 @@ namespace
 static void Entry_signal_populate_popup_callback(GtkEntry* self, GtkMenu* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Menu* > SlotType;
+  typedef sigc::slot<void(Menu*)> SlotType;
 
   Entry* obj = dynamic_cast<Entry*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -115,7 +115,7 @@ static const Glib::SignalProxyInfo Entry_signal_populate_popup_info =
 static void Entry_signal_insert_at_cursor_callback(GtkEntry* self, const gchar* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::ustring& > SlotType;
+  typedef sigc::slot<void(const Glib::ustring&)> SlotType;
 
   Entry* obj = dynamic_cast<Entry*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -153,7 +153,7 @@ static const Glib::SignalProxyInfo Entry_signal_activate_info =
 static void Entry_signal_icon_release_callback(GtkEntry* self, GtkEntryIconPosition p0,const GdkEventButton* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,EntryIconPosition,const GdkEventButton* > SlotType;
+  typedef sigc::slot<void(EntryIconPosition, const GdkEventButton*)> SlotType;
 
   Entry* obj = dynamic_cast<Entry*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -183,7 +183,7 @@ static const Glib::SignalProxyInfo Entry_signal_icon_release_info =
 static void Entry_signal_icon_press_callback(GtkEntry* self, GtkEntryIconPosition p0,const GdkEventButton* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,EntryIconPosition,const GdkEventButton* > SlotType;
+  typedef sigc::slot<void(EntryIconPosition, const GdkEventButton*)> SlotType;
 
   Entry* obj = dynamic_cast<Entry*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

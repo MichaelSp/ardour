@@ -49,7 +49,7 @@ namespace
 static void CellRendererAccel_signal_accel_edited_callback(GtkCellRendererAccel* self, const gchar* p0,guint p1,GdkModifierType p2,guint p3,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::ustring&,guint,Gdk::ModifierType,guint > SlotType;
+  typedef sigc::slot<void(const Glib::ustring&, guint, Gdk::ModifierType, guint)> SlotType;
 
   CellRendererAccel* obj = dynamic_cast<CellRendererAccel*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -80,7 +80,7 @@ static const Glib::SignalProxyInfo CellRendererAccel_signal_accel_edited_info =
 static void CellRendererAccel_signal_accel_cleared_callback(GtkCellRendererAccel* self, const gchar* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::ustring& > SlotType;
+  typedef sigc::slot<void(const Glib::ustring&)> SlotType;
 
   CellRendererAccel* obj = dynamic_cast<CellRendererAccel*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

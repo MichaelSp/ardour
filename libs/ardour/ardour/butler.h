@@ -62,7 +62,7 @@ public:
 
 	void map_parameters ();
 
-	bool delegate (sigc::slot<void> const& work) {
+	bool delegate (sigc::slot<void()> const& work) {
 		bool rv = _delegated_work.push_back (work);
 		summon ();
 		return rv;
@@ -115,7 +115,7 @@ private:
 
 	PBD::RingBuffer<PBD::CrossThreadPool*> pool_trash;
 	CrossThreadChannel                    _xthread;
-	PBD::MPMCQueue<sigc::slot<void> >     _delegated_work;
+	PBD::MPMCQueue<sigc::slot<void()> >     _delegated_work;
 };
 
 } // namespace ARDOUR

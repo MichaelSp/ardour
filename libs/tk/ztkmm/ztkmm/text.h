@@ -5,6 +5,7 @@
 
 
 #include <glibmm/ustring.h>
+#include <glibmm/slisthandle.h>
 #include <sigc++/sigc++.h>
 
 /* $Id: text.hg,v 1.7 2005/01/05 18:21:30 murrayc Exp $ */
@@ -765,4 +766,3 @@ namespace Glib
 
 
 #endif /* _ATKMM_TEXT_H */
-

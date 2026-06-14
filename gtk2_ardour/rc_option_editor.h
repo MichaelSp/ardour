@@ -86,7 +86,7 @@ private:
 	void clear_vst3_blacklist ();
 	void clear_au_cache ();
 	void clear_au_blacklist ();
-	void edit_vst_path (std::string const&, std::string const&, sigc::slot<std::string>, sigc::slot<bool, std::string>);
+	void edit_vst_path (std::string const&, std::string const&, sigc::slot<std::string()>, sigc::slot<bool(std::string)>);
 };
 
 

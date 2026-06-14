@@ -85,7 +85,7 @@ public:
 		_playhead = pos;
 	}
 
-	sigc::signal<void, float> seek_playhead;
+	sigc::signal<void(float)> seek_playhead;
 
 protected:
 

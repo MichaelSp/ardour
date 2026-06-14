@@ -46,7 +46,7 @@ namespace
 static void ScaleButton_signal_value_changed_callback(GtkScaleButton* self, gdouble p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,double > SlotType;
+  typedef sigc::slot<void(double)> SlotType;
 
   ScaleButton* obj = dynamic_cast<ScaleButton*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

@@ -50,9 +50,9 @@ public:
     GtkApplicationMenuGroup* add_app_menu_group ();
     void                     add_app_menu_item (GtkApplicationMenuGroup*, Gtk::MenuItem*);
 
-    sigc::signal<void,bool>                 ActivationChanged;
-    sigc::signal<void,const Glib::ustring&> ShouldLoad;
-    sigc::signal<void>                      ShouldQuit;
+    sigc::signal<void(bool)>                 ActivationChanged;
+    sigc::signal<void(const Glib::ustring&)> ShouldLoad;
+    sigc::signal<void()>                      ShouldQuit;
 
 private:
     Application ();

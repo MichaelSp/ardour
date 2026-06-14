@@ -71,7 +71,7 @@ using namespace Temporal;
 using namespace ArdourWidgets;
 using std::string;
 
-sigc::signal<void> EditingContext::DropDownKeys;
+sigc::signal<void()> EditingContext::DropDownKeys;
 Gtkmm2ext::Bindings* EditingContext::button_bindings = nullptr;
 std::vector<std::string> EditingContext::grid_type_strings;
 std::vector<std::string> EditingContext::grid_type_short_labels;
@@ -2835,7 +2835,7 @@ EditingContext::pre_render ()
 /* Convenience functions to slightly reduce verbosity when registering actions */
 
 RefPtr<Action>
-EditingContext::reg_sens (RefPtr<ActionGroup> group, char const * name, char const * label, sigc::slot<void> slot)
+EditingContext::reg_sens (RefPtr<ActionGroup> group, char const * name, char const * label, sigc::slot<void()> slot)
 {
 	RefPtr<Action> act = ActionManager::register_action (group, name, label, slot);
 	assert(act);
@@ -2844,7 +2844,7 @@ EditingContext::reg_sens (RefPtr<ActionGroup> group, char const * name, char con
 }
 
 Glib::RefPtr<ToggleAction>
-EditingContext::toggle_reg_sens (RefPtr<ActionGroup> group, char const * name, char const * label, sigc::slot<void> slot)
+EditingContext::toggle_reg_sens (RefPtr<ActionGroup> group, char const * name, char const * label, sigc::slot<void()> slot)
 {
 	RefPtr<ToggleAction> act = ActionManager::register_toggle_action (group, name, label, slot);
 	assert(act);
@@ -2853,7 +2853,7 @@ EditingContext::toggle_reg_sens (RefPtr<ActionGroup> group, char const * name, c
 }
 
 Glib::RefPtr<Gtk::RadioAction>
-EditingContext::radio_reg_sens (RefPtr<ActionGroup> action_group, RadioAction::Group& radio_group, char const * name, char const * label, sigc::slot<void> slot)
+EditingContext::radio_reg_sens (RefPtr<ActionGroup> action_group, RadioAction::Group& radio_group, char const * name, char const * label, sigc::slot<void()> slot)
 {
 	RefPtr<RadioAction> act = ActionManager::register_radio_action (action_group, radio_group, name, label, slot);
 	assert(act);

@@ -124,7 +124,7 @@ namespace
 static void ActionGroup_signal_connect_proxy_callback(GtkActionGroup* self, GtkAction* p0,GtkWidget* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Action>&,Widget* > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Action>&, Widget*)> SlotType;
 
   ActionGroup* obj = dynamic_cast<ActionGroup*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -155,7 +155,7 @@ static const Glib::SignalProxyInfo ActionGroup_signal_connect_proxy_info =
 static void ActionGroup_signal_disconnect_proxy_callback(GtkActionGroup* self, GtkAction* p0,GtkWidget* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Action>&,Widget* > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Action>&, Widget*)> SlotType;
 
   ActionGroup* obj = dynamic_cast<ActionGroup*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -186,7 +186,7 @@ static const Glib::SignalProxyInfo ActionGroup_signal_disconnect_proxy_info =
 static void ActionGroup_signal_pre_activate_callback(GtkActionGroup* self, GtkAction* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Action>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Action>&)> SlotType;
 
   ActionGroup* obj = dynamic_cast<ActionGroup*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -216,7 +216,7 @@ static const Glib::SignalProxyInfo ActionGroup_signal_pre_activate_info =
 static void ActionGroup_signal_post_activate_callback(GtkActionGroup* self, GtkAction* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::RefPtr<Action>& > SlotType;
+  typedef sigc::slot<void(const Glib::RefPtr<Action>&)> SlotType;
 
   ActionGroup* obj = dynamic_cast<ActionGroup*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

@@ -37,7 +37,7 @@ namespace
 static void Editable_signal_insert_text_callback(GtkEditable* self, const gchar* text,gint length,gint* position,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::ustring&,int* > SlotType;
+  typedef sigc::slot<void(const Glib::ustring&, int*)> SlotType;
 
   Editable* obj = dynamic_cast<Editable*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -66,7 +66,7 @@ static const Glib::SignalProxyInfo Editable_signal_insert_text_info =
 static void Editable_signal_delete_text_callback(GtkEditable* self, gint p0,gint p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,int,int > SlotType;
+  typedef sigc::slot<void(int, int)> SlotType;
 
   Editable* obj = dynamic_cast<Editable*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

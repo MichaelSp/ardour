@@ -56,7 +56,7 @@ void ComboBoxEntryText::append(const Glib::ustring& text)
 
   //Ideally, we would just store the ListStore as a member variable, but we forgot to do that and not it would break the ABI.
   Glib::RefPtr<Gtk::TreeModel> model = get_model();
-  Glib::RefPtr<Gtk::ListStore> list_model = Glib::RefPtr<ListStore>::cast_dynamic(model);
+  Glib::RefPtr<Gtk::ListStore> list_model = std::dynamic_pointer_cast<ListStore>(model);
   
   if(list_model)
   {
@@ -78,7 +78,7 @@ void ComboBoxEntryText::prepend(const Glib::ustring& text)
 
   //Ideally, we would just store the ListStore as a member variable, but we forgot to do that and not it would break the ABI.
   Glib::RefPtr<Gtk::TreeModel> model = get_model();
-  Glib::RefPtr<Gtk::ListStore> list_model = Glib::RefPtr<ListStore>::cast_dynamic(model);
+  Glib::RefPtr<Gtk::ListStore> list_model = std::dynamic_pointer_cast<ListStore>(model);
   
   if(list_model)
   {
@@ -109,7 +109,7 @@ void ComboBoxEntryText::clear_items()
 {
   //Ideally, we would just store the ListStore as a member variable, but we forgot to do that and not it would break the ABI.
   Glib::RefPtr<Gtk::TreeModel> model = get_model();
-  Glib::RefPtr<Gtk::ListStore> list_model = Glib::RefPtr<ListStore>::cast_dynamic(model);
+  Glib::RefPtr<Gtk::ListStore> list_model = std::dynamic_pointer_cast<ListStore>(model);
 
   if(list_model)  
     list_model->clear();
@@ -119,7 +119,7 @@ void ComboBoxEntryText::remove_text(const Glib::ustring& text)
 {
   //Ideally, we would just store the ListStore as a member variable, but we forgot to do that and not it would break the ABI.
   Glib::RefPtr<Gtk::TreeModel> model = get_model();
-  Glib::RefPtr<Gtk::ListStore> list_model = Glib::RefPtr<ListStore>::cast_dynamic(model);
+  Glib::RefPtr<Gtk::ListStore> list_model = std::dynamic_pointer_cast<ListStore>(model);
 
   //Look for the row with this text, and remove it:
   if(list_model)
@@ -183,5 +183,4 @@ void ComboBoxEntryText::clear()
 #endif //GTKMM_DISABLE_DEPRECATED
 
 } // namespace Gtk
-
 

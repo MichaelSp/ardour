@@ -71,7 +71,7 @@ using namespace PBD;
 using Gtkmm2ext::Keyboard;
 using Gtkmm2ext::Bindings;
 
-sigc::signal<void> KeyEditor::UpdateBindings;
+sigc::signal<void()> KeyEditor::UpdateBindings;
 
 static bool
 bindings_collision_dialog (Gtk::Window& parent, const std::string& bound_name)

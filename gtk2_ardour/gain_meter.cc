@@ -98,7 +98,7 @@ reset_cursor_to_default_state (Gtk::StateType, Gtk::Entry* widget)
 	reset_cursor_to_default (widget);
 }
 
-sigc::signal<void, ARDOUR::AutoState> GainMeterBase::ChangeGainAutomationState;
+sigc::signal<void(ARDOUR::AutoState)> GainMeterBase::ChangeGainAutomationState;
 
 GainMeterBase::GainMeterBase (Session* s, bool horizontal, int fader_length, int fader_girth)
 	: gain_adjustment (gain_to_slider_position_with_max (1.0, Config->get_max_gain()),  // value

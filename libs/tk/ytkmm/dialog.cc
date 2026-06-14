@@ -73,7 +73,7 @@ namespace
 static void Dialog_signal_response_callback(GtkDialog* self, gint p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,int > SlotType;
+  typedef sigc::slot<void(int)> SlotType;
 
   Dialog* obj = dynamic_cast<Dialog*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

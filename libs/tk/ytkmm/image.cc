@@ -60,7 +60,7 @@ void Image::get_pixmap(Glib::RefPtr<Gdk::Pixmap>& pixmap, Glib::RefPtr<Gdk::Bitm
   gtk_image_get_pixmap(const_cast<GtkImage*>(gobj()), &pPixmap, &pBitmap);
 
   pixmap = Glib::wrap((GdkPixmapObject*) pPixmap, true);
-  mask   = Glib::RefPtr<Gdk::Bitmap>::cast_dynamic(Glib::wrap((GdkPixmapObject*) pBitmap, true));
+  mask = std::dynamic_pointer_cast<Gdk::Bitmap>(Glib::wrap((GdkPixmapObject*) pBitmap, true));
 }
 
 void Image::get_image(Glib::RefPtr<Gdk::Image>& gdk_image, Glib::RefPtr<Gdk::Bitmap>& mask) const
@@ -71,7 +71,7 @@ void Image::get_image(Glib::RefPtr<Gdk::Image>& gdk_image, Glib::RefPtr<Gdk::Bit
   gtk_image_get_image(const_cast<GtkImage*>(gobj()), &pImage, &pBitmap);
 
   gdk_image = Glib::wrap(pImage, true);
-  mask = Glib::RefPtr<Gdk::Bitmap>::cast_dynamic(Glib::wrap((GdkPixmapObject*) pBitmap, true));
+  mask = std::dynamic_pointer_cast<Gdk::Bitmap>(Glib::wrap((GdkPixmapObject*) pBitmap, true));
 }
 
 void Image::get_stock(Gtk::StockID& stock_id, IconSize& size) const
@@ -519,5 +519,4 @@ Glib::PropertyProxy_ReadOnly< Glib::RefPtr<Gio::Icon> > Image::property_gicon() 
 
 
 } // namespace Gtk
-
 

@@ -45,7 +45,7 @@ namespace
 static void Hypertext_signal_link_selected_callback(AtkHypertext* self, gint p0,void* data)
 {
   using namespace Atk;
-  typedef sigc::slot< void,int > SlotType;
+  typedef sigc::slot<void(int)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))

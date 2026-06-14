@@ -503,7 +503,7 @@ Butler::empty_pool_trash ()
 void
 Butler::process_delegated_work ()
 {
-	sigc::slot<void> sl;
+	sigc::slot<void()> sl;
 	while (_delegated_work.pop_front (sl)) {
 		sl ();
 	}

@@ -40,7 +40,7 @@ public:
 	Glib::PropertyProxy_Base         _property_renderable ();
 	Glib::PropertyProxy<std::string> property_label ();
 
-	typedef sigc::signal<void, const Glib::ustring&> SignalClicked;
+	typedef sigc::signal<void(const Glib::ustring&)> SignalClicked;
 
 	SignalClicked& signal_clicked ();
 

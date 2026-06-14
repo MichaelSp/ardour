@@ -77,7 +77,7 @@ public:
 	void sync_with_manager ();
 	virtual void allow_realtime_export (bool);
 
-	sigc::signal<void> CriticalSelectionChanged;
+	sigc::signal<void()> CriticalSelectionChanged;
 
 protected:
 	ProfileManagerPtr manager;

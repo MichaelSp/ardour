@@ -66,7 +66,7 @@ static const Glib::SignalProxyInfo Range_signal_value_changed_info =
 static void Range_signal_adjust_bounds_callback(GtkRange* self, gdouble p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,double > SlotType;
+  typedef sigc::slot<void(double)> SlotType;
 
   Range* obj = dynamic_cast<Range*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -96,7 +96,7 @@ static const Glib::SignalProxyInfo Range_signal_adjust_bounds_info =
 static void Range_signal_move_slider_callback(GtkRange* self, GtkScrollType p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,ScrollType > SlotType;
+  typedef sigc::slot<void(ScrollType)> SlotType;
 
   Range* obj = dynamic_cast<Range*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -126,7 +126,7 @@ static const Glib::SignalProxyInfo Range_signal_move_slider_info =
 static gboolean Range_signal_change_value_callback(GtkRange* self, GtkScrollType p0,gdouble p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,ScrollType,double > SlotType;
+  typedef sigc::slot<bool(ScrollType, double)> SlotType;
 
   Range* obj = dynamic_cast<Range*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -152,7 +152,7 @@ static gboolean Range_signal_change_value_callback(GtkRange* self, GtkScrollType
 static gboolean Range_signal_change_value_notify_callback(GtkRange* self, GtkScrollType p0,gdouble p1, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,ScrollType,double > SlotType;
+  typedef sigc::slot<void(ScrollType, double)> SlotType;
 
   Range* obj = dynamic_cast<Range*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

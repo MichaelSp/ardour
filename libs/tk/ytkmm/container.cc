@@ -56,7 +56,7 @@ static void container_foreach_callback(GtkWidget* widget_gobj, void* data)
 static void Container_signal_remove_callback_normal(GtkContainer* self, GtkWidget* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget* > SlotType;
+  typedef sigc::slot<void(Widget*)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -257,7 +257,7 @@ namespace
 static void Container_signal_add_callback(GtkContainer* self, GtkWidget* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget* > SlotType;
+  typedef sigc::slot<void(Widget*)> SlotType;
 
   Container* obj = dynamic_cast<Container*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -303,7 +303,7 @@ static const Glib::SignalProxyInfo Container_signal_check_resize_info =
 static void Container_signal_set_focus_child_callback(GtkContainer* self, GtkWidget* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget* > SlotType;
+  typedef sigc::slot<void(Widget*)> SlotType;
 
   Container* obj = dynamic_cast<Container*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

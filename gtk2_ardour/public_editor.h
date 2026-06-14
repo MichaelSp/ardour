@@ -259,10 +259,10 @@ public:
 
 	virtual void mapped_select_playlist_matching (RouteUI&, std::weak_ptr<ARDOUR::Playlist> pl) = 0;
 
-	virtual void mapover_grouped_routes (sigc::slot<void, RouteUI&> sl, RouteUI*, PBD::PropertyID) const = 0;
-	virtual void mapover_armed_routes (sigc::slot<void, RouteUI&> sl) const = 0;
-	virtual void mapover_selected_routes (sigc::slot<void, RouteUI&> sl) const = 0;
-	virtual void mapover_all_routes (sigc::slot<void, RouteUI&> sl) const = 0;
+	virtual void mapover_grouped_routes (sigc::slot<void(RouteUI&)> sl, RouteUI*, PBD::PropertyID) const = 0;
+	virtual void mapover_armed_routes (sigc::slot<void(RouteUI&)> sl) const = 0;
+	virtual void mapover_selected_routes (sigc::slot<void(RouteUI&)> sl) const = 0;
+	virtual void mapover_all_routes (sigc::slot<void(RouteUI&)> sl) const = 0;
 
 	virtual void new_playlists_for_all_tracks(bool copy) = 0;
 	virtual void new_playlists_for_grouped_tracks(RouteUI* rui, bool copy) = 0;
@@ -302,7 +302,7 @@ public:
 	virtual void toggle_meter_updating() = 0;
 	virtual void split_regions_at (Temporal::timepos_t const &, RegionSelection&) = 0;
 	virtual void split_region_at_points (std::shared_ptr<ARDOUR::Region>, ARDOUR::AnalysisFeatureList&, bool can_ferret, bool select_new = false) = 0;
-	virtual void foreach_time_axis_view (sigc::slot<void,TimeAxisView&>) = 0;
+	virtual void foreach_time_axis_view (sigc::slot<void(TimeAxisView&)>) = 0;
 	virtual void add_to_idle_resize (TimeAxisView*, int32_t) = 0;
 	virtual Temporal::timecnt_t get_paste_offset (Temporal::timepos_t const & pos, unsigned paste_count, Temporal::timecnt_t const & duration) = 0;
 
@@ -327,8 +327,8 @@ public:
 	virtual RegionView* regionview_from_region (std::shared_ptr<ARDOUR::Region>) const = 0;
 	virtual RouteTimeAxisView* rtav_from_route (std::shared_ptr<ARDOUR::Route>) const = 0;
 
-	sigc::signal<void> Realized;
-	sigc::signal<void,samplepos_t> UpdateAllTransportClocks;
+	sigc::signal<void()> Realized;
+	sigc::signal<void(samplepos_t)> UpdateAllTransportClocks;
 
 	virtual bool pending_locate_request() const = 0;
 

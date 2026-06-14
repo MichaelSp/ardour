@@ -74,7 +74,7 @@ public:
 	TestSink() : _last_event_time(Time::from_double (-1)) {}
 
 	/// return value, time, type, size, buffer
-	sigc::signal<uint32_t, Time, EventType, uint32_t, const uint8_t*> writing;
+	sigc::signal<uint32_t(Time, EventType, uint32_t, const uint8_t*)> writing;
 
 	virtual uint32_t write(Time time, EventType type, uint32_t size, const uint8_t* buf) {
 		//std::cerr << "last event time: " << _last_event_time << " time: " << time << std::endl;

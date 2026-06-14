@@ -50,7 +50,7 @@ class LIBGTKMM2EXT_API CellRendererPixbufMulti : public Gtk::CellRenderer
 
 	void set_pixbuf(uint32_t state, Glib::RefPtr<Gdk::Pixbuf> pixbuf);
 
-	typedef sigc::signal<void, const Glib::ustring&> SignalChanged;
+	typedef sigc::signal<void(const Glib::ustring&)> SignalChanged;
 
 	SignalChanged& signal_changed();
 

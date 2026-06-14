@@ -80,7 +80,7 @@ namespace
 static void Label_signal_populate_popup_callback(GtkLabel* self, GtkMenu* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Menu* > SlotType;
+  typedef sigc::slot<void(Menu*)> SlotType;
 
   Label* obj = dynamic_cast<Label*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -110,7 +110,7 @@ static const Glib::SignalProxyInfo Label_signal_populate_popup_info =
 static gboolean Label_signal_activate_link_callback(GtkLabel* self, const gchar* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,const Glib::ustring& > SlotType;
+  typedef sigc::slot<bool(const Glib::ustring&)> SlotType;
 
   Label* obj = dynamic_cast<Label*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -135,7 +135,7 @@ static gboolean Label_signal_activate_link_callback(GtkLabel* self, const gchar*
 static gboolean Label_signal_activate_link_notify_callback(GtkLabel* self, const gchar* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::ustring& > SlotType;
+  typedef sigc::slot<void(const Glib::ustring&)> SlotType;
 
   Label* obj = dynamic_cast<Label*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

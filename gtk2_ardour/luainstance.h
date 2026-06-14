@@ -127,7 +127,7 @@ public:
 	std::vector<std::string> lua_action_names ();
 	bool lua_action (const int, std::string&, std::string&, ARDOUR::LuaScriptParamList&);
 	bool lua_action_has_icon (const int);
-	sigc::signal<void,int,std::string> ActionChanged;
+	sigc::signal<void(int, std::string)> ActionChanged;
 
 	/* callbacks */
 	bool register_lua_slot (const std::string&, const std::string&, const ARDOUR::LuaScriptParamList&);
@@ -136,7 +136,7 @@ public:
 	bool lua_slot_name (const PBD::ID&, std::string&) const;
 	std::vector<std::string> lua_slot_names () const;
 	bool lua_slot (const PBD::ID&, std::string&, std::string&, ActionHook&, ARDOUR::LuaScriptParamList&);
-	sigc::signal<void,PBD::ID,std::string,ActionHook> SlotChanged;
+	sigc::signal<void(PBD::ID, std::string, ActionHook)> SlotChanged;
 
 	static PBD::Signal<void()> LuaTimerS; // deci-seconds (Timer every 1s)
 	static PBD::Signal<void()> LuaTimerDS; // deci-seconds (Timer every .1s)

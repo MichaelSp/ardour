@@ -5153,7 +5153,7 @@ Editor::handle_gui_changes (string const & what, void*)
 }
 
 void
-Editor::foreach_time_axis_view (sigc::slot<void,TimeAxisView&> theslot)
+Editor::foreach_time_axis_view (sigc::slot<void(TimeAxisView&)> theslot)
 {
 	for (TrackViewList::iterator i = track_views.begin(); i != track_views.end(); ++i) {
 		theslot (**i);

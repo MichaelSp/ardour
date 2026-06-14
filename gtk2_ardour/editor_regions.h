@@ -31,7 +31,7 @@ public:
 	EditorRegions (Editor&);
 
 	void set_selected (RegionSelection&);
-	void selection_mapover (sigc::slot<void, std::shared_ptr<ARDOUR::Region>>);
+	void selection_mapover (sigc::slot<void(std::shared_ptr<ARDOUR::Region>)>);
 	void remove_unused_regions ();
 
 	std::shared_ptr<ARDOUR::Region> get_single_selection ();

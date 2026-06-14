@@ -1559,7 +1559,7 @@ class ControlSurfacesOptions : public OptionEditorMiniPage
 		}
 
 		template <class T, class U, class V>
-		Gtk::TreeViewColumn* append_toggle_row (TreeView* view, Gtk::TreeModelColumn<T> const& col_state, Gtk::TreeModelColumn<U> const& col_viz, Gtk::TreeModelColumn<V> const& col_text, sigc::slot<void, std::string> cb)
+		Gtk::TreeViewColumn* append_toggle_row (TreeView* view, Gtk::TreeModelColumn<T> const& col_state, Gtk::TreeModelColumn<U> const& col_viz, Gtk::TreeModelColumn<V> const& col_text, sigc::slot<void(std::string)> cb)
 		{
 			Gtk::TreeViewColumn* tvc = manage (new Gtk::TreeViewColumn ());
 			tvc->set_resizable (false);
@@ -1586,7 +1586,7 @@ class ControlSurfacesOptions : public OptionEditorMiniPage
 		}
 
 		template <class U>
-		Gtk::TreeViewColumn* append_button (TreeView* view,  Gtk::TreeModelColumn<U> const& col_viz, std::string label, sigc::slot<void, std::string> cb)
+		Gtk::TreeViewColumn* append_button (TreeView* view,  Gtk::TreeModelColumn<U> const& col_viz, std::string label, sigc::slot<void(std::string)> cb)
 		{
 			Gtkmm2ext::CellRendererButton* btc = manage (new Gtkmm2ext::CellRendererButton());
 			btc->property_label () = label;
@@ -2048,7 +2048,7 @@ class VideoTimelineOptions : public OptionEditorMiniPage
 class ColumVisibilityOption : public Option
 {
 	public:
-	ColumVisibilityOption (string id, string name, uint32_t n_col, sigc::slot<uint32_t> get, sigc::slot<bool, uint32_t> set)
+	ColumVisibilityOption (string id, string name, uint32_t n_col, sigc::slot<uint32_t()> get, sigc::slot<bool(uint32_t)> set)
 		: Option (id, name)
 		, _heading (name)
 		, _n_col (n_col)
@@ -2107,8 +2107,8 @@ class ColumVisibilityOption : public Option
 
 	CheckButton** cb;
 	uint32_t _n_col;
-	sigc::slot<uint32_t> _get;
-	sigc::slot<bool, uint32_t> _set;
+	sigc::slot<uint32_t()> _get;
+	sigc::slot<bool(uint32_t)> _set;
 };
 
 
@@ -2129,7 +2129,7 @@ public:
 	 *  @param get Method to get the value of the appropriate configuration variable.
 	 *  @param set Method to set the value of the appropriate configuration variable.
 	 */
-	VisibilityOption (string name, VisibilityGroup* g, sigc::slot<string> get, sigc::slot<bool, string> set)
+	VisibilityOption (string name, VisibilityGroup* g, sigc::slot<string()> get, sigc::slot<bool(string)> set)
 		: Option (g->get_state_name(), name)
 		, _heading (name)
 		, _visibility_group (g)
@@ -2167,8 +2167,8 @@ private:
 
 	OptionEditorHeading _heading;
 	VisibilityGroup* _visibility_group;
-	sigc::slot<std::string> _get;
-	sigc::slot<bool, std::string> _set;
+	sigc::slot<std::string()> _get;
+	sigc::slot<bool(std::string)> _set;
 	PBD::ScopedConnection _visibility_group_connection;
 };
 
@@ -5494,7 +5494,7 @@ void RCOptionEditor::clear_au_blacklist () {
 }
 
 void
-RCOptionEditor::edit_vst_path (std::string const& title, std::string const& dflt, sigc::slot<string> get, sigc::slot<bool, string> set)
+RCOptionEditor::edit_vst_path (std::string const& title, std::string const& dflt, sigc::slot<string()> get, sigc::slot<bool(string)> set)
 {
 	/* see also PluginManagerUI::edit_vst_path */
 	PathsDialog pd (*current_toplevel(), title, get (), dflt);

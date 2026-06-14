@@ -340,7 +340,7 @@ class EditingContext : public ARDOUR::SessionHandlePtr, public AxisViewProvider,
 
 	virtual void reposition_and_zoom (samplepos_t, double) = 0;
 
-	sigc::signal<void> ZoomChanged;
+	sigc::signal<void()> ZoomChanged;
 
 	virtual Selection& get_selection() const { return *selection; }
 	virtual Selection& get_cut_buffer () const { return *cut_buffer; }
@@ -397,7 +397,7 @@ class EditingContext : public ARDOUR::SessionHandlePtr, public AxisViewProvider,
 
 	virtual void set_snapped_cursor_position (Temporal::timepos_t const & pos) = 0;
 
-	static sigc::signal<void> DropDownKeys;
+	static sigc::signal<void()> DropDownKeys;
 
 	PBD::Signal<void()> SnapChanged;
 	PBD::Signal<void()> MouseModeChanged;
@@ -591,9 +591,9 @@ class EditingContext : public ARDOUR::SessionHandlePtr, public AxisViewProvider,
 	void draw_length_chosen (Editing::GridType);
 	virtual void note_mode_chosen (ARDOUR::NoteMode) {}
 
-	sigc::signal<void> DrawLengthChanged;
-	sigc::signal<void> DrawVelocityChanged;
-	sigc::signal<void> DrawChannelChanged;
+	sigc::signal<void()> DrawLengthChanged;
+	sigc::signal<void()> DrawVelocityChanged;
+	sigc::signal<void()> DrawChannelChanged;
 
 	void draw_length_changed ();
 	void draw_velocity_changed ();
@@ -884,9 +884,9 @@ class EditingContext : public ARDOUR::SessionHandlePtr, public AxisViewProvider,
 
 	/* protected helper functions to help with registering actions */
 
-	static Glib::RefPtr<Gtk::Action> reg_sens (Glib::RefPtr<Gtk::ActionGroup> group, char const* name, char const* label, sigc::slot<void> slot);
-	static Glib::RefPtr<Gtk::ToggleAction> toggle_reg_sens (Glib::RefPtr<Gtk::ActionGroup> group, char const* name, char const* label, sigc::slot<void> slot);
-	static Glib::RefPtr<Gtk::RadioAction> radio_reg_sens (Glib::RefPtr<Gtk::ActionGroup> action_group, Gtk::RadioAction::Group& radio_group, char const* name, char const* label, sigc::slot<void> slot);
+	static Glib::RefPtr<Gtk::Action> reg_sens (Glib::RefPtr<Gtk::ActionGroup> group, char const* name, char const* label, sigc::slot<void()> slot);
+	static Glib::RefPtr<Gtk::ToggleAction> toggle_reg_sens (Glib::RefPtr<Gtk::ActionGroup> group, char const* name, char const* label, sigc::slot<void()> slot);
+	static Glib::RefPtr<Gtk::RadioAction> radio_reg_sens (Glib::RefPtr<Gtk::ActionGroup> action_group, Gtk::RadioAction::Group& radio_group, char const* name, char const* label, sigc::slot<void()> slot);
 
 	void center_screen_internal (samplepos_t, float);
 

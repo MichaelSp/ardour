@@ -54,14 +54,14 @@ public:
 	void set_state (ARDOUR::ExportProfileManager::FormatStatePtr state_, ARDOUR::Session * session_);
 	void update_format_list ();
 
-	sigc::signal<void, FormatPtr> FormatEdited;
-	sigc::signal<void, FormatPtr> FormatRemoved;
-	sigc::signal<FormatPtr, FormatPtr> NewFormat;
-	sigc::signal<void, FormatPtr> FormatReverted;
+	sigc::signal<void(FormatPtr)> FormatEdited;
+	sigc::signal<void(FormatPtr)> FormatRemoved;
+	sigc::signal<FormatPtr(FormatPtr)> NewFormat;
+	sigc::signal<void(FormatPtr)> FormatReverted;
 
 	/* Compatibility with other elements */
 
-	sigc::signal<void> CriticalSelectionChanged;
+	sigc::signal<void()> CriticalSelectionChanged;
 
 private:
 

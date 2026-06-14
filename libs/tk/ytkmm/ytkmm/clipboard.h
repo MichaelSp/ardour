@@ -5,6 +5,9 @@
 
 
 #include <glibmm/ustring.h>
+#include <glibmm/object.h>
+#include <glibmm/refptr.h>
+#include <glibmm/value.h>
 #include <sigc++/sigc++.h>
 
 /* $Id: clipboard.hg,v 1.17 2006/06/13 17:16:26 murrayc Exp $ */
@@ -51,7 +54,7 @@ namespace Gtk
 {
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
-class TextBuffer;
+class ::Gtk::TextBuffer;
 #endif //DOXYGEN_SHOULD_SKIP_THIS
 
 /** The Clipboard object represents a clipboard of data shared between different processes or between 
@@ -81,7 +84,7 @@ class TextBuffer;
  * best available format and converting the results into the UTF-8 encoding.
  */
 
-class Clipboard : public Glib::Object
+class Clipboard : public ::Glib::Object
 {
    
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
@@ -101,7 +104,7 @@ private:
   Clipboard& operator=(const Clipboard&);
 
 protected:
-  explicit Clipboard(const Glib::ConstructParams& construct_params);
+  explicit Clipboard(const ::Glib::::Glib::ConstructParams& construct_params);
   explicit Clipboard(GtkClipboard* castitem);
 
 #endif /* DOXYGEN_SHOULD_SKIP_THIS */
@@ -142,7 +145,7 @@ public:
    * object has been created, it is persistent and, since it is
    * owned by GTK+, must not be freed or unreffed.
    */
-  static Glib::RefPtr<Clipboard> get(GdkAtom selection =  GDK_SELECTION_CLIPBOARD);
+  static ::Glib::RefPtr<Clipboard> get(GdkAtom selection =  GDK_SELECTION_CLIPBOARD);
   
   /** Returns the clipboard object for the given selection.
    * Cut/copy/paste menu items and keyboard shortcuts should use
@@ -179,23 +182,23 @@ public:
    * it is owned by GTK+, must not be freed or
    * unrefd.
    */
-  static Glib::RefPtr<Clipboard> get_for_display(const Glib::RefPtr<Gdk::Display>& display, GdkAtom selection =  GDK_SELECTION_CLIPBOARD);
+  static ::Glib::RefPtr<Clipboard> get_for_display(const ::Glib::RefPtr<Gdk::Display>& display, GdkAtom selection =  GDK_SELECTION_CLIPBOARD);
 
   
   /** Gets the Gdk::Display associated with @a clipboard
    * 
    * @return The Gdk::Display associated with @a clipboard.
    */
-  Glib::RefPtr<Gdk::Display> get_display();
+  ::Glib::RefPtr<Gdk::Display> get_display();
   
   /** Gets the Gdk::Display associated with @a clipboard
    * 
    * @return The Gdk::Display associated with @a clipboard.
    */
-  Glib::RefPtr<const Gdk::Display> get_display() const;
+  ::Glib::RefPtr<const Gdk::Display> get_display() const;
 
-  /// For instance: void on_get(Gtk::SelectionData& selection_data, guint info);
-  typedef sigc::slot<void, SelectionData&, guint> SlotGet;
+  /// For instance: void on_get(::Gtk::::Gtk::SelectionData& selection_data, guint info);
+  typedef sigc::slot<void(::Gtk::::Gtk::SelectionData&, guint)> SlotGet;
 
   /// For instance: void on_clear();
   typedef sigc::slot<void> SlotClear;
@@ -213,7 +216,7 @@ public:
   *               the clipboard data failed then the provided callback methods
   *               will be ignored.
   */
-  bool set(const ArrayHandle_TargetEntry& targets, const SlotGet& slot_get, const SlotClear& slot_clear);
+  bool set(const ::Gtk::ArrayHandle_TargetEntry& targets, const SlotGet& slot_get, const SlotClear& slot_clear);
   
   
   /** If the clipboard contents callbacks were set with 
@@ -223,7 +226,7 @@ public:
    * 
    * @return The owner of the clipboard, if any; otherwise <tt>0</tt>.
    */
-  Glib::RefPtr<Glib::Object> get_owner();
+  ::Glib::RefPtr<::Glib::Object> get_owner();
   
   /** If the clipboard contents callbacks were set with 
    * set_with_owner(), and the set_with_data() or 
@@ -232,7 +235,7 @@ public:
    * 
    * @return The owner of the clipboard, if any; otherwise <tt>0</tt>.
    */
-  Glib::RefPtr<const Glib::Object> get_owner() const;
+  ::Glib::RefPtr<const ::Glib::Object> get_owner() const;
 
   
   /**
@@ -252,7 +255,7 @@ public:
    * @param text  A UTF-8 string.
    *
    */
-  void set_text(const Glib::ustring& text);
+  void set_text(const ::Glib::ustring& text);
   
   
   /** Sets the contents of the clipboard to the given Gdk::Pixbuf. 
@@ -262,10 +265,10 @@ public:
    * 
    * @param pixbuf A Gdk::Pixbuf.
    */
-  void set_image(const Glib::RefPtr<Gdk::Pixbuf>& pixbuf);
+  void set_image(const ::Glib::RefPtr<Gdk::Pixbuf>& pixbuf);
 
-  /// For instance: void on_received(const SelectionData& selection_data);
-  typedef sigc::slot<void, const SelectionData&> SlotReceived;
+  /// For instance: void on_received(const ::Gtk::::Gtk::SelectionData& selection_data);
+  typedef sigc::slot<void(const ::Gtk::::Gtk::SelectionData&)> SlotReceived;
 
   /** Requests the contents of clipboard as the given target.
    * When the results of the result are later received the supplied callback
@@ -278,11 +281,11 @@ public:
    *             the length field of selection_data will be
    *             negative.
    **/
-  void request_contents(const Glib::ustring& target, const SlotReceived& slot);
+  void request_contents(const ::Glib::ustring& target, const SlotReceived& slot);
   
   
-  /// For instance: void on_text_received(const Glib::ustring& text);
-  typedef sigc::slot<void, const Glib::ustring&> SlotTextReceived;
+  /// For instance: void on_text_received(const ::Glib::ustring& text);
+  typedef sigc::slot<void, const ::Glib::ustring&> SlotTextReceived;
 
   /** Requests the contents of the clipboard as text. When the text is
    * later received, it will be converted to UTF-8 if necessary, and
@@ -300,8 +303,8 @@ public:
   void request_text(const SlotTextReceived& slot);
   
 
-  /// For instance: void on_rich_text_received(const Glib::ustring& format, const std::string& text);
-  typedef sigc::slot<void, const Glib::ustring&, const std::string&> SlotRichTextReceived;
+  /// For instance: void on_rich_text_received(const ::Glib::ustring& format, const std::string& text);
+  typedef sigc::slot<void, const ::Glib::ustring&, const std::string&> SlotRichTextReceived;
 
   /** Requests the contents of the clipboard as rich text. When the rich text is later received, 
    * callback will be called.
@@ -310,16 +313,16 @@ public:
    * an empty string if it failed. This function can fail for various reasons, in particular if the 
    * clipboard was empty or if the contents of the clipboard could not be converted into rich text form.
    *
-   * @param buffer A Gtk::TextBuffer.
+   * @param buffer A Gtk::::Gtk::TextBuffer.
    * @param slot  A function to call when the text is received,
    *             or the retrieval fails. (It will always be called
    *             one way or the other.)
    */
-  void request_rich_text(const Glib::RefPtr<TextBuffer>& buffer, const SlotRichTextReceived& slot);
+  void request_rich_text(const ::Glib::RefPtr<::Gtk::::Gtk::TextBuffer>& buffer, const SlotRichTextReceived& slot);
   
 
-  /// For instance: void on_uris_received(const Glib::StringArrayHandle& uris);
-  typedef sigc::slot<void, const Glib::StringArrayHandle&> SlotUrisReceived;
+  /// For instance: void on_uris_received(const ::Glib::StringArrayHandle& uris);
+  typedef sigc::slot<void, const ::Glib::StringArrayHandle&> SlotUrisReceived;
 
  /** Requests the contents of the clipboard as URIs. When the URIs are
   * later received @a slot will be called.
@@ -334,8 +337,8 @@ public:
   void request_uris(const SlotUrisReceived& slot);
   
   
-  /// For instance: void on_image_received(const Glib::RefPtr<Gdk::Pixbuf>& text);
-  typedef sigc::slot<void, const Glib::RefPtr<Gdk::Pixbuf>&> SlotImageReceived;
+  /// For instance: void on_image_received(const ::Glib::RefPtr<Gdk::Pixbuf>& text);
+  typedef sigc::slot<void, const ::Glib::RefPtr<Gdk::Pixbuf>&> SlotImageReceived;
   
   /** Requests the contents of the clipboard as image. When the image is
    * later received, it will be converted to a Gdk::Pixbuf. 
@@ -355,8 +358,8 @@ public:
   void request_image(const SlotImageReceived& slot);
   
 
-  /// For instance: void on_targetsreceived(const Glib::StringArrayHandle& targets);
-  typedef sigc::slot<void, const Glib::StringArrayHandle&> SlotTargetsReceived;
+  /// For instance: void on_targetsreceived(const ::Glib::StringArrayHandle& targets);
+  typedef sigc::slot<void, const ::Glib::StringArrayHandle&> SlotTargetsReceived;
 
   /** Requests the contents of the clipboard as list of supported targets.
    * When the list is later received, callback will be called.
@@ -366,7 +369,7 @@ public:
    *
    * @param slot a function to call when the targets are received,
    *             or the retrieval fails. (It will always be called
-   *             one way or the other.) Remember that Glib::StringArrayHandle
+   *             one way or the other.) Remember that ::Glib::StringArrayHandle
    *             is an intermediate type, so you should convert it to a
    *             standard C++ container.
    */
@@ -380,9 +383,9 @@ public:
    *
    * @param target The form into which the clipboard owner should convert the selection.
    *
-   * @return A SelectionData object, which will be invalid if retrieving the given target failed. 
+   * @return A ::Gtk::SelectionData object, which will be invalid if retrieving the given target failed. 
    */
-  SelectionData wait_for_contents(const Glib::ustring& target) const;
+  ::Gtk::::Gtk::SelectionData wait_for_contents(const ::Glib::ustring& target) const;
   
 
   /** Requests the contents of the clipboard as text and converts
@@ -396,9 +399,9 @@ public:
    * clipboard was empty or if the contents of the
    * clipboard could not be converted into text form.).
    */
-  Glib::ustring wait_for_text() const;
+  ::Glib::ustring wait_for_text() const;
 
-  std::string wait_for_rich_text(const Glib::RefPtr<TextBuffer>& buffer, std::string& format);
+  std::string wait_for_rich_text(const ::Glib::RefPtr<::Gtk::TextBuffer>& buffer, std::string& format);
   
   
   //Maybe the result should be const, but constness is not so clear-cut here. murrayc
@@ -409,13 +412,13 @@ public:
    * timeouts, etc, may be dispatched during the wait.
    * 
    * @return A newly-allocated Gdk::Pixbuf object which must
-   * be disposed with Glib::object_unref(), or <tt>0</tt> if 
+   * be disposed with ::Glib::object_unref(), or <tt>0</tt> if 
    * retrieving the selection data failed. (This 
    * could happen for various reasons, in particular 
    * if the clipboard was empty or if the contents of 
    * the clipboard could not be converted into an image.).
    */
-  Glib::RefPtr<Gdk::Pixbuf> wait_for_image() const;
+  ::Glib::RefPtr<Gdk::Pixbuf> wait_for_image() const;
   
   
   /** Test to see if there is text available to be pasted
@@ -442,10 +445,10 @@ public:
    * wait_for_rich_text() since it doesn't need to retrieve
    * the actual text.
    * 
-   * @param buffer A Gtk::TextBuffer.
+   * @param buffer A Gtk::::Gtk::TextBuffer.
    * @return <tt>true</tt> is there is rich text available, <tt>false</tt> otherwise.
    */
-  bool wait_is_rich_text_available(const Glib::RefPtr<TextBuffer>& buffer) const;
+  bool wait_is_rich_text_available(const ::Glib::RefPtr<::Gtk::TextBuffer>& buffer) const;
   
   /** Test to see if there is an image available to be pasted
    * This is done by requesting the TARGETS atom and checking
@@ -485,7 +488,7 @@ public:
    * @param target A Gdk::Atom indicating which target to look for.
    * @return <tt>true</tt> if the target is available, <tt>false</tt> otherwise.
    */
-  bool wait_is_target_available(const Glib::ustring& target);
+  bool wait_is_target_available(const ::Glib::ustring& target);
 
   /** Returns a list of targets that are present on the clipboard.
    * This function waits for the data to be received using the main
@@ -493,7 +496,7 @@ public:
    *
    * @result targets: The targets.
    */
-  Glib::StringArrayHandle wait_for_targets() const;
+  ::Glib::StringArrayHandle wait_for_targets() const;
   
 
   /** Requests the contents of the clipboard as URIs. This function waits
@@ -502,13 +505,13 @@ public:
    * 
    * @return A newly-allocated
    * <tt>0</tt>-terminated array of strings which must
-   * be freed with Glib::strfreev(), or <tt>0</tt> if
+   * be freed with ::Glib::strfreev(), or <tt>0</tt> if
    * retrieving the selection data failed. (This
    * could happen for various reasons, in particular
    * if the clipboard was empty or if the contents of
    * the clipboard could not be converted into URI form.).
    */
-  Glib::StringArrayHandle wait_for_uris() const;
+  ::Glib::StringArrayHandle wait_for_uris() const;
 
   /** Hints that the clipboard data should be stored somewhere when the application exits or when store() 
    * is called.
@@ -518,7 +521,7 @@ public:
    *
    * @param targets Array containing information about which forms should be stored.
    */
-  void set_can_store(const ArrayHandle_TargetEntry& targets);
+  void set_can_store(const ::Gtk::ArrayHandle_TargetEntry& targets);
   
   /** Hints that all forms of clipboard data should be stored somewhere when the application exits or when store() 
    * is called.
@@ -543,7 +546,7 @@ public:
    *
    */
 
-  Glib::SignalProxy1< void,GdkEventOwnerChange* > signal_owner_change();
+  ::Glib::SignalProxy1< void,GdkEventOwnerChange* > signal_owner_change();
 
            
 public:
@@ -564,7 +567,7 @@ protected:
 
 namespace Glib
 {
-  /** A Glib::wrap() method for this object.
+  /** A ::Glib::wrap() method for this object.
    * 
    * @param object The C instance.
    * @param take_copy False if the result should take ownership of the C instance. True if it should take a new copy or ref.
@@ -572,9 +575,8 @@ namespace Glib
    *
    * @relates Gtk::Clipboard
    */
-  Glib::RefPtr<Gtk::Clipboard> wrap(GtkClipboard* object, bool take_copy = false);
+  ::Glib::RefPtr<::Gtk::Clipboard> wrap(GtkClipboard* object, bool take_copy = false);
 }
 
 
 #endif /* _GTKMM_CLIPBOARD_H */
-

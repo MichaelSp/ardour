@@ -42,10 +42,10 @@ public:
 	bool can_be_torn_off () const { return _can_be_torn_off; }
 	bool visible () const { return _visible; }
 
-	sigc::signal<void> Detach;
-	sigc::signal<void> Attach;
-	sigc::signal<void> Visible;
-	sigc::signal<void> Hidden;
+	sigc::signal<void()> Detach;
+	sigc::signal<void()> Attach;
+	sigc::signal<void()> Visible;
+	sigc::signal<void()> Hidden;
 
 	Gtk::Window& tearoff_window() { return own_window; }
 	bool torn_off() const;

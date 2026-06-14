@@ -7,6 +7,7 @@
 
 
 #include <glibmm/ustring.h>
+#include <glibmm/slisthandle.h>
 #include <sigc++/sigc++.h>
 
 /* Copyright (C) 1998-2002 The gtkmm Development Team
@@ -404,7 +405,7 @@ protected:
 
 
 public:
-  typedef sigc::slot<void, const guint8*> SlotDestroyData;
+  typedef sigc::slot<void(const guint8*)> SlotDestroyData;
 
   // Hand-coded so the implementation in the .ccg is also only
   // built when GDKMM_DISABLE_DEPRECATED is defined.
@@ -906,4 +907,3 @@ namespace Glib
 
 
 #endif /* _GDKMM_PIXBUF_H */
-

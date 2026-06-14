@@ -58,7 +58,7 @@ MetaButton::clear_items ()
 }
 
 void
-MetaButton::add_item (std::string const& label, std::string const& menutext, sigc::slot<void> const& cb)
+MetaButton::add_item (std::string const& label, std::string const& menutext, sigc::slot<void()> const& cb)
 {
 	using namespace Menu_Helpers;
 
@@ -73,7 +73,7 @@ MetaButton::add_item (std::string const& label, std::string const& menutext, sig
 }
 
 void
-MetaButton::add_item (std::string const& label, std::string const & menutext, Gtk::Menu& submenu, sigc::slot<void> const & cb)
+MetaButton::add_item (std::string const& label, std::string const & menutext, Gtk::Menu& submenu, sigc::slot<void()> const & cb)
 {
 	using namespace Menu_Helpers;
 

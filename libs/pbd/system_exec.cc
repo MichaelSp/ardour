@@ -26,9 +26,7 @@
 #include <errno.h>
 #include <algorithm>
 
-#ifdef HAVE_UNISTD_H
 #include <unistd.h>
-#endif
 
 #ifndef COMPILER_MSVC
 #include <dirent.h>

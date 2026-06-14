@@ -5,6 +5,8 @@
 
 
 #include <glibmm/ustring.h>
+#include <glibmm/arrayhandle.h>
+#include <glibmm/listhandle.h>
 #include <sigc++/sigc++.h>
 
 /* $Id: types.hg,v 1.6 2005/12/14 15:36:23 murrayc Exp $ */
@@ -403,4 +405,3 @@ const Gdk::Point& wrap(const GdkPoint* object);
 
 
 #endif /* _GDKMM_TYPES_H */
-

@@ -33,13 +33,13 @@ public:
 	APianoKeyboard ();
 	~APianoKeyboard ();
 
-	sigc::signal<void, int, int>  NoteOn;
-	sigc::signal<void, int>       NoteOff;
-	sigc::signal<void>            Rest;
-	sigc::signal<void,bool>       SustainChanged;
-	sigc::signal<void, int, bool> PitchBend;
-	sigc::signal<void, int>       SetVelocity;
-	sigc::signal<void, bool>      SwitchOctave;
+	sigc::signal<void(int, int)>  NoteOn;
+	sigc::signal<void(int)>       NoteOff;
+	sigc::signal<void()>            Rest;
+	sigc::signal<void(bool)>       SustainChanged;
+	sigc::signal<void(int, bool)> PitchBend;
+	sigc::signal<void(int)>       SetVelocity;
+	sigc::signal<void(bool)>      SwitchOctave;
 
 	void sustain_press ();
 	void sustain_release ();

@@ -63,7 +63,7 @@ namespace
 static void EntryBuffer_signal_inserted_text_callback(GtkEntryBuffer* self, guint p0,const gchar* p1,guint p2,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,guint,const gchar*,guint > SlotType;
+  typedef sigc::slot<void(guint, const gchar*, guint)> SlotType;
 
   EntryBuffer* obj = dynamic_cast<EntryBuffer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -92,7 +92,7 @@ static const Glib::SignalProxyInfo EntryBuffer_signal_inserted_text_info =
 static void EntryBuffer_signal_deleted_text_callback(GtkEntryBuffer* self, guint p0,guint p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,guint,guint > SlotType;
+  typedef sigc::slot<void(guint, guint)> SlotType;
 
   EntryBuffer* obj = dynamic_cast<EntryBuffer*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

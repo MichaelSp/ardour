@@ -103,8 +103,8 @@ public:
 
 	static void print_minsec (samplepos_t, char* buf, size_t bufsize, float sample_rate, int decimals = 3);
 
-	sigc::signal<void> ValueChanged;
-	sigc::signal<void> mode_changed;
+	sigc::signal<void()> ValueChanged;
+	sigc::signal<void()> mode_changed;
 
 	static std::vector<AudioClock*> clocks;
 

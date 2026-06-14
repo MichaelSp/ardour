@@ -127,7 +127,7 @@ namespace
 static void Text_signal_text_changed_callback(AtkText* self, gint p0,gint p1,void* data)
 {
   using namespace Atk;
-  typedef sigc::slot< void,int,int > SlotType;
+  typedef sigc::slot<void(int, int)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))
@@ -161,7 +161,7 @@ static const Glib::SignalProxyInfo Text_signal_text_changed_info =
 static void Text_signal_text_caret_moved_callback(AtkText* self, gint p0,void* data)
 {
   using namespace Atk;
-  typedef sigc::slot< void,int > SlotType;
+  typedef sigc::slot<void(int)> SlotType;
 
   // Do not try to call a signal on a disassociated wrapper.
   if(Glib::ObjectBase::_get_current_wrapper((GObject*) self))

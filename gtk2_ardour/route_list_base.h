@@ -67,7 +67,7 @@ protected:
 	void setup_col (Gtk::TreeViewColumn*, const char*, const char*, bool require_mod_to_edit = false);
 
 	template <class T, class U>
-	Gtk::TreeViewColumn* append_toggle (Gtk::TreeModelColumn<T> const& col_state, Gtk::TreeModelColumn<U> const& col_viz, sigc::slot<void, std::string> cb)
+	Gtk::TreeViewColumn* append_toggle (Gtk::TreeModelColumn<T> const& col_state, Gtk::TreeModelColumn<U> const& col_viz, sigc::slot<void(std::string)> cb)
 	{
 		Gtk::TreeViewColumn* tvc = manage (new Gtk::TreeViewColumn ("", col_state));
 		tvc->set_fixed_width (30);
@@ -88,7 +88,7 @@ protected:
 	}
 
 	template <class T, class U>
-	Gtkmm2ext::CellRendererPixbufMulti* append_cell (const char* lbl, const char* tip, Gtk::TreeModelColumn<T> const& col_state, Gtk::TreeModelColumn<U> const& col_viz, sigc::slot<void, std::string> cb)
+	Gtkmm2ext::CellRendererPixbufMulti* append_cell (const char* lbl, const char* tip, Gtk::TreeModelColumn<T> const& col_state, Gtk::TreeModelColumn<U> const& col_viz, sigc::slot<void(std::string)> cb)
 	{
 		Gtkmm2ext::CellRendererPixbufMulti* cell;
 		Gtk::TreeViewColumn*                tvc;

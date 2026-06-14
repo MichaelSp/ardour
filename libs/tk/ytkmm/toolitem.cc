@@ -56,7 +56,7 @@ namespace
 static gboolean ToolItem_signal_create_menu_proxy_callback(GtkToolItem* self, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool > SlotType;
+  typedef sigc::slot<bool()> SlotType;
 
   ToolItem* obj = dynamic_cast<ToolItem*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -80,7 +80,7 @@ static gboolean ToolItem_signal_create_menu_proxy_callback(GtkToolItem* self, vo
 static gboolean ToolItem_signal_create_menu_proxy_notify_callback(GtkToolItem* self,  void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void > SlotType;
+  typedef sigc::slot<void()> SlotType;
 
   ToolItem* obj = dynamic_cast<ToolItem*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

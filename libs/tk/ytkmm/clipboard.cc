@@ -348,7 +348,7 @@ namespace
 static void Clipboard_signal_owner_change_callback(GtkClipboard* self, GdkEventOwnerChange* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEventOwnerChange* > SlotType;
+  typedef sigc::slot<void(GdkEventOwnerChange*)> SlotType;
 
   Clipboard* obj = dynamic_cast<Clipboard*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

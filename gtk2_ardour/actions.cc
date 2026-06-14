@@ -150,7 +150,7 @@ ActionManager::toggle_config_state (const char* group, const char* action, bool 
 }
 
 void
-ActionManager::toggle_config_state_foo (const char* group, const char* action, sigc::slot<bool, bool> set, sigc::slot<bool> get)
+ActionManager::toggle_config_state_foo (const char* group, const char* action, sigc::slot<bool(bool)> set, sigc::slot<bool()> get)
 {
 	Glib::RefPtr<Action> act = ActionManager::get_action (group, action);
 
@@ -215,7 +215,7 @@ ActionManager::map_some_state (const char* group, const char* action, bool (UICo
 }
 
 void
-ActionManager::map_some_state (const char* group, const char* action, sigc::slot<bool> get)
+ActionManager::map_some_state (const char* group, const char* action, sigc::slot<bool()> get)
 {
 	Glib::RefPtr<Action> act = ActionManager::get_action (group, action, false);
 	if (act) {

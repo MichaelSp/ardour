@@ -191,7 +191,7 @@ public:
 
 	void remove_midi_note (ArdourCanvas::Item*, GdkEvent*);
 
-	void foreach_time_axis_view (sigc::slot<void,TimeAxisView&>);
+	void foreach_time_axis_view (sigc::slot<void(TimeAxisView&)>);
 	void add_to_idle_resize (TimeAxisView*, int32_t);
 
 	StripableTimeAxisView* get_stripable_time_axis_by_id (const PBD::ID& id) const;
@@ -697,14 +697,14 @@ private:
 	RegionView* regionview_from_region (std::shared_ptr<ARDOUR::Region>) const;
 	RouteTimeAxisView* rtav_from_route (std::shared_ptr<ARDOUR::Route>) const;
 
-	void mapover_tracks_with_unique_playlists (sigc::slot<void,RouteTimeAxisView&,uint32_t> sl, TimeAxisView*, PBD::PropertyID) const;
-	void mapover_all_tracks_with_unique_playlists (sigc::slot<void,RouteTimeAxisView&,uint32_t>) const;
+	void mapover_tracks_with_unique_playlists (sigc::slot<void(RouteTimeAxisView&, uint32_t)> sl, TimeAxisView*, PBD::PropertyID) const;
+	void mapover_all_tracks_with_unique_playlists (sigc::slot<void(RouteTimeAxisView&, uint32_t)>) const;
 	void mapped_get_equivalent_regions (RouteTimeAxisView&, uint32_t, RegionView*, std::vector<RegionView*>*) const;
 
-	void mapover_grouped_routes (sigc::slot<void, RouteUI&> sl, RouteUI*, PBD::PropertyID) const;
-	void mapover_armed_routes (sigc::slot<void, RouteUI&> sl) const;
-	void mapover_selected_routes (sigc::slot<void, RouteUI&> sl) const;
-	void mapover_all_routes (sigc::slot<void, RouteUI&> sl) const;
+	void mapover_grouped_routes (sigc::slot<void(RouteUI&)> sl, RouteUI*, PBD::PropertyID) const;
+	void mapover_armed_routes (sigc::slot<void(RouteUI&)> sl) const;
+	void mapover_selected_routes (sigc::slot<void(RouteUI&)> sl) const;
+	void mapover_all_routes (sigc::slot<void(RouteUI&)> sl) const;
 
 	void mapped_select_playlist_matching (RouteUI&, std::weak_ptr<ARDOUR::Playlist> pl);
 	void mapped_use_new_playlist (RouteUI&, std::string name, std::string gid, bool copy, std::vector<std::shared_ptr<ARDOUR::Playlist> > const &);
@@ -2225,8 +2225,8 @@ private:
 
 	/* private helper functions to help with registering region actions */
 
-	Glib::RefPtr<Gtk::Action> register_region_action (Glib::RefPtr<Gtk::ActionGroup> group, Editing::RegionActionTarget, char const* name, char const* label, sigc::slot<void> slot);
-	void register_toggle_region_action (Glib::RefPtr<Gtk::ActionGroup> group, Editing::RegionActionTarget, char const* name, char const* label, sigc::slot<void> slot);
+	Glib::RefPtr<Gtk::Action> register_region_action (Glib::RefPtr<Gtk::ActionGroup> group, Editing::RegionActionTarget, char const* name, char const* label, sigc::slot<void()> slot);
+	void register_toggle_region_action (Glib::RefPtr<Gtk::ActionGroup> group, Editing::RegionActionTarget, char const* name, char const* label, sigc::slot<void()> slot);
 
 	void remove_gap_marker_callback (Temporal::timepos_t at, Temporal::timecnt_t distance);
 

@@ -108,8 +108,8 @@ public:
 	uint32_t     num_selected_regionviews () const;
 
 	RegionView*  find_view (std::shared_ptr<const ARDOUR::Region>);
-	void         foreach_regionview (sigc::slot<void,RegionView*> slot);
-	void         foreach_selected_regionview (sigc::slot<void,RegionView*> slot);
+	void         foreach_regionview (sigc::slot<void(RegionView*)> slot);
+	void         foreach_selected_regionview (sigc::slot<void(RegionView*)> slot);
 
 	void set_selected_regionviews (RegionSelection&);
 	void _get_selectables (Temporal::timepos_t const &, Temporal::timepos_t const &, double, double, std::list<Selectable* >&, bool within);
@@ -136,10 +136,10 @@ public:
 	virtual void playlist_layered (std::weak_ptr<ARDOUR::Track>);
 	void update_coverage_frame ();
 
-	sigc::signal<void, RegionView*> RegionViewAdded;
-	sigc::signal<void> RegionViewRemoved;
+	sigc::signal<void(RegionView*)> RegionViewAdded;
+	sigc::signal<void()> RegionViewRemoved;
 	/** Emitted when the height of regions has changed */
-	sigc::signal<void> ContentsHeightChanged;
+	sigc::signal<void()> ContentsHeightChanged;
 
 	virtual void parameter_changed (std::string const &);
 

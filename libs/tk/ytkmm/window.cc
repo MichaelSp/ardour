@@ -236,7 +236,7 @@ namespace
 static void Window_signal_set_focus_callback(GtkWindow* self, GtkWidget* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Widget* > SlotType;
+  typedef sigc::slot<void(Widget*)> SlotType;
 
   Window* obj = dynamic_cast<Window*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -266,7 +266,7 @@ static const Glib::SignalProxyInfo Window_signal_set_focus_info =
 static gboolean Window_signal_frame_event_callback(GtkWindow* self, GdkEvent* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,GdkEvent* > SlotType;
+  typedef sigc::slot<bool(GdkEvent*)> SlotType;
 
   Window* obj = dynamic_cast<Window*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -290,7 +290,7 @@ static gboolean Window_signal_frame_event_callback(GtkWindow* self, GdkEvent* p0
 static gboolean Window_signal_frame_event_notify_callback(GtkWindow* self, GdkEvent* p0, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,GdkEvent* > SlotType;
+  typedef sigc::slot<void(GdkEvent*)> SlotType;
 
   Window* obj = dynamic_cast<Window*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

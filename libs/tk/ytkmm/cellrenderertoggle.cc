@@ -48,7 +48,7 @@ namespace
 static void CellRendererToggle_signal_toggled_callback(GtkCellRendererToggle* self, const gchar* p0,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const Glib::ustring& > SlotType;
+  typedef sigc::slot<void(const Glib::ustring&)> SlotType;
 
   CellRendererToggle* obj = dynamic_cast<CellRendererToggle*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.

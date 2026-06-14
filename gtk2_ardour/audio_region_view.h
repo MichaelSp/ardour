@@ -99,7 +99,7 @@ public:
 	void update_envelope_visibility ();
 	bool paste (Temporal::timepos_t const&, const Selection&, PasteContext&);
 
-	sigc::signal<void> region_line_changed;
+	sigc::signal<void()> region_line_changed;
 
 	void add_gain_point_event (ArdourCanvas::Item *item, GdkEvent *event, bool with_guard_points);
 

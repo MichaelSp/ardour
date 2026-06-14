@@ -368,7 +368,7 @@ Glib::RefPtr<Gtk::TreeModel> TreeView::_get_base_model()
   bool get_child = true;
   while(get_child && refModel)
   {
-    Glib::RefPtr<Gtk::TreeModelFilter> refModelFilter = Glib::RefPtr<Gtk::TreeModelFilter>::cast_dynamic(refModel);
+    Glib::RefPtr<Gtk::TreeModelFilter> refModelFilter = std::dynamic_pointer_cast<Gtk::TreeModelFilter>(refModel);
     if(refModelFilter)
       refModel = refModelFilter->get_model();
     else
@@ -507,7 +507,7 @@ namespace
 static void TreeView_signal_set_scroll_adjustments_callback(GtkTreeView* self, GtkAdjustment* p0,GtkAdjustment* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,Adjustment*,Adjustment* > SlotType;
+  typedef sigc::slot<void(Adjustment*, Adjustment*)> SlotType;
 
   TreeView* obj = dynamic_cast<TreeView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -538,7 +538,7 @@ static const Glib::SignalProxyInfo TreeView_signal_set_scroll_adjustments_info =
 static void TreeView_signal_row_activated_callback(GtkTreeView* self, GtkTreePath* p0,GtkTreeViewColumn* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const TreeModel::Path&,TreeViewColumn* > SlotType;
+  typedef sigc::slot<void(const TreeModel::Path&, TreeViewColumn*)> SlotType;
 
   TreeView* obj = dynamic_cast<TreeView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -569,7 +569,7 @@ static const Glib::SignalProxyInfo TreeView_signal_row_activated_info =
 static gboolean TreeView_signal_test_expand_row_callback(GtkTreeView* self, GtkTreeIter* p0,GtkTreePath* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,const TreeModel::iterator&,const TreeModel::Path& > SlotType;
+  typedef sigc::slot<bool(const TreeModel::iterator&, const TreeModel::Path&)> SlotType;
 
   TreeView* obj = dynamic_cast<TreeView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -595,7 +595,7 @@ static gboolean TreeView_signal_test_expand_row_callback(GtkTreeView* self, GtkT
 static gboolean TreeView_signal_test_expand_row_notify_callback(GtkTreeView* self, GtkTreeIter* p0,GtkTreePath* p1, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const TreeModel::iterator&,const TreeModel::Path& > SlotType;
+  typedef sigc::slot<void(const TreeModel::iterator&, const TreeModel::Path&)> SlotType;
 
   TreeView* obj = dynamic_cast<TreeView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -629,7 +629,7 @@ static const Glib::SignalProxyInfo TreeView_signal_test_expand_row_info =
 static gboolean TreeView_signal_test_collapse_row_callback(GtkTreeView* self, GtkTreeIter* p0,GtkTreePath* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< bool,const TreeModel::iterator&,const TreeModel::Path& > SlotType;
+  typedef sigc::slot<bool(const TreeModel::iterator&, const TreeModel::Path&)> SlotType;
 
   TreeView* obj = dynamic_cast<TreeView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -655,7 +655,7 @@ static gboolean TreeView_signal_test_collapse_row_callback(GtkTreeView* self, Gt
 static gboolean TreeView_signal_test_collapse_row_notify_callback(GtkTreeView* self, GtkTreeIter* p0,GtkTreePath* p1, void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const TreeModel::iterator&,const TreeModel::Path& > SlotType;
+  typedef sigc::slot<void(const TreeModel::iterator&, const TreeModel::Path&)> SlotType;
 
   TreeView* obj = dynamic_cast<TreeView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -689,7 +689,7 @@ static const Glib::SignalProxyInfo TreeView_signal_test_collapse_row_info =
 static void TreeView_signal_row_expanded_callback(GtkTreeView* self, GtkTreeIter* p0,GtkTreePath* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const TreeModel::iterator&,const TreeModel::Path& > SlotType;
+  typedef sigc::slot<void(const TreeModel::iterator&, const TreeModel::Path&)> SlotType;
 
   TreeView* obj = dynamic_cast<TreeView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -720,7 +720,7 @@ static const Glib::SignalProxyInfo TreeView_signal_row_expanded_info =
 static void TreeView_signal_row_collapsed_callback(GtkTreeView* self, GtkTreeIter* p0,GtkTreePath* p1,void* data)
 {
   using namespace Gtk;
-  typedef sigc::slot< void,const TreeModel::iterator&,const TreeModel::Path& > SlotType;
+  typedef sigc::slot<void(const TreeModel::iterator&, const TreeModel::Path&)> SlotType;
 
   TreeView* obj = dynamic_cast<TreeView*>(Glib::ObjectBase::_get_current_wrapper((GObject*) self));
   // Do not try to call a signal on a disassociated wrapper.
@@ -2021,5 +2021,4 @@ void Gtk::TreeView::on_columns_changed()
 
 
 } // namespace Gtk
-
 

@@ -46,7 +46,7 @@ public:
 	void add_tab (std::string const &name, Gtkmm2ext::Bindings&);
 	void remove_tab (std::string const &name);
 
-	static sigc::signal<void> UpdateBindings;
+	static sigc::signal<void()> UpdateBindings;
 
 	void disconnect () {
 		_refresh_connection.disconnect ();

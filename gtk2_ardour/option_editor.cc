@@ -193,7 +193,7 @@ OptionEditorBlank::add_to_page (OptionEditorPage* p)
 
 /*--------------------------*/
 
-RcConfigDisplay::RcConfigDisplay (string const & i, string const & n, sigc::slot<string> g, char s)
+RcConfigDisplay::RcConfigDisplay (string const & i, string const & n, sigc::slot<string()> g, char s)
 	: _get (g)
 	, _id (i)
 	, _sep (s)
@@ -315,7 +315,7 @@ CheckOption::toggled ()
 
 /*--------------------------*/
 
-BoolOption::BoolOption (string const & i, string const & n, sigc::slot<bool> g, sigc::slot<bool, bool> s)
+BoolOption::BoolOption (string const & i, string const & n, sigc::slot<bool()> g, sigc::slot<bool(bool)> s)
 	: Option (i, n),
 	  _get (g),
 	  _set (s)
@@ -350,7 +350,7 @@ BoolOption::toggled ()
 
 /*--------------------------*/
 
-RouteDisplayBoolOption::RouteDisplayBoolOption (string const & i, string const & n, sigc::slot<bool> g, sigc::slot<bool, bool> s)
+RouteDisplayBoolOption::RouteDisplayBoolOption (string const & i, string const & n, sigc::slot<bool()> g, sigc::slot<bool(bool)> s)
 	: BoolOption (i, n, g, s)
 {
 }
@@ -364,7 +364,7 @@ RouteDisplayBoolOption::toggled ()
 
 /*--------------------------*/
 
-EntryOption::EntryOption (string const & i, string const & n, sigc::slot<string> g, sigc::slot<bool, string> s)
+EntryOption::EntryOption (string const & i, string const & n, sigc::slot<string()> g, sigc::slot<bool(string)> s)
 	: Option (i, n),
 	  _get (g),
 	  _set (s)
@@ -435,8 +435,8 @@ EntryOption::focus_out (GdkEventFocus*)
 HSliderOption::HSliderOption (
 		std::string const& i,
 		std::string const& n,
-		sigc::slot<float> g,
-		sigc::slot<bool, float> s,
+		sigc::slot<float()> g,
+		sigc::slot<bool(float)> s,
 		double lower, double upper,
 		double step_increment,
 		double page_increment,
@@ -502,8 +502,8 @@ HSliderOption::set_sensitive (bool yn)
 ComboStringOption::ComboStringOption (
 		std::string const & i,
 		std::string const & n,
-		sigc::slot<std::string> g,
-		sigc::slot<bool, std::string> s
+		sigc::slot<std::string()> g,
+		sigc::slot<bool(std::string)> s
 		)
 	: Option (i, n)
 	, _get (g)
@@ -564,7 +564,7 @@ ComboStringOption::set_sensitive (bool yn) {
  */
 BoolComboOption::BoolComboOption (
 	string const & i, string const & n, string const & t, string const & f,
-	sigc::slot<bool> g, sigc::slot<bool, bool> s
+	sigc::slot<bool()> g, sigc::slot<bool(bool)> s
 	)
 	: Option (i, n)
 	, _get (g)
@@ -608,7 +608,7 @@ BoolComboOption::set_sensitive (bool yn)
 
 /*--------------------------*/
 
-FaderOption::FaderOption (string const & i, string const & n, sigc::slot<gain_t> g, sigc::slot<bool, gain_t> s)
+FaderOption::FaderOption (string const & i, string const & n, sigc::slot<gain_t()> g, sigc::slot<bool(gain_t)> s)
 	: Option (i, n)
 	, _db_adjustment (gain_to_slider_position_with_max (1.0, Config->get_max_gain()), 0, 1, 0.01, 0.1)
 	, _get (g)
@@ -691,7 +691,7 @@ FaderOption::tip_widget() {
 
 /*--------------------------*/
 
-ClockOption::ClockOption (string const & i, string const & n, sigc::slot<std::string> g, sigc::slot<bool, std::string> s)
+ClockOption::ClockOption (string const & i, string const & n, sigc::slot<std::string()> g, sigc::slot<bool(std::string)> s)
 	: Option (i, n)
 	, _clock (X_("timecode-offset"), true, X_(""), true, false, true, false)
 	, _get (g)
@@ -1170,7 +1170,7 @@ OptionEditor::set_current_page (string const & p)
 
 /*--------------------------*/
 
-DirectoryOption::DirectoryOption (string const & i, string const & n, sigc::slot<string> g, sigc::slot<bool, string> s)
+DirectoryOption::DirectoryOption (string const & i, string const & n, sigc::slot<string()> g, sigc::slot<bool(string)> s)
 	: Option (i, n)
 	, _get (g)
 	, _set (s)
