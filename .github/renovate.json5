@@ -1,5 +1,5 @@
 {
   "extends": [
-    "github>MichaelSp/MichaelSp:.github/renovate.json5"
+    "github>MichaelSp/MichaelSp//.github/renovate.json5"
   ]
 }
